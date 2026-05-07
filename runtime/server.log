@@ -1,0 +1,156 @@
+INFO:     Started server process [70998]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+INFO:     127.0.0.1:63748 - "GET /api/v1/health HTTP/1.1" 200 OK
+2026-04-29T19:34:13-0500 INFO app.services.pipeline trace_id=demo-gloria-002 inicio procesamiento producto
+2026-04-29T19:34:13-0500 INFO app.services.pipeline trace_id=demo-gloria-002 imagen decodificada
+2026-04-29T19:34:14-0500 INFO app.services.pipeline trace_id=demo-gloria-002 deteccion yolo completada bbox=(0, 0, 312, 375) confidence=0.999685525894165 fallback=False
+Checking connectivity to the model hosters, this may take a while. To bypass this check, set `DISABLE_MODEL_SOURCE_CHECK` to `True`.
+/opt/anaconda3/lib/python3.11/site-packages/paddle/utils/cpp_extension/extension_utils.py:718: UserWarning: No ccache found. Please be aware that recompiling all source files may be required. You can download and install ccache from: https://github.com/ccache/ccache/blob/master/doc/INSTALL.md
+  warnings.warn(warning_message)
+Creating model: ('PP-LCNet_x1_0_doc_ori', None)
+Model files already exist. Using cached files. To redownload, please delete the directory manually: `/Users/christopher/.paddlex/official_models/PP-LCNet_x1_0_doc_ori`.
+Creating model: ('UVDoc', None)
+Model files already exist. Using cached files. To redownload, please delete the directory manually: `/Users/christopher/.paddlex/official_models/UVDoc`.
+Creating model: ('PP-LCNet_x1_0_textline_ori', None)
+Model files already exist. Using cached files. To redownload, please delete the directory manually: `/Users/christopher/.paddlex/official_models/PP-LCNet_x1_0_textline_ori`.
+Creating model: ('PP-OCRv5_server_det', None)
+Model files already exist. Using cached files. To redownload, please delete the directory manually: `/Users/christopher/.paddlex/official_models/PP-OCRv5_server_det`.
+Creating model: ('latin_PP-OCRv5_mobile_rec', None)
+Model files already exist. Using cached files. To redownload, please delete the directory manually: `/Users/christopher/.paddlex/official_models/latin_PP-OCRv5_mobile_rec`.
+INFO:     127.0.0.1:63749 - "POST /api/v1/products/recognize HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63760 - "GET /api/v1/health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63762 - "GET /docs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63762 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     Started server process [71384]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+INFO:     127.0.0.1:63800 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63801 - "GET /static/app.js HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63805 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63805 - "GET /static/styles.css HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63806 - "GET /static/app.js HTTP/1.1" 200 OK
+2026-04-29T19:37:25-0500 INFO app.services.pipeline trace_id=ui-backend-check inicio procesamiento producto
+2026-04-29T19:37:25-0500 INFO app.services.pipeline trace_id=ui-backend-check imagen decodificada
+2026-04-29T19:37:27-0500 INFO app.services.pipeline trace_id=ui-backend-check deteccion yolo completada bbox=(0, 0, 312, 375) confidence=0.999685525894165 fallback=False
+Checking connectivity to the model hosters, this may take a while. To bypass this check, set `DISABLE_MODEL_SOURCE_CHECK` to `True`.
+/opt/anaconda3/lib/python3.11/site-packages/paddle/utils/cpp_extension/extension_utils.py:718: UserWarning: No ccache found. Please be aware that recompiling all source files may be required. You can download and install ccache from: https://github.com/ccache/ccache/blob/master/doc/INSTALL.md
+  warnings.warn(warning_message)
+Creating model: ('PP-LCNet_x1_0_doc_ori', None)
+Model files already exist. Using cached files. To redownload, please delete the directory manually: `/Users/christopher/.paddlex/official_models/PP-LCNet_x1_0_doc_ori`.
+Creating model: ('UVDoc', None)
+Model files already exist. Using cached files. To redownload, please delete the directory manually: `/Users/christopher/.paddlex/official_models/UVDoc`.
+Creating model: ('PP-LCNet_x1_0_textline_ori', None)
+Model files already exist. Using cached files. To redownload, please delete the directory manually: `/Users/christopher/.paddlex/official_models/PP-LCNet_x1_0_textline_ori`.
+Creating model: ('PP-OCRv5_server_det', None)
+Model files already exist. Using cached files. To redownload, please delete the directory manually: `/Users/christopher/.paddlex/official_models/PP-OCRv5_server_det`.
+Creating model: ('latin_PP-OCRv5_mobile_rec', None)
+Model files already exist. Using cached files. To redownload, please delete the directory manually: `/Users/christopher/.paddlex/official_models/latin_PP-OCRv5_mobile_rec`.
+INFO:     127.0.0.1:63813 - "POST /api/v1/products/recognize HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63865 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63865 - "GET /static/styles.css HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63866 - "GET /static/app.js HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63867 - "GET /static/app.js HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63866 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+INFO:     Started server process [72653]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+2026-04-29T19:39:46-0500 INFO app.services.pipeline trace_id=ui-1777509586323 inicio procesamiento producto
+2026-04-29T19:39:46-0500 INFO app.services.pipeline trace_id=ui-1777509586323 imagen decodificada
+2026-04-29T19:39:47-0500 INFO app.services.pipeline trace_id=ui-1777509586323 deteccion yolo completada bbox=(2, 0, 310, 437) confidence=0.999915599822998 fallback=False
+Checking connectivity to the model hosters, this may take a while. To bypass this check, set `DISABLE_MODEL_SOURCE_CHECK` to `True`.
+/opt/anaconda3/lib/python3.11/site-packages/paddle/utils/cpp_extension/extension_utils.py:718: UserWarning: No ccache found. Please be aware that recompiling all source files may be required. You can download and install ccache from: https://github.com/ccache/ccache/blob/master/doc/INSTALL.md
+  warnings.warn(warning_message)
+Creating model: ('PP-LCNet_x1_0_doc_ori', None)
+Model files already exist. Using cached files. To redownload, please delete the directory manually: `/Users/christopher/.paddlex/official_models/PP-LCNet_x1_0_doc_ori`.
+Creating model: ('UVDoc', None)
+Model files already exist. Using cached files. To redownload, please delete the directory manually: `/Users/christopher/.paddlex/official_models/UVDoc`.
+Creating model: ('PP-LCNet_x1_0_textline_ori', None)
+Model files already exist. Using cached files. To redownload, please delete the directory manually: `/Users/christopher/.paddlex/official_models/PP-LCNet_x1_0_textline_ori`.
+Creating model: ('PP-OCRv5_server_det', None)
+Model files already exist. Using cached files. To redownload, please delete the directory manually: `/Users/christopher/.paddlex/official_models/PP-OCRv5_server_det`.
+Creating model: ('latin_PP-OCRv5_mobile_rec', None)
+Model files already exist. Using cached files. To redownload, please delete the directory manually: `/Users/christopher/.paddlex/official_models/latin_PP-OCRv5_mobile_rec`.
+INFO:     127.0.0.1:63878 - "POST /api/v1/products/recognize HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63889 - "OPTIONS /api/v1/products/recognize HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63888 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63892 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63892 - "GET /static/styles.css HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:63893 - "GET /static/app.js HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63901 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63901 - "GET /static/styles.css HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:63902 - "GET /static/app.js HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:63903 - "GET /static/app.js HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:63905 - "POST /api/v1/products/recognize HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63908 - "GET /docs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63908 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     Started server process [73275]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+2026-04-29T19:42:32-0500 INFO app.services.pipeline trace_id=fanta-fix-check inicio procesamiento producto
+2026-04-29T19:42:32-0500 INFO app.services.pipeline trace_id=fanta-fix-check imagen decodificada
+2026-04-29T19:42:33-0500 INFO app.services.pipeline trace_id=fanta-fix-check deteccion yolo completada bbox=(2, 0, 310, 437) confidence=0.999915599822998 fallback=False
+Checking connectivity to the model hosters, this may take a while. To bypass this check, set `DISABLE_MODEL_SOURCE_CHECK` to `True`.
+/opt/anaconda3/lib/python3.11/site-packages/paddle/utils/cpp_extension/extension_utils.py:718: UserWarning: No ccache found. Please be aware that recompiling all source files may be required. You can download and install ccache from: https://github.com/ccache/ccache/blob/master/doc/INSTALL.md
+  warnings.warn(warning_message)
+Creating model: ('PP-LCNet_x1_0_doc_ori', None)
+Model files already exist. Using cached files. To redownload, please delete the directory manually: `/Users/christopher/.paddlex/official_models/PP-LCNet_x1_0_doc_ori`.
+Creating model: ('UVDoc', None)
+Model files already exist. Using cached files. To redownload, please delete the directory manually: `/Users/christopher/.paddlex/official_models/UVDoc`.
+Creating model: ('PP-LCNet_x1_0_textline_ori', None)
+Model files already exist. Using cached files. To redownload, please delete the directory manually: `/Users/christopher/.paddlex/official_models/PP-LCNet_x1_0_textline_ori`.
+Creating model: ('PP-OCRv5_server_det', None)
+Model files already exist. Using cached files. To redownload, please delete the directory manually: `/Users/christopher/.paddlex/official_models/PP-OCRv5_server_det`.
+Creating model: ('latin_PP-OCRv5_mobile_rec', None)
+Model files already exist. Using cached files. To redownload, please delete the directory manually: `/Users/christopher/.paddlex/official_models/latin_PP-OCRv5_mobile_rec`.
+INFO:     127.0.0.1:63950 - "POST /api/v1/products/recognize HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63958 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63959 - "GET /static/app.js HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:63958 - "GET /static/styles.css HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:63968 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63968 - "GET /static/styles.css HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:63969 - "GET /static/app.js HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:63970 - "GET /static/app.js HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:63973 - "POST /api/v1/products/recognize HTTP/1.1" 200 OK
+INFO:     Started server process [73852]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+2026-04-29T19:45:07-0500 INFO app.services.pipeline trace_id=product-type-check inicio procesamiento producto
+2026-04-29T19:45:07-0500 INFO app.services.pipeline trace_id=product-type-check imagen decodificada
+2026-04-29T19:45:08-0500 INFO app.services.pipeline trace_id=product-type-check deteccion yolo completada bbox=(2, 0, 310, 437) confidence=0.999915599822998 fallback=False
+Checking connectivity to the model hosters, this may take a while. To bypass this check, set `DISABLE_MODEL_SOURCE_CHECK` to `True`.
+/opt/anaconda3/lib/python3.11/site-packages/paddle/utils/cpp_extension/extension_utils.py:718: UserWarning: No ccache found. Please be aware that recompiling all source files may be required. You can download and install ccache from: https://github.com/ccache/ccache/blob/master/doc/INSTALL.md
+  warnings.warn(warning_message)
+Creating model: ('PP-LCNet_x1_0_doc_ori', None)
+Model files already exist. Using cached files. To redownload, please delete the directory manually: `/Users/christopher/.paddlex/official_models/PP-LCNet_x1_0_doc_ori`.
+Creating model: ('UVDoc', None)
+Model files already exist. Using cached files. To redownload, please delete the directory manually: `/Users/christopher/.paddlex/official_models/UVDoc`.
+Creating model: ('PP-LCNet_x1_0_textline_ori', None)
+Model files already exist. Using cached files. To redownload, please delete the directory manually: `/Users/christopher/.paddlex/official_models/PP-LCNet_x1_0_textline_ori`.
+Creating model: ('PP-OCRv5_server_det', None)
+Model files already exist. Using cached files. To redownload, please delete the directory manually: `/Users/christopher/.paddlex/official_models/PP-OCRv5_server_det`.
+Creating model: ('latin_PP-OCRv5_mobile_rec', None)
+Model files already exist. Using cached files. To redownload, please delete the directory manually: `/Users/christopher/.paddlex/official_models/latin_PP-OCRv5_mobile_rec`.
+INFO:     127.0.0.1:63986 - "POST /api/v1/products/recognize HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63996 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63997 - "GET /static/app.js HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63996 - "GET /static/styles.css HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64188 - "GET /static/styles.css HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64188 - "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:64289 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64289 - "GET /static/styles.css HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64290 - "GET /static/app.js HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64296 - "GET /static/app.js HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64290 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:64300 - "POST /api/v1/products/recognize HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64312 - "GET /productos HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:64314 - "GET /static/app.js HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:64312 - "GET /static/styles.css HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:64316 - "GET /static/app.js HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:64318 - "POST /api/v1/products/recognize HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64422 - "POST /api/v1/products/recognize HTTP/1.1" 200 OK

@@ -1,0 +1,16 @@
+services:
+  api:
+    build: .
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+    environment:
+      APP_ENV: docker
+      YOLO_MODEL_PATH: ${YOLO_MODEL_PATH:-yolov8n.pt}
+      YOLO_DEVICE: ${YOLO_DEVICE:-cpu}
+      OCR_ENGINE: ${OCR_ENGINE:-paddle}
+    volumes:
+      - ./runtime:/app/runtime
+      - ./models:/app/models
+

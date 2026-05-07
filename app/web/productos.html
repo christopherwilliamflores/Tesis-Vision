@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Productos · Retail Vision MVP</title>
+    <link rel="stylesheet" href="static/styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">MVP retail peruano</p>
+          <h1>Productos registrados</h1>
+        </div>
+        <nav class="topnav">
+          <a href="/">Registro</a>
+          <a href="/productos">Productos</a>
+          <a class="docs-link" href="/docs">API docs</a>
+        </nav>
+      </header>
+
+      <p id="list-status" class="status-text" role="status">Cargando productos...</p>
+
+      <div id="table-wrapper">
+        <table class="products-table" id="products-table" hidden>
+          <thead>
+            <tr>
+              <th>Nombre</th>
+              <th>Marca</th>
+              <th>Categoría</th>
+              <th>Contenido</th>
+              <th>Código de barras</th>
+              <th>Precio</th>
+            </tr>
+          </thead>
+          <tbody id="products-tbody"></tbody>
+        </table>
+        <div id="products-empty" class="products-empty" hidden>
+          Aún no hay productos. Registra uno desde la pantalla de Registro.
+        </div>
+      </div>
+    </main>
+
+    <div id="edit-backdrop" class="modal-backdrop" hidden>
+      <section
+        class="modal"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="edit-title"
+      >
+        <div class="modal-header">
+          <h2 id="edit-title">Editar producto</h2>
+          <p id="edit-status" class="status-text"></p>
+        </div>
+
+        <form id="edit-form" class="product-form" novalidate>
+          <input type="hidden" id="edit-id" />
+          <div class="field">
+            <label for="edit-name">Nombre del producto *</label>
+            <input id="edit-name" name="nombre_producto" type="text" required maxlength="200" />
+            <p class="field-error" data-error-for="nombre_producto" hidden></p>
+          </div>
+
+          <div class="field-grid">
+            <div class="field">
+              <label for="edit-type">Tipo de producto</label>
+              <input id="edit-type" name="tipo_producto" type="text" maxlength="120" />
+            </div>
+            <div class="field">
+              <label for="edit-brand">Marca</label>
+              <input id="edit-brand" name="marca" type="text" maxlength="120" />
+            </div>
+            <div class="field">
+              <label for="edit-presentation">Presentación</label>
+              <input id="edit-presentation" name="presentacion" type="text" maxlength="120" />
+            </div>
+            <div class="field">
+              <label for="edit-content">Contenido neto / Unidad *</label>
+              <input id="edit-content" name="contenido_neto" type="text" required maxlength="60" />
+              <p class="field-error" data-error-for="contenido_neto" hidden></p>
+            </div>
+            <div class="field">
+              <label for="edit-unit">Unidad de medida</label>
+              <input id="edit-unit" name="unidad_medida" type="text" maxlength="20" />
+            </div>
+            <div class="field">
+              <label for="edit-category">Categoría *</label>
+              <input id="edit-category" name="categoria_sugerida" type="text" required maxlength="120" />
+              <p class="field-error" data-error-for="categoria_sugerida" hidden></p>
+            </div>
+            <div class="field">
+              <label for="edit-barcode">Código de barras</label>
+              <input id="edit-barcode" name="codigo_barras" type="text" maxlength="64" />
+              <p class="field-error" data-error-for="codigo_barras" hidden></p>
+            </div>
+            <div class="field">
+              <label for="edit-price">Precio venta (S/) *</label>
+              <input
+                id="edit-price"
+                name="precio_venta"
+                type="number"
+                inputmode="decimal"
+                min="0"
+                step="0.01"
+                required
+              />
+              <p class="field-error" data-error-for="precio_venta" hidden></p>
+            </div>
+          </div>
+
+          <div class="modal-actions">
+            <button type="button" id="cancel-button" class="secondary-button">Cancelar</button>
+            <button type="submit" id="save-edit-button" class="primary-button">Guardar</button>
+          </div>
+        </form>
+      </section>
+    </div>
+
+    <script src="static/productos.js" defer></script>
+  </body>
+</html>

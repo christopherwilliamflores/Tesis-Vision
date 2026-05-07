@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Registro inteligente de productos</title>
+    <link rel="stylesheet" href="static/styles.css?v=3" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">MVP retail peruano</p>
+          <h1>Registro inteligente de productos</h1>
+        </div>
+        <nav class="topnav">
+          <a href="/">Registro</a>
+          <a href="/productos">Productos</a>
+          <a class="docs-link" href="/docs">API docs</a>
+        </nav>
+      </header>
+
+      <section class="workspace" aria-label="Reconocimiento de producto">
+        <form id="recognition-form" class="upload-panel">
+          <div class="upload-actions">
+            <label class="capture-button" for="camera-input">
+              <span aria-hidden="true">📷</span>
+              <span>Tomar foto</span>
+              <input
+                id="camera-input"
+                type="file"
+                accept="image/*"
+                capture="environment"
+                hidden
+              />
+            </label>
+            <button id="webcam-toggle" class="capture-button capture-button--alt" type="button">
+              <span aria-hidden="true">📹</span>
+              <span>Cámara web</span>
+            </button>
+            <label id="drop-zone" class="drop-zone" for="image-input">
+              <input id="image-input" name="image" type="file" accept="image/*" />
+              <span class="drop-title">Elegir de galería</span>
+              <span id="file-name" class="drop-subtitle">JPG, PNG o WEBP</span>
+            </label>
+          </div>
+
+          <div class="preview-frame">
+            <img id="preview-image" alt="Vista previa del producto" hidden />
+            <video
+              id="preview-video"
+              autoplay
+              playsinline
+              muted
+              hidden
+              aria-label="Vista en vivo de la cámara web"
+            ></video>
+            <div id="preview-empty" class="preview-empty">Sin imagen</div>
+          </div>
+
+          <div id="webcam-actions" class="webcam-actions" hidden>
+            <button id="webcam-capture" type="button" class="primary-button">Capturar</button>
+            <button id="webcam-close" type="button" class="secondary-button">Cerrar cámara</button>
+            <select id="webcam-device" class="webcam-device" aria-label="Cámara"></select>
+          </div>
+
+          <button id="submit-button" class="primary-button" type="submit" disabled>
+            Analizar producto
+          </button>
+          <p id="status-text" class="status-text" role="status">Esperando imagen</p>
+        </form>
+
+        <section class="result-panel" aria-live="polite">
+          <div class="result-heading">
+            <p class="eyebrow">Producto sugerido</p>
+            <h2>Edita y guarda el producto</h2>
+          </div>
+
+          <form id="product-form" class="product-form" novalidate>
+            <div class="field field--name">
+              <label for="product-name-input">Nombre del producto *</label>
+              <div class="autocomplete">
+                <input
+                  id="product-name-input"
+                  name="nombre_producto"
+                  type="text"
+                  autocomplete="off"
+                  required
+                  maxlength="200"
+                />
+                <ul
+                  id="suggestions-list"
+                  class="suggestions"
+                  role="listbox"
+                  hidden
+                ></ul>
+              </div>
+              <p class="field-error" data-error-for="nombre_producto" hidden></p>
+            </div>
+
+            <div class="field-grid">
+              <div class="field">
+                <label for="product-type-input">Tipo de producto</label>
+                <input id="product-type-input" name="tipo_producto" type="text" maxlength="120" />
+              </div>
+              <div class="field">
+                <label for="brand-input">Marca</label>
+                <input id="brand-input" name="marca" type="text" maxlength="120" />
+              </div>
+              <div class="field">
+                <label for="presentation-input">Presentación</label>
+                <input id="presentation-input" name="presentacion" type="text" maxlength="120" />
+              </div>
+              <div class="field">
+                <label for="content-input">Contenido neto / Unidad *</label>
+                <input
+                  id="content-input"
+                  name="contenido_neto"
+                  type="text"
+                  maxlength="60"
+                  required
+                />
+                <p class="field-error" data-error-for="contenido_neto" hidden></p>
+              </div>
+              <div class="field">
+                <label for="unit-input">Unidad de medida</label>
+                <input id="unit-input" name="unidad_medida" type="text" maxlength="20" />
+              </div>
+              <div class="field">
+                <label for="category-input">Categoría *</label>
+                <input id="category-input" name="categoria_sugerida" type="text" maxlength="120" required />
+                <p class="field-error" data-error-for="categoria_sugerida" hidden></p>
+              </div>
+              <div class="field">
+                <label for="barcode-input">Código de barras</label>
+                <input id="barcode-input" name="codigo_barras" type="text" maxlength="64" />
+                <p class="field-error" data-error-for="codigo_barras" hidden></p>
+              </div>
+              <div class="field">
+                <label for="price-input">Precio venta (S/) *</label>
+                <input
+                  id="price-input"
+                  name="precio_venta"
+                  type="number"
+                  inputmode="decimal"
+                  min="0"
+                  step="0.01"
+                  required
+                />
+                <p class="field-error" data-error-for="precio_venta" hidden></p>
+              </div>
+            </div>
+
+            <div class="form-actions">
+              <button id="save-button" type="submit" class="primary-button">Guardar producto</button>
+              <p id="save-status" class="status-text" role="status"></p>
+            </div>
+          </form>
+
+          <div id="warnings" class="warnings" hidden></div>
+
+          <div class="trace-grid">
+            <section>
+              <h3>YOLO</h3>
+              <dl>
+                <div>
+                  <dt>Modelo</dt>
+                  <dd id="model-value">-</dd>
+                </div>
+                <div>
+                  <dt>Confianza</dt>
+                  <dd id="confidence-value">-</dd>
+                </div>
+                <div>
+                  <dt>Caja</dt>
+                  <dd id="bbox-value">-</dd>
+                </div>
+              </dl>
+            </section>
+
+            <section>
+              <h3>OCR</h3>
+              <dl>
+                <div>
+                  <dt>Confianza media</dt>
+                  <dd id="ocr-confidence-value">-</dd>
+                </div>
+                <div>
+                  <dt>Tiempo</dt>
+                  <dd id="time-value">-</dd>
+                </div>
+              </dl>
+            </section>
+          </div>
+
+          <section class="ocr-panel">
+            <h3>Texto detectado</h3>
+            <pre id="ocr-text">-</pre>
+          </section>
+        </section>
+      </section>
+    </main>
+
+    <script src="static/app.js?v=3" defer></script>
+  </body>
+</html>

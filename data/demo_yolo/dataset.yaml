@@ -1,0 +1,5 @@
+path: /Users/christopher/Desktop/TesisSprint/data/demo_yolo
+train: images/train
+val: images/val
+names:
+  0: product_label

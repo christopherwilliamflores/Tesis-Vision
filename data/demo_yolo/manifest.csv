@@ -1,0 +1,144 @@
+source,image,label,split,width,height,label_mode
+demo/doritos.jpg,data/demo_yolo/images/val/0001_doritos.jpg,data/demo_yolo/labels/val/0001_doritos.txt,val,960,640,full_image_bbox
+demo/speed_stick_desodorante.jpg,data/demo_yolo/images/val/0002_speed_stick_desodorante.jpg,data/demo_yolo/labels/val/0002_speed_stick_desodorante.txt,val,960,1280,full_image_bbox
+demo/nivea sun.png,data/demo_yolo/images/val/0003_nivea_sun.png,data/demo_yolo/labels/val/0003_nivea_sun.txt,val,268,840,full_image_bbox
+demo/galleta narajna.png,data/demo_yolo/images/val/0004_galleta_narajna.png,data/demo_yolo/labels/val/0004_galleta_narajna.txt,val,358,518,full_image_bbox
+demo/huggees.png,data/demo_yolo/images/val/0005_huggees.png,data/demo_yolo/labels/val/0005_huggees.txt,val,384,394,full_image_bbox
+demo/vicks_vaporub.jpg,data/demo_yolo/images/val/0006_vicks_vaporub.jpg,data/demo_yolo/labels/val/0006_vicks_vaporub.txt,val,960,1200,full_image_bbox
+demo/mani.png,data/demo_yolo/images/val/0007_mani.png,data/demo_yolo/labels/val/0007_mani.txt,val,295,472,full_image_bbox
+demo/jhon.png,data/demo_yolo/images/val/0008_jhon.png,data/demo_yolo/labels/val/0008_jhon.txt,val,394,455,full_image_bbox
+demo/proc.png,data/demo_yolo/images/val/0009_proc.png,data/demo_yolo/labels/val/0009_proc.txt,val,875,334,full_image_bbox
+demo/cusquena_cerveza.jpg,data/demo_yolo/images/val/0010_cusquena_cerveza.jpg,data/demo_yolo/labels/val/0010_cusquena_cerveza.txt,val,960,2734,full_image_bbox
+demo/pisco 4.png,data/demo_yolo/images/val/0011_pisco_4.png,data/demo_yolo/labels/val/0011_pisco_4.txt,val,460,590,full_image_bbox
+demo/johnson_baby_shampoo.jpg,data/demo_yolo/images/val/0012_johnson_baby_shampoo.jpg,data/demo_yolo/labels/val/0012_johnson_baby_shampoo.txt,val,640,640,full_image_bbox
+demo/kiwicha.png,data/demo_yolo/images/val/0013_kiwicha.png,data/demo_yolo/labels/val/0013_kiwicha.txt,val,340,502,full_image_bbox
+demo/dove ba.png,data/demo_yolo/images/val/0014_dove_ba.png,data/demo_yolo/labels/val/0014_dove_ba.txt,val,281,258,full_image_bbox
+demo/skip_detergente.jpg,data/demo_yolo/images/val/0015_skip_detergente.jpg,data/demo_yolo/labels/val/0015_skip_detergente.txt,val,960,640,full_image_bbox
+demo/clorox.jpg,data/demo_yolo/images/val/0016_clorox.jpg,data/demo_yolo/labels/val/0016_clorox.txt,val,512,366,full_image_bbox
+demo/sunvit.png,data/demo_yolo/images/val/0017_sunvit.png,data/demo_yolo/labels/val/0017_sunvit.txt,val,353,711,full_image_bbox
+demo/laive_leche.jpg,data/demo_yolo/images/val/0018_laive_leche.jpg,data/demo_yolo/labels/val/0018_laive_leche.txt,val,592,788,full_image_bbox
+demo/mega.png,data/demo_yolo/images/val/0019_mega.png,data/demo_yolo/labels/val/0019_mega.txt,val,894,603,full_image_bbox
+demo/costeno_arroz.jpg,data/demo_yolo/images/val/0020_costeno_arroz.jpg,data/demo_yolo/labels/val/0020_costeno_arroz.txt,val,960,1100,full_image_bbox
+demo/skip.png,data/demo_yolo/images/val/0021_skip.png,data/demo_yolo/labels/val/0021_skip.txt,val,366,413,full_image_bbox
+demo/aceite.png,data/demo_yolo/images/val/0022_aceite.png,data/demo_yolo/labels/val/0022_aceite.txt,val,325,317,full_image_bbox
+demo/listerine_enjuague.jpg,data/demo_yolo/images/val/0023_listerine_enjuague.jpg,data/demo_yolo/labels/val/0023_listerine_enjuague.txt,val,960,720,full_image_bbox
+demo/nosotras_toalla.jpg,data/demo_yolo/images/val/0024_nosotras_toalla.jpg,data/demo_yolo/labels/val/0024_nosotras_toalla.txt,val,960,721,full_image_bbox
+demo/cocinero.png,data/demo_yolo/images/val/0025_cocinero.png,data/demo_yolo/labels/val/0025_cocinero.txt,val,249,251,full_image_bbox
+demo/sav anticas.png,data/demo_yolo/images/val/0026_sav_anticas.png,data/demo_yolo/labels/val/0026_sav_anticas.txt,val,405,766,full_image_bbox
+demo/sublime_chocolate.jpg,data/demo_yolo/images/val/0027_sublime_chocolate.jpg,data/demo_yolo/labels/val/0027_sublime_chocolate.txt,val,960,1280,full_image_bbox
+demo/pantene rizos.png,data/demo_yolo/images/val/0028_pantene_rizos.png,data/demo_yolo/labels/val/0028_pantene_rizos.txt,val,203,449,full_image_bbox
+demo/sapolio.png,data/demo_yolo/images/val/0029_sapolio.png,data/demo_yolo/labels/val/0029_sapolio.txt,val,435,346,full_image_bbox
+demo/bol bb.png,data/demo_yolo/images/train/0030_bol_bb.png,data/demo_yolo/labels/train/0030_bol_bb.txt,train,1194,869,full_image_bbox
+demo/sav.png,data/demo_yolo/images/train/0031_sav.png,data/demo_yolo/labels/train/0031_sav.txt,train,398,779,full_image_bbox
+demo/pilsen_callao.jpg,data/demo_yolo/images/train/0032_pilsen_callao.jpg,data/demo_yolo/labels/train/0032_pilsen_callao.txt,train,960,1280,full_image_bbox
+demo/grieg.png,data/demo_yolo/images/train/0033_grieg.png,data/demo_yolo/labels/train/0033_grieg.txt,train,328,373,full_image_bbox
+demo/simeticona.png,data/demo_yolo/images/train/0034_simeticona.png,data/demo_yolo/labels/train/0034_simeticona.txt,train,443,696,full_image_bbox
+demo/mar amaz.png,data/demo_yolo/images/train/0035_mar_amaz.png,data/demo_yolo/labels/train/0035_mar_amaz.txt,train,622,950,full_image_bbox
+demo/big_cola.jpg,data/demo_yolo/images/train/0036_big_cola.jpg,data/demo_yolo/labels/train/0036_big_cola.txt,train,700,700,full_image_bbox
+demo/jhonmorado.png,data/demo_yolo/images/train/0037_jhonmorado.png,data/demo_yolo/labels/train/0037_jhonmorado.txt,train,352,454,full_image_bbox
+demo/huggies_panal.jpg,data/demo_yolo/images/train/0038_huggies_panal.jpg,data/demo_yolo/labels/train/0038_huggies_panal.txt,train,648,486,full_image_bbox
+demo/kotex_toalla.jpg,data/demo_yolo/images/train/0039_kotex_toalla.jpg,data/demo_yolo/labels/train/0039_kotex_toalla.txt,train,600,821,full_image_bbox
+demo/jabon bol.png,data/demo_yolo/images/train/0040_jabon_bol.png,data/demo_yolo/labels/train/0040_jabon_bol.txt,train,1182,814,full_image_bbox
+demo/ponds.png,data/demo_yolo/images/train/0041_ponds.png,data/demo_yolo/labels/train/0041_ponds.txt,train,579,554,full_image_bbox
+demo/sedal.png,data/demo_yolo/images/train/0042_sedal.png,data/demo_yolo/labels/train/0042_sedal.txt,train,311,787,full_image_bbox
+demo/colgate_pasta.jpg,data/demo_yolo/images/train/0043_colgate_pasta.jpg,data/demo_yolo/labels/train/0043_colgate_pasta.txt,train,960,540,full_image_bbox
+demo/powerade.jpg,data/demo_yolo/images/train/0044_powerade.jpg,data/demo_yolo/labels/train/0044_powerade.txt,train,960,943,full_image_bbox
+demo/always_toalla.jpg,data/demo_yolo/images/train/0045_always_toalla.jpg,data/demo_yolo/labels/train/0045_always_toalla.txt,train,960,1280,full_image_bbox
+demo/sour.png,data/demo_yolo/images/train/0046_sour.png,data/demo_yolo/labels/train/0046_sour.txt,train,220,502,full_image_bbox
+demo/boreal.png,data/demo_yolo/images/train/0047_boreal.png,data/demo_yolo/labels/train/0047_boreal.txt,train,361,429,full_image_bbox
+demo/scott_papel.jpg,data/demo_yolo/images/train/0048_scott_papel.jpg,data/demo_yolo/labels/train/0048_scott_papel.txt,train,960,720,full_image_bbox
+demo/alacena_mayonesa.jpg,data/demo_yolo/images/train/0049_alacena_mayonesa.jpg,data/demo_yolo/labels/train/0049_alacena_mayonesa.txt,train,948,1310,full_image_bbox
+demo/soya.png,data/demo_yolo/images/train/0050_soya.png,data/demo_yolo/labels/train/0050_soya.txt,train,317,338,full_image_bbox
+demo/alka_seltzer.jpg,data/demo_yolo/images/train/0051_alka_seltzer.jpg,data/demo_yolo/labels/train/0051_alka_seltzer.txt,train,960,720,full_image_bbox
+demo/gase.png,data/demo_yolo/images/train/0052_gase.png,data/demo_yolo/labels/train/0052_gase.txt,train,526,769,full_image_bbox
+demo/frugos_jugo.jpg,data/demo_yolo/images/train/0053_frugos_jugo.jpg,data/demo_yolo/labels/train/0053_frugos_jugo.txt,train,960,858,full_image_bbox
+demo/niivea red.png,data/demo_yolo/images/train/0054_niivea_red.png,data/demo_yolo/labels/train/0054_niivea_red.txt,train,466,400,full_image_bbox
+demo/paña.png,data/demo_yolo/images/train/0055_pana.png,data/demo_yolo/labels/train/0055_pana.txt,train,388,321,full_image_bbox
+demo/babysec_panal.jpg,data/demo_yolo/images/train/0056_babysec_panal.jpg,data/demo_yolo/labels/train/0056_babysec_panal.txt,train,960,651,full_image_bbox
+demo/simet.png,data/demo_yolo/images/train/0057_simet.png,data/demo_yolo/labels/train/0057_simet.txt,train,1064,504,full_image_bbox
+demo/opal.png,data/demo_yolo/images/train/0058_opal.png,data/demo_yolo/labels/train/0058_opal.txt,train,280,410,full_image_bbox
+demo/dive babt.png,data/demo_yolo/images/train/0059_dive_babt.png,data/demo_yolo/labels/train/0059_dive_babt.txt,train,429,789,full_image_bbox
+demo/bioderman.png,data/demo_yolo/images/train/0060_bioderman.png,data/demo_yolo/labels/train/0060_bioderman.txt,train,362,758,full_image_bbox
+demo/marse pro.png,data/demo_yolo/images/train/0061_marse_pro.png,data/demo_yolo/labels/train/0061_marse_pro.txt,train,452,548,full_image_bbox
+demo/locion antimosquito.png,data/demo_yolo/images/train/0062_locion_antimosquito.png,data/demo_yolo/labels/train/0062_locion_antimosquito.txt,train,373,769,full_image_bbox
+demo/picaras.png,data/demo_yolo/images/train/0063_picaras.png,data/demo_yolo/labels/train/0063_picaras.txt,train,391,225,full_image_bbox
+demo/coca cola.png,data/demo_yolo/images/train/0064_coca_cola.png,data/demo_yolo/labels/train/0064_coca_cola.txt,train,347,460,full_image_bbox
+demo/bol vuid.png,data/demo_yolo/images/train/0065_bol_vuid.png,data/demo_yolo/labels/train/0065_bol_vuid.txt,train,654,938,full_image_bbox
+demo/aspirina_bayer.jpg,data/demo_yolo/images/train/0066_aspirina_bayer.jpg,data/demo_yolo/labels/train/0066_aspirina_bayer.txt,train,960,1274,full_image_bbox
+demo/coco.png,data/demo_yolo/images/train/0067_coco.png,data/demo_yolo/labels/train/0067_coco.txt,train,335,531,full_image_bbox
+demo/suv.png,data/demo_yolo/images/train/0068_suv.png,data/demo_yolo/labels/train/0068_suv.txt,train,280,428,full_image_bbox
+demo/opal_detergente.jpg,data/demo_yolo/images/train/0069_opal_detergente.jpg,data/demo_yolo/labels/train/0069_opal_detergente.txt,train,960,640,full_image_bbox
+demo/fanta na.png,data/demo_yolo/images/train/0070_fanta_na.png,data/demo_yolo/labels/train/0070_fanta_na.txt,train,311,437,full_image_bbox
+demo/pote nivea.png,data/demo_yolo/images/train/0071_pote_nivea.png,data/demo_yolo/labels/train/0071_pote_nivea.txt,train,609,459,full_image_bbox
+demo/marsella.png,data/demo_yolo/images/train/0072_marsella.png,data/demo_yolo/labels/train/0072_marsella.txt,train,610,910,full_image_bbox
+demo/nivea.png,data/demo_yolo/images/train/0073_nivea.png,data/demo_yolo/labels/train/0073_nivea.txt,train,347,922,full_image_bbox
+demo/sun flic.png,data/demo_yolo/images/train/0074_sun_flic.png,data/demo_yolo/labels/train/0074_sun_flic.txt,train,241,421,full_image_bbox
+demo/ninet.png,data/demo_yolo/images/train/0075_ninet.png,data/demo_yolo/labels/train/0075_ninet.txt,train,293,817,full_image_bbox
+demo/oreo_galleta.jpg,data/demo_yolo/images/train/0076_oreo_galleta.jpg,data/demo_yolo/labels/train/0076_oreo_galleta.txt,train,960,960,full_image_bbox
+demo/mayonesa.png,data/demo_yolo/images/train/0077_mayonesa.png,data/demo_yolo/labels/train/0077_mayonesa.txt,train,303,417,full_image_bbox
+demo/pura_vida_leche.jpg,data/demo_yolo/images/train/0078_pura_vida_leche.jpg,data/demo_yolo/labels/train/0078_pura_vida_leche.txt,train,960,1285,full_image_bbox
+demo/nicolini_fideos.jpg,data/demo_yolo/images/train/0079_nicolini_fideos.jpg,data/demo_yolo/labels/train/0079_nicolini_fideos.txt,train,960,699,full_image_bbox
+demo/clopidro.png,data/demo_yolo/images/train/0080_clopidro.png,data/demo_yolo/labels/train/0080_clopidro.txt,train,774,355,full_image_bbox
+demo/nivea_creme.jpg,data/demo_yolo/images/train/0081_nivea_creme.jpg,data/demo_yolo/labels/train/0081_nivea_creme.txt,train,960,960,full_image_bbox
+demo/sulfato.png,data/demo_yolo/images/train/0082_sulfato.png,data/demo_yolo/labels/train/0082_sulfato.txt,train,556,834,full_image_bbox
+demo/bonle_leche.jpg,data/demo_yolo/images/train/0083_bonle_leche.jpg,data/demo_yolo/labels/train/0083_bonle_leche.txt,train,960,720,full_image_bbox
+demo/lenteja.png,data/demo_yolo/images/train/0084_lenteja.png,data/demo_yolo/labels/train/0084_lenteja.txt,train,329,437,full_image_bbox
+demo/fanta berry.png,data/demo_yolo/images/train/0085_fanta_berry.png,data/demo_yolo/labels/train/0085_fanta_berry.txt,train,247,420,full_image_bbox
+demo/mante.png,data/demo_yolo/images/train/0086_mante.png,data/demo_yolo/labels/train/0086_mante.txt,train,366,209,full_image_bbox
+demo/mantixa.png,data/demo_yolo/images/train/0087_mantixa.png,data/demo_yolo/labels/train/0087_mantixa.txt,train,875,535,full_image_bbox
+demo/costa.png,data/demo_yolo/images/train/0088_costa.png,data/demo_yolo/labels/train/0088_costa.txt,train,431,309,full_image_bbox
+demo/volt_energizante.jpg,data/demo_yolo/images/train/0089_volt_energizante.jpg,data/demo_yolo/labels/train/0089_volt_energizante.txt,train,960,754,full_image_bbox
+demo/ayudin_lejia.jpg,data/demo_yolo/images/train/0090_ayudin_lejia.jpg,data/demo_yolo/labels/train/0090_ayudin_lejia.txt,train,313,625,full_image_bbox
+demo/pampers_panal.jpg,data/demo_yolo/images/train/0091_pampers_panal.jpg,data/demo_yolo/labels/train/0091_pampers_panal.txt,train,679,431,full_image_bbox
+demo/bebes.png,data/demo_yolo/images/train/0092_bebes.png,data/demo_yolo/labels/train/0092_bebes.txt,train,419,319,full_image_bbox
+demo/kola_real.jpg,data/demo_yolo/images/train/0093_kola_real.jpg,data/demo_yolo/labels/train/0093_kola_real.txt,train,640,640,full_image_bbox
+demo/head.png,data/demo_yolo/images/train/0094_head.png,data/demo_yolo/labels/train/0094_head.txt,train,230,390,full_image_bbox
+demo/nivea verde.png,data/demo_yolo/images/train/0095_nivea_verde.png,data/demo_yolo/labels/train/0095_nivea_verde.txt,train,588,908,full_image_bbox
+demo/ariel_detergente.jpg,data/demo_yolo/images/train/0096_ariel_detergente.jpg,data/demo_yolo/labels/train/0096_ariel_detergente.txt,train,960,1280,full_image_bbox
+demo/cocinero_aceite.jpg,data/demo_yolo/images/train/0097_cocinero_aceite.jpg,data/demo_yolo/labels/train/0097_cocinero_aceite.txt,train,960,1652,full_image_bbox
+demo/mani bot.png,data/demo_yolo/images/train/0098_mani_bot.png,data/demo_yolo/labels/train/0098_mani_bot.txt,train,314,407,full_image_bbox
+demo/eucerin.png,data/demo_yolo/images/train/0099_eucerin.png,data/demo_yolo/labels/train/0099_eucerin.txt,train,286,783,full_image_bbox
+demo/eucerin_crema.jpg,data/demo_yolo/images/train/0100_eucerin_crema.jpg,data/demo_yolo/labels/train/0100_eucerin_crema.txt,train,960,720,full_image_bbox
+demo/az.png,data/demo_yolo/images/train/0101_az.png,data/demo_yolo/labels/train/0101_az.txt,train,326,445,full_image_bbox
+demo/fanta naran.png,data/demo_yolo/images/train/0102_fanta_naran.png,data/demo_yolo/labels/train/0102_fanta_naran.txt,train,322,537,full_image_bbox
+demo/az blan.png,data/demo_yolo/images/train/0103_az_blan.png,data/demo_yolo/labels/train/0103_az_blan.txt,train,294,428,full_image_bbox
+demo/baby za.png,data/demo_yolo/images/train/0104_baby_za.png,data/demo_yolo/labels/train/0104_baby_za.txt,train,598,287,full_image_bbox
+demo/poett_ambientador.jpg,data/demo_yolo/images/train/0105_poett_ambientador.jpg,data/demo_yolo/labels/train/0105_poett_ambientador.txt,train,960,1147,full_image_bbox
+demo/primor_aceite.jpg,data/demo_yolo/images/train/0106_primor_aceite.jpg,data/demo_yolo/labels/train/0106_primor_aceite.txt,train,960,1280,full_image_bbox
+demo/cera.png,data/demo_yolo/images/train/0107_cera.png,data/demo_yolo/labels/train/0107_cera.txt,train,318,688,full_image_bbox
+demo/bol floral.png,data/demo_yolo/images/train/0108_bol_floral.png,data/demo_yolo/labels/train/0108_bol_floral.txt,train,468,203,full_image_bbox
+demo/ril.png,data/demo_yolo/images/train/0109_ril.png,data/demo_yolo/labels/train/0109_ril.txt,train,882,677,full_image_bbox
+demo/eu baby.png,data/demo_yolo/images/train/0110_eu_baby.png,data/demo_yolo/labels/train/0110_eu_baby.txt,train,360,733,full_image_bbox
+demo/gatos.png,data/demo_yolo/images/train/0111_gatos.png,data/demo_yolo/labels/train/0111_gatos.txt,train,325,399,full_image_bbox
+demo/sensodyne_pasta.jpg,data/demo_yolo/images/train/0112_sensodyne_pasta.jpg,data/demo_yolo/labels/train/0112_sensodyne_pasta.txt,train,960,688,full_image_bbox
+demo/bol morado.png,data/demo_yolo/images/train/0113_bol_morado.png,data/demo_yolo/labels/train/0113_bol_morado.txt,train,619,944,full_image_bbox
+demo/rexona_desodorante.jpg,data/demo_yolo/images/train/0114_rexona_desodorante.jpg,data/demo_yolo/labels/train/0114_rexona_desodorante.txt,train,222,195,full_image_bbox
+demo/old_spice_desodorante.jpg,data/demo_yolo/images/train/0115_old_spice_desodorante.jpg,data/demo_yolo/labels/train/0115_old_spice_desodorante.txt,train,960,1707,full_image_bbox
+demo/ace.png,data/demo_yolo/images/train/0116_ace.png,data/demo_yolo/labels/train/0116_ace.txt,train,735,907,full_image_bbox
+demo/ponds_crema.jpg,data/demo_yolo/images/train/0117_ponds_crema.jpg,data/demo_yolo/labels/train/0117_ponds_crema.txt,train,960,1300,full_image_bbox
+demo/pantene.png,data/demo_yolo/images/train/0118_pantene.png,data/demo_yolo/labels/train/0118_pantene.txt,train,182,437,full_image_bbox
+demo/tab.png,data/demo_yolo/images/train/0119_tab.png,data/demo_yolo/labels/train/0119_tab.txt,train,344,501,full_image_bbox
+demo/loa.png,data/demo_yolo/images/train/0120_loa.png,data/demo_yolo/labels/train/0120_loa.txt,train,346,378,full_image_bbox
+demo/toalli.png,data/demo_yolo/images/train/0121_toalli.png,data/demo_yolo/labels/train/0121_toalli.txt,train,457,227,full_image_bbox
+demo/you.png,data/demo_yolo/images/train/0122_you.png,data/demo_yolo/labels/train/0122_you.txt,train,333,382,full_image_bbox
+demo/gatorade.jpg,data/demo_yolo/images/train/0123_gatorade.jpg,data/demo_yolo/labels/train/0123_gatorade.txt,train,960,1666,full_image_bbox
+demo/kolynos amari.png,data/demo_yolo/images/train/0124_kolynos_amari.png,data/demo_yolo/labels/train/0124_kolynos_amari.txt,train,485,150,full_image_bbox
+demo/nik.png,data/demo_yolo/images/train/0125_nik.png,data/demo_yolo/labels/train/0125_nik.txt,train,671,501,full_image_bbox
+demo/marsella ot.png,data/demo_yolo/images/train/0126_marsella_ot.png,data/demo_yolo/labels/train/0126_marsella_ot.txt,train,294,401,full_image_bbox
+demo/nivea repa.png,data/demo_yolo/images/train/0127_nivea_repa.png,data/demo_yolo/labels/train/0127_nivea_repa.txt,train,245,578,full_image_bbox
+demo/fruit.png,data/demo_yolo/images/train/0128_fruit.png,data/demo_yolo/labels/train/0128_fruit.txt,train,430,573,full_image_bbox
+demo/wuinoa.png,data/demo_yolo/images/train/0129_wuinoa.png,data/demo_yolo/labels/train/0129_wuinoa.txt,train,353,459,full_image_bbox
+demo/hima.png,data/demo_yolo/images/train/0130_hima.png,data/demo_yolo/labels/train/0130_hima.txt,train,340,566,full_image_bbox
+demo/gloria.png,data/demo_yolo/images/train/0131_gloria.png,data/demo_yolo/labels/train/0131_gloria.txt,train,312,375,full_image_bbox
+demo/bolivar.png,data/demo_yolo/images/train/0132_bolivar.png,data/demo_yolo/labels/train/0132_bolivar.txt,train,297,438,full_image_bbox
+demo/asepxia.png,data/demo_yolo/images/train/0133_asepxia.png,data/demo_yolo/labels/train/0133_asepxia.txt,train,458,339,full_image_bbox
+demo/ashwaga.png,data/demo_yolo/images/train/0134_ashwaga.png,data/demo_yolo/labels/train/0134_ashwaga.txt,train,336,626,full_image_bbox
+demo/pisco.png,data/demo_yolo/images/train/0135_pisco.png,data/demo_yolo/labels/train/0135_pisco.txt,train,326,552,full_image_bbox
+demo/boli red.png,data/demo_yolo/images/train/0136_boli_red.png,data/demo_yolo/labels/train/0136_boli_red.txt,train,303,228,full_image_bbox
+demo/centrum_multivitaminico.jpg,data/demo_yolo/images/train/0137_centrum_multivitaminico.jpg,data/demo_yolo/labels/train/0137_centrum_multivitaminico.txt,train,960,720,full_image_bbox
+demo/coco2.png,data/demo_yolo/images/train/0138_coco2.png,data/demo_yolo/labels/train/0138_coco2.txt,train,353,520,full_image_bbox
+demo/head black.png,data/demo_yolo/images/train/0139_head_black.png,data/demo_yolo/labels/train/0139_head_black.txt,train,199,406,full_image_bbox
+demo/inca_kola.jpg,data/demo_yolo/images/train/0140_inca_kola.jpg,data/demo_yolo/labels/train/0140_inca_kola.txt,train,960,1441,full_image_bbox
+demo/kolynos.png,data/demo_yolo/images/train/0141_kolynos.png,data/demo_yolo/labels/train/0141_kolynos.txt,train,489,166,full_image_bbox
+demo/asepxia verde.png,data/demo_yolo/images/train/0142_asepxia_verde.png,data/demo_yolo/labels/train/0142_asepxia_verde.txt,train,432,292,full_image_bbox
+demo/clop.png,data/demo_yolo/images/train/0143_clop.png,data/demo_yolo/labels/train/0143_clop.txt,train,759,339,full_image_bbox

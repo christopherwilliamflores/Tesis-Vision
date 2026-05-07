@@ -1,0 +1,128 @@
+from pydantic import BaseModel, Field, field_validator
+
+
+class ErrorResponse(BaseModel):
+    trace_id: str | None = None
+    error_code: str
+    message: str
+    detail: str | None = None
+
+
+class BoundingBox(BaseModel):
+    x_min: int
+    y_min: int
+    x_max: int
+    y_max: int
+
+
+class DetectionMetadata(BaseModel):
+    model: str
+    bbox: BoundingBox
+    confidence: float | None = Field(default=None, ge=0.0, le=1.0)
+    class_id: int | None = None
+    class_name: str | None = None
+    used_full_image_fallback: bool = False
+
+
+class OcrLine(BaseModel):
+    text: str
+    confidence: float | None = Field(default=None, ge=0.0, le=1.0)
+
+
+class OcrMetadata(BaseModel):
+    engine: str
+    text: str
+    average_confidence: float | None = Field(default=None, ge=0.0, le=1.0)
+    lines: list[OcrLine] = Field(default_factory=list)
+
+
+class ProductSuggestion(BaseModel):
+    nombre_producto: str | None = None
+    marca: str | None = None
+    tipo_producto: str | None = None
+    presentacion: str | None = None
+    contenido_neto: str | None = None
+    unidad_medida: str | None = None
+    categoria_sugerida: str | None = None
+
+
+class ProductRecognitionResponse(BaseModel):
+    trace_id: str
+    producto: ProductSuggestion
+    deteccion: DetectionMetadata
+    ocr: OcrMetadata
+    warnings: list[str] = Field(default_factory=list)
+    processing_ms: int
+
+
+class ProductSuggestionItemSchema(BaseModel):
+    nombre_producto: str
+    marca: str | None = None
+    tipo_producto: str | None = None
+    categoria_sugerida: str | None = None
+    source: str
+    product_id: int | None = None
+
+
+class ProductSuggestionsResponse(BaseModel):
+    items: list[ProductSuggestionItemSchema] = Field(default_factory=list)
+
+
+class ProductWriteBase(BaseModel):
+    nombre_producto: str = Field(..., min_length=1, max_length=200)
+    marca: str | None = Field(default=None, max_length=120)
+    tipo_producto: str | None = Field(default=None, max_length=120)
+    presentacion: str | None = Field(default=None, max_length=120)
+    contenido_neto: str | None = Field(default=None, max_length=60)
+    unidad_medida: str | None = Field(default=None, max_length=20)
+    categoria_sugerida: str = Field(..., min_length=1, max_length=120)
+    codigo_barras: str | None = Field(default=None, max_length=64)
+    precio_venta: float = Field(..., ge=0)
+
+    @field_validator("nombre_producto", "categoria_sugerida")
+    @classmethod
+    def _strip_required(cls, value: str) -> str:
+        cleaned = value.strip()
+        if not cleaned:
+            raise ValueError("Campo obligatorio.")
+        return cleaned
+
+    @field_validator("codigo_barras")
+    @classmethod
+    def _strip_optional(cls, value: str | None) -> str | None:
+        if value is None:
+            return None
+        cleaned = value.strip()
+        return cleaned or None
+
+    @field_validator("precio_venta")
+    @classmethod
+    def _round_price(cls, value: float) -> float:
+        return round(float(value), 2)
+
+
+class ProductCreateRequest(ProductWriteBase):
+    pass
+
+
+class ProductUpdateRequest(ProductWriteBase):
+    pass
+
+
+class ProductResponse(BaseModel):
+    id: int
+    nombre_producto: str
+    marca: str | None = None
+    tipo_producto: str | None = None
+    presentacion: str | None = None
+    contenido_neto: str | None = None
+    unidad_medida: str | None = None
+    categoria_sugerida: str | None = None
+    codigo_barras: str | None = None
+    precio_venta: float
+    created_at: str
+    updated_at: str
+
+
+class ProductListResponse(BaseModel):
+    items: list[ProductResponse] = Field(default_factory=list)

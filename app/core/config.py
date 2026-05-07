@@ -1,0 +1,37 @@
+from functools import lru_cache
+from pathlib import Path
+
+from pydantic import Field
+from pydantic_settings import BaseSettings, SettingsConfigDict
+
+
+class Settings(BaseSettings):
+    """Runtime settings loaded from environment variables or .env."""
+
+    model_config = SettingsConfigDict(env_file=".env", env_file_encoding="utf-8", extra="ignore")
+
+    app_name: str = "Tesis Retail Vision MVP"
+    app_env: str = "local"
+    api_v1_prefix: str = "/api/v1"
+    log_level: str = "INFO"
+    max_image_mb: int = Field(default=10, ge=1, le=50)
+
+    yolo_model_path: str = "yolov8n.pt"
+    yolo_confidence_threshold: float = Field(default=0.25, ge=0.0, le=1.0)
+    yolo_device: str = "cpu"
+    allow_full_image_fallback: bool = True
+
+    ocr_engine: str = "paddle"
+    paddle_ocr_lang: str = "es"
+    paddle_use_angle_cls: bool = True
+
+    persist_debug_images: bool = False
+    debug_image_dir: Path = Path("runtime/debug")
+
+    sqlite_path: Path = Path("runtime/products.db")
+
+
+@lru_cache
+def get_settings() -> Settings:
+    return Settings()
+

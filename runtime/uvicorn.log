@@ -1,0 +1,36 @@
+INFO:     Started server process [43143]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+INFO:     127.0.0.1:56481 - "GET /api/v1/health HTTP/1.1" 200 OK
+2026-05-06T20:58:44-0500 INFO app.services.pipeline trace_id=v3-1 inicio procesamiento producto
+2026-05-06T20:58:44-0500 INFO app.services.pipeline trace_id=v3-1 imagen decodificada
+2026-05-06T20:58:45-0500 INFO app.services.pipeline trace_id=v3-1 deteccion yolo completada bbox=(3, 4, 960, 1441) confidence=0.9841354489326477 fallback=False
+[33mChecking connectivity to the model hosters, this may take a while. To bypass this check, set `DISABLE_MODEL_SOURCE_CHECK` to `True`.[0m
+/opt/anaconda3/lib/python3.11/site-packages/paddle/utils/cpp_extension/extension_utils.py:718: UserWarning: No ccache found. Please be aware that recompiling all source files may be required. You can download and install ccache from: https://github.com/ccache/ccache/blob/master/doc/INSTALL.md
+  warnings.warn(warning_message)
+[32mCreating model: ('PP-LCNet_x1_0_doc_ori', None)[0m
+[32mModel files already exist. Using cached files. To redownload, please delete the directory manually: `/Users/christopher/.paddlex/official_models/PP-LCNet_x1_0_doc_ori`.[0m
+[32mCreating model: ('UVDoc', None)[0m
+[32mModel files already exist. Using cached files. To redownload, please delete the directory manually: `/Users/christopher/.paddlex/official_models/UVDoc`.[0m
+[32mCreating model: ('PP-LCNet_x1_0_textline_ori', None)[0m
+[32mModel files already exist. Using cached files. To redownload, please delete the directory manually: `/Users/christopher/.paddlex/official_models/PP-LCNet_x1_0_textline_ori`.[0m
+[32mCreating model: ('PP-OCRv5_server_det', None)[0m
+[32mModel files already exist. Using cached files. To redownload, please delete the directory manually: `/Users/christopher/.paddlex/official_models/PP-OCRv5_server_det`.[0m
+[32mCreating model: ('latin_PP-OCRv5_mobile_rec', None)[0m
+[32mModel files already exist. Using cached files. To redownload, please delete the directory manually: `/Users/christopher/.paddlex/official_models/latin_PP-OCRv5_mobile_rec`.[0m
+INFO:     127.0.0.1:56483 - "POST /api/v1/products/recognize HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56504 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56536 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56538 - "GET /static/app.js HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56540 - "GET /static/styles.css HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56522 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56523 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56553 - "GET /static/app.js HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56555 - "GET /static/styles.css HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56576 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56576 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56577 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56599 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56594 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56622 - "GET / HTTP/1.1" 200 OK
