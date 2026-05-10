@@ -44,6 +44,8 @@ const traceFields = {
 let selectedFile = null;
 let suggestionAbortController = null;
 let suggestionDebounce = null;
+let latestOcrText = "";
+let latestSourceName = "";
 
 function percent(value) {
   if (value === null || value === undefined) return "-";
@@ -144,6 +146,8 @@ function renderResult(data) {
   traceFields.ocrConfidence.textContent = percent(ocr.average_confidence);
   traceFields.time.textContent = data.processing_ms ? `${data.processing_ms} ms` : "-";
   traceFields.ocrText.textContent = ocr.text || "-";
+  latestOcrText = ocr.text || "";
+  latestSourceName = selectedFile?.name || "";
 
   if (Array.isArray(data.warnings) && data.warnings.length > 0) {
     warningsBox.hidden = false;
@@ -241,10 +245,12 @@ async function fetchSuggestions(query) {
   if (suggestionAbortController) suggestionAbortController.abort();
   suggestionAbortController = new AbortController();
   try {
-    const response = await fetch(
-      `${apiBaseUrl}/api/v1/productos/suggestions?q=${encodeURIComponent(query)}&limit=3`,
-      { signal: suggestionAbortController.signal },
-    );
+    const params = new URLSearchParams({ q: query, limit: "3" });
+    if (latestOcrText) params.set("context", latestOcrText.slice(0, 2000));
+    if (latestSourceName) params.set("source_name", latestSourceName.slice(0, 200));
+    const response = await fetch(`${apiBaseUrl}/api/v1/productos/suggestions?${params}`, {
+      signal: suggestionAbortController.signal,
+    });
     if (!response.ok) {
       hideSuggestions();
       return;

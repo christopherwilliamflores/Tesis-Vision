@@ -111,6 +111,74 @@ def test_suggestions_falls_back_to_catalog() -> None:
     assert any(item["nombre_producto"].lower().startswith("gaseosa") for item in items)
 
 
+def test_suggestions_prioritize_ocr_context() -> None:
+    client = _client()
+    context = "boreal\nDetergente\nliquido\nAroma\nLawanda\nCo3L"
+
+    response = client.get(
+        "/api/v1/productos/suggestions",
+        params={"q": "Detergente", "context": context, "source_name": "boreal.png"},
+    )
+
+    assert response.status_code == 200
+    items = response.json()["items"]
+    assert items, items
+    assert items[0]["source"] == "ocr"
+    assert items[0]["nombre_producto"] == "Detergente Boreal Lavanda"
+    assert items[0]["marca"] == "Boreal"
+
+
+def test_suggestions_returns_three_ocr_options_from_context() -> None:
+    client = _client()
+    context = (
+        "ABRIRAOU\nNUEVA\nIMAGEN\nDETERGENTE\nROSAS Y MAGNOLIAS\n"
+        "Bolivar\nCuidadoy\nSuavidad\nSUAVIDAD Y\ncontogue\n"
+        "FRAGANCIA\nde suav zante\nycapsulas\nPROLONGADA\ndearoma"
+    )
+
+    response = client.get(
+        "/api/v1/productos/suggestions",
+        params={
+            "q": "Detergente Bolívar Morado",
+            "context": context,
+            "source_name": "bol-morado_png.rf.8deff10bb587d9bb8525ae403509c340.jpg",
+        },
+    )
+
+    assert response.status_code == 200
+    items = response.json()["items"]
+    assert len(items) == 3
+    assert all(item["source"] == "ocr" for item in items)
+    assert items[0]["nombre_producto"] == "Detergente Bolívar Rosas y Magnolias"
+    assert items[1]["nombre_producto"] == "Detergente Bolívar Cuidado y Suavidad"
+    assert items[2]["nombre_producto"] == "Detergente Bolívar Suavidad y Fragancia Prolongada"
+
+
+def test_suggestions_creates_creative_bolivar_options_from_context() -> None:
+    client = _client()
+    context = (
+        "NUEVA\nIMAGEN\nDCJERSENTEF!CFJE\nw 4kg\nBolivar\n"
+        "Cuidado\nTotal\nPROTEGE\ncontsarculas\nELCOLORY\n"
+        "protictoras\nLASFIBRAS"
+    )
+
+    response = client.get(
+        "/api/v1/productos/suggestions",
+        params={
+            "q": "Jabón Bolívar 4 kg",
+            "context": context,
+            "source_name": "bolivar_png.rf.cde8895cbd7d7959fd91d92a9cc6423e.jpg",
+        },
+    )
+
+    assert response.status_code == 200
+    items = response.json()["items"]
+    assert len(items) == 3
+    assert items[0]["nombre_producto"] == "Jabón Bolívar Cuidado Total"
+    assert items[1]["nombre_producto"] == "Jabón Bolívar Protege Color y Fibras"
+    assert items[2]["nombre_producto"] == "Jabón Bolívar Cuidado Total 4 kg"
+
+
 def test_suggestions_capped_to_three() -> None:
     client = _client()
     response = client.get(

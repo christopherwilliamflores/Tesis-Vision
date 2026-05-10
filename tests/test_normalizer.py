@@ -180,4 +180,49 @@ def test_normalizer_detects_kolynos_loose_offer_pack() -> None:
     assert result.contenido_neto == "3 x 60 ml"
     assert result.unidad_medida == "ml"
     assert result.categoria_sugerida == "cuidado personal"
+
+
+def test_normalizer_detects_boreal_detergent_from_ocr_text() -> None:
+    text = "boreal\nDetergente\nliquido\nAroma\nLawanda\nCo3L"
+
+    result = ProductTextNormalizer().normalize(text, source_name="boreal.png")
+
+    assert result.nombre_producto == "Detergente Boreal Lavanda"
+    assert result.marca == "Boreal"
+    assert result.tipo_producto == "Detergente"
+    assert result.contenido_neto == "3 L"
+    assert result.categoria_sugerida == "limpieza"
+
+
+def test_normalizer_prefers_detected_bolivar_variant_over_filename_color() -> None:
+    text = (
+        "ABRIRAOU\nNUEVA\nIMAGEN\nDETERGENTE\nROSAS Y MAGNOLIAS\n"
+        "Bolivar\nCuidadoy\nSuavidad\nSUAVIDAD Y\ncontogue\n"
+        "FRAGANCIA\nde suav zante\nycapsulas\nPROLONGADA\ndearoma"
+    )
+
+    result = ProductTextNormalizer().normalize(
+        text,
+        source_name="bol-morado_png.rf.8deff10bb587d9bb8525ae403509c340.jpg",
+    )
+
+    assert result.nombre_producto == "Detergente Bolívar Rosas y Magnolias"
+    assert result.marca == "Bolívar"
+    assert result.tipo_producto == "Detergente"
+    assert result.categoria_sugerida == "limpieza"
+
+
+def test_normalizer_detects_bolivar_cuidado_total_variant() -> None:
+    text = (
+        "NUEVA\nIMAGEN\nDCJERSENTEF!CFJE\nw 4kg\nBolivar\n"
+        "Cuidado\nTotal\nPROTEGE\ncontsarculas\nELCOLORY\n"
+        "protictoras\nLASFIBRAS"
+    )
+
+    result = ProductTextNormalizer().normalize(text, source_name="bolivar.png")
+
+    assert result.nombre_producto == "Jabón Bolívar Cuidado Total"
+    assert result.marca == "Bolívar"
+    assert result.tipo_producto == "Jabón"
+    assert result.contenido_neto == "4 kg"
  

@@ -91,9 +91,11 @@ async def recognize_product(
 def suggest_products(
     q: str = Query(..., min_length=0, max_length=120),
     limit: int = Query(default=3, ge=1, le=10),
+    context: str | None = Query(default=None, max_length=2000),
+    source_name: str | None = Query(default=None, max_length=200),
     service: ProductSuggestionService = Depends(get_suggestion_service),
 ) -> ProductSuggestionsResponse:
-    items = service.suggest(q, limit=limit)
+    items = service.suggest(q, limit=limit, context_text=context, source_name=source_name)
     return ProductSuggestionsResponse(
         items=[
             ProductSuggestionItemSchema(
