@@ -1,4 +1,46 @@
+import unicodedata
+
 from app.services.normalizer import ProductTextNormalizer
+
+
+def _fold(text: str) -> str:
+    normalized = unicodedata.normalize("NFKD", text.lower())
+    return "".join(char for char in normalized if not unicodedata.combining(char))
+
+
+def test_normalizer_ignores_octagon_warning_as_product_type() -> None:
+    text = "Nestle\nMorochas\nSNACK\nALTO EN AZUCAR\nEVITAR SU CONSUMO EXCESIVO"
+
+    result = ProductTextNormalizer().normalize(text, source_name="morochas.png")
+
+    assert _fold(result.tipo_producto or "") != "azucar"
+    assert result.categoria_sugerida == "snacks y golosinas"
+
+
+def test_normalizer_ignores_split_octagon_warning_fragments() -> None:
+    text = "Morochas\nALTO EN\nGRASAS SATURADAS\nALTO EN\nAZUCAR\nSNACK"
+
+    result = ProductTextNormalizer().normalize(text, source_name="morochas.png")
+
+    assert _fold(result.tipo_producto or "") != "azucar"
+    assert result.categoria_sugerida == "snacks y golosinas"
+
+
+def test_normalizer_ignores_joined_octagon_ocr_noise() -> None:
+    text = (
+        "ALTOEN\nALTOEN\nGRASAS\nSATURADAS\nAZUCAR\nLVITAHSUCONSUIO\nETCISVO\n"
+        "Nestla\nMorochas\nSNACK\nSiua\nRE8\nperciaes\n429\n71\n16\n"
+        "Oaetassahoravanilla\nbalndscoapataabo.chacolate"
+    )
+
+    result = ProductTextNormalizer().normalize(text, source_name="morochas.png")
+
+    assert result.nombre_producto == "Morochas Snack Nestlé"
+    assert result.marca == "Nestlé"
+    assert _fold(result.tipo_producto or "") == "snack"
+    assert result.contenido_neto == "42 g"
+    assert result.unidad_medida == "g"
+    assert result.categoria_sugerida == "snacks y golosinas"
 
 
 def test_normalizer_detects_peruvian_brand_content_and_category() -> None:
@@ -70,3 +112,72 @@ def test_normalizer_detects_bells_sugar_from_ocr_text() -> None:
     assert result.unidad_medida == "kg"
     assert result.categoria_sugerida == "abarrotes"
     assert "No se identificó marca" not in " ".join(result.warnings)
+
+
+def test_normalizer_detects_portugal_body_cream_from_joined_ocr_text() -> None:
+    text = (
+        "PORTUGAL\nCREMACORPORAL\ncoco fresh\nCONACEITEDECOCO\n"
+        "Manteca de Karitey Vitamina E\nEXTRA HIDRATACION\n"
+        "Ayudaameoraanvdau\ndolapel\nTODOTIPODEPIEL"
+    )
+
+    result = ProductTextNormalizer().normalize(text, source_name="portugal coco.png")
+
+    assert result.nombre_producto == "Crema Corporal Portugal Coco Fresh"
+    assert result.marca == "Portugal"
+    assert result.tipo_producto == "Crema"
+    assert result.categoria_sugerida == "cuidado personal"
+    assert "No se identificó marca" not in " ".join(result.warnings)
+
+
+def test_normalizer_repairs_nivea_body_cream_ocr_text() -> None:
+    text = (
+        "NIVEA\nCrema Corpora\nMilk\nNutritiva\ntr ctny.Hamectockn\n"
+        "C85\nLprotundo\nDotoco\necaAmendronAMtomnoE"
+    )
+
+    result = ProductTextNormalizer().normalize(text, source_name="nivea.png")
+
+    assert result.nombre_producto == "Crema Corporal Nivea Milk Nutritiva"
+    assert result.marca == "Nivea"
+    assert result.tipo_producto == "Crema"
+    assert result.categoria_sugerida == "cuidado personal"
+    assert "No se identificó tipo" not in " ".join(result.warnings)
+
+
+def test_normalizer_detects_johnsons_soap_multipack() -> None:
+    text = (
+        "PACK x3JABONES\nbaby\njabón.cremoso\nconingredienteshidratantes\n"
+        "pieldelicada\nlibre deparabenos\nyftalatos\n3 x 125g c/u\n"
+        "hpoaleigenios\nPRCEADO\nPuedeperderhasta12.5gc/u"
+    )
+
+    result = ProductTextNormalizer().normalize(text, source_name="johnsons pack jabones.png")
+
+    assert result.nombre_producto == "Jabón Cremoso Johnson's Bebé"
+    assert result.marca == "Johnson's"
+    assert result.tipo_producto == "Jabón"
+    assert result.presentacion == "pack x 3"
+    assert result.contenido_neto == "3 x 125 g"
+    assert result.unidad_medida == "g"
+    assert result.categoria_sugerida == "bebés y mamá"
+
+
+def test_normalizer_detects_kolynos_loose_offer_pack() -> None:
+    text = (
+        "3\nCREMAS\nOFERTA\nESPECIAL\nDENTALES\n60mL\n"
+        "Pvsprotoniedaalogrecipregufar sspendoCerniaal cubco\n"
+        "CREHACENTALCOWFLCOR+CALCO\nKolynos\nSUPER\nBLANCO\n"
+        "EMPAQUE\nFAMILIAR"
+    )
+
+    result = ProductTextNormalizer().normalize(text, source_name="kolinos.png")
+
+    assert result.nombre_producto == "Pasta dental Kolynos Super Blanco"
+    assert result.marca == "Kolynos"
+    assert result.tipo_producto == "Pasta dental"
+    assert result.presentacion == "pack x 3"
+    assert result.contenido_neto == "3 x 60 ml"
+    assert result.unidad_medida == "ml"
+    assert result.categoria_sugerida == "cuidado personal"
+ 

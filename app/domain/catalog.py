@@ -34,7 +34,7 @@ BRAND_ALIASES: tuple[BrandAlias, ...] = (
     BrandAlias("Campomar", ("campomar",), "abarrotes"),
     BrandAlias("A-1", ("a-1 atun", "a1 atun", "a-1 atún"), "abarrotes"),
     BrandAlias("Maizena", ("maizena",), "abarrotes"),
-    BrandAlias("Nestlé", ("nestle", "nestlé"), "abarrotes"),
+    BrandAlias("Nestlé", ("nestle", "nestlé", "nestla"), "abarrotes"),
     BrandAlias("La Iberica", ("la iberica", "iberica chocolate"), "abarrotes"),
 
     # Lácteos
@@ -132,6 +132,7 @@ BRAND_ALIASES: tuple[BrandAlias, ...] = (
     # Cuidado personal
     BrandAlias("Head & Shoulders", ("head shoulders", "head & shoulders", "h&s"), "cuidado personal"),
     BrandAlias("Nivea", ("nivea", "niivea"), "cuidado personal"),
+    BrandAlias("Portugal", ("portugal",), "cuidado personal"),
     BrandAlias("Pantene", ("pantene",), "cuidado personal"),
     BrandAlias("Sedal", ("sedal",), "cuidado personal"),
     BrandAlias("Dove", ("dove",), "cuidado personal"),
@@ -388,7 +389,9 @@ VARIANT_ALIASES: dict[str, tuple[str, ...]] = {
     "Cola": ("cola",),
     "Mentol": ("mentol", "menthol"),
     "Eucalipto": ("eucalipto",),
+    "Coco Fresh": ("coco fresh", "cocofresh"),
     "Coco": ("coco", "coconut"),
+    "Milk Nutritiva": ("milk nutritiva", "nutritiva"),
     "Vainilla": ("vainilla", "vanilla"),
     "Chocolate": ("chocolate",),
     "Bebé": ("bebe", "bebé", "baby"),
@@ -397,6 +400,7 @@ VARIANT_ALIASES: dict[str, tuple[str, ...]] = {
     "Repara": ("repara", "reparacion", "reparación"),
     "Hidrata": ("hidrata", "hidratante"),
     "Sun": ("sun", "solar", "protector solar"),
+    "Super Blanco": ("super blanco", "superblanco"),
     "Verde": ("verde",),
     "Morado": ("morado", "violeta"),
     "Floral": ("floral",),
@@ -451,7 +455,7 @@ PRODUCT_TYPE_ALIASES: dict[str, tuple[str, ...]] = {
     "Acondicionador": ("acondicionador",),
     "Pasta dental": ("pasta dental", "crema dental"),
     "Enjuague bucal": ("enjuague bucal", "enjuague",),
-    "Crema": ("crema corporal", "crema facial", "crema humectante"),
+    "Crema": ("crema corporal", "cremacorporal", "crema facial", "crema humectante"),
     "Loción": ("locion corporal", "loción corporal", "locion humectante"),
     "Bloqueador": ("bloqueador", "protector solar", "fotoprotector"),
     "Desodorante": ("desodorante", "antitranspirante"),
@@ -529,6 +533,7 @@ BRAND_DEFAULT_PRODUCT_TYPES: dict[str, str] = {
     # Cuidado personal
     "Head & Shoulders": "Shampoo",
     "Pantene": "Shampoo",
+    "Nivea": "Crema",
     "Sedal": "Shampoo",
     "Savital": "Shampoo",
     "Plusbelle": "Shampoo",

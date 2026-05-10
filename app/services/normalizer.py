@@ -33,6 +33,12 @@ class ProductTextNormalizer:
         rf"(?P<amount>\d+(?:[.,]\d+)?)\s*(?P<unit>{unit_pattern})\b",
         flags=re.IGNORECASE,
     )
+    multipack_content_regex = re.compile(
+        rf"(?P<count>\d{{1,3}})\s*x\s*(?P<amount>\d+(?:[.,]\d+)?)\s*(?P<unit>{unit_pattern})\b(?:\s*c\s*/?\s*u)?",
+        flags=re.IGNORECASE,
+    )
+    loose_pack_count_regex = re.compile(r"(?m)^\s*(?P<count>[2-9]|[1-9]\d)\s*$")
+    ocr_g_content_regex = re.compile(r"(?<!\d)(?P<amount>\d{1,3})[9q](?!\d)", flags=re.IGNORECASE)
     pack_regex = re.compile(r"\b(?:pack|paq|caja)?\s*x\s*(?P<count>\d{1,3})\b", flags=re.IGNORECASE)
 
     def normalize(self, text: str, source_name: str | None = None) -> NormalizedProduct:
@@ -46,7 +52,8 @@ class ProductTextNormalizer:
         brand, category_hint = self._detect_brand(folded_context)
         product_type = self._detect_product_type(folded_context, brand)
         amount, unit = self._detect_content(clean_context)
-        category = category_hint or self._detect_category(folded_context) or self._category_from_product_type(product_type)
+        detected_category = self._detect_category(folded_context)
+        category = self._category_from_context(product_type, brand, folded_context) or self._category_from_product_type(product_type) or detected_category or category_hint
         presentation = self._detect_presentation(clean_text, amount, unit)
         variant = self._detect_variant(folded_context, category)
         name = self._build_product_name(clean_text, brand, amount, unit, variant, category, product_type)
@@ -79,7 +86,20 @@ class ProductTextNormalizer:
         text = re.sub(r"[|_]+", " ", text)
         text = re.sub(r"[ \t]+", " ", text)
         text = re.sub(r"\n{2,}", "\n", text)
+        text = self._repair_common_ocr_tokens(text)
         return self._remove_warning_label_text(text.strip())
+
+    def _repair_common_ocr_tokens(self, text: str) -> str:
+        # OCR often reads small "g" units as 9/q on retail packs, e.g. "42g" -> "429".
+        text = self.ocr_g_content_regex.sub(r"\g<amount> g", text)
+        text = re.sub(r"\bALTOEN\b", "ALTO EN", text, flags=re.IGNORECASE)
+        text = re.sub(r"\bCREMACORPORAL\b", "CREMA CORPORAL", text, flags=re.IGNORECASE)
+        text = re.sub(r"\bCREMA\s+CORPORA\b", "CREMA CORPORAL", text, flags=re.IGNORECASE)
+        text = re.sub(r"\bCONACEITEDECOCO\b", "CON ACEITE DE COCO", text, flags=re.IGNORECASE)
+        text = re.sub(r"\bTODOTIPODEPIEL\b", "TODO TIPO DE PIEL", text, flags=re.IGNORECASE)
+        text = re.sub(r"\bPACK\s*x\s*(\d+)(?=[A-ZÁÉÍÓÚÜÑ])", r"PACK x \1 ", text, flags=re.IGNORECASE)
+        text = re.sub(r"(?<=\d)\s*g\s*c\s*/?\s*u\b", " g c/u", text, flags=re.IGNORECASE)
+        return text
 
     def _remove_warning_label_text(self, text: str) -> str:
         lines = [line.strip() for line in text.splitlines()]
@@ -91,7 +111,7 @@ class ProductTextNormalizer:
 
             folded_line = self._fold(line)
             if self._is_warning_label_line(folded_line):
-                skip_warning_parts = 2 if re.search(r"\balto\s+en\b", folded_line) else skip_warning_parts
+                skip_warning_parts = 4 if re.search(r"\balto\s*en\b", folded_line) else skip_warning_parts
                 continue
 
             if skip_warning_parts > 0 and self._is_warning_label_fragment(folded_line):
@@ -104,9 +124,10 @@ class ProductTextNormalizer:
 
     def _is_warning_label_line(self, folded_line: str) -> bool:
         return bool(
-            re.search(r"\balto\s+en\b", folded_line)
+            re.search(r"\balto\s*en\b", folded_line)
             or "evitar su consumo" in folded_line
             or "evitar consumo" in folded_line
+            or self._looks_like_evitar_consumo_noise(folded_line)
         )
 
     def _is_warning_label_fragment(self, folded_line: str) -> bool:
@@ -119,6 +140,10 @@ class ProductTextNormalizer:
             "alto",
             "en",
         }
+
+    def _looks_like_evitar_consumo_noise(self, folded_line: str) -> bool:
+        compact = re.sub(r"[^a-z]", "", folded_line)
+        return bool(compact and ("consu" in compact or "cisvo" in compact) and len(compact) <= 24)
 
     def _clean_source_name(self, source_name: str | None) -> str:
         if not source_name:
@@ -143,6 +168,17 @@ class ProductTextNormalizer:
         return None, None
 
     def _detect_content(self, clean_text: str) -> tuple[str | None, str | None]:
+        multipack_match = self.multipack_content_regex.search(clean_text)
+        if multipack_match:
+            count = multipack_match.group("count")
+            amount = multipack_match.group("amount").replace(",", ".")
+            unit_key = multipack_match.group("unit").lower().replace(".", "")
+            return f"{count} x {amount}", UNIT_ALIASES.get(unit_key, unit_key)
+
+        loose_pack = self._detect_loose_multipack_content(clean_text)
+        if loose_pack:
+            return loose_pack
+
         matches = list(self.content_regex.finditer(clean_text))
         if not matches:
             return None, None
@@ -158,6 +194,26 @@ class ProductTextNormalizer:
         unit_key = selected.group("unit").lower().replace(".", "")
         return amount, UNIT_ALIASES.get(unit_key, unit_key)
 
+    def _detect_loose_multipack_content(self, clean_text: str) -> tuple[str, str] | None:
+        folded_text = self._fold(clean_text)
+        has_pack_context = (
+            ("cremas" in folded_text and "dentales" in folded_text)
+            or "jabones" in folded_text
+            or "unidades" in folded_text
+            or "pack" in folded_text
+        )
+        if not has_pack_context:
+            return None
+
+        count_match = self.loose_pack_count_regex.search(clean_text)
+        content_match = self.content_regex.search(clean_text)
+        if not count_match or not content_match:
+            return None
+
+        amount = content_match.group("amount").replace(",", ".")
+        unit_key = content_match.group("unit").lower().replace(".", "")
+        return f"{count_match.group('count')} x {amount}", UNIT_ALIASES.get(unit_key, unit_key)
+
     def _detect_category(self, folded_text: str) -> str | None:
         for category, keywords in CATEGORY_KEYWORDS.items():
             for keyword in keywords:
@@ -168,6 +224,8 @@ class ProductTextNormalizer:
 
     def _detect_product_type(self, folded_text: str, brand: str | None) -> str | None:
         padded = f" {folded_text} "
+        if re.search(r"(?<!\w)crema\s*corporal(?!\w)", padded):
+            return "Crema"
         for product_type, aliases in PRODUCT_TYPE_ALIASES.items():
             for alias in aliases:
                 folded_alias = self._fold(alias)
@@ -182,6 +240,18 @@ class ProductTextNormalizer:
             return None
         return PRODUCT_TYPE_CATEGORIES.get(product_type)
 
+    def _category_from_context(
+        self,
+        product_type: str | None,
+        brand: str | None,
+        folded_text: str,
+    ) -> str | None:
+        if product_type == "Jabón" and (
+            brand == "Johnson's" or re.search(r"(?<!\w)(baby|bebe|bebe|piel delicada)(?!\w)", folded_text)
+        ):
+            return "bebés y mamá"
+        return None
+
     def _detect_variant(self, folded_text: str, category: str | None) -> str | None:
         for canonical, aliases in VARIANT_ALIASES.items():
             for alias in aliases:
@@ -194,19 +264,29 @@ class ProductTextNormalizer:
 
     def _detect_presentation(self, clean_text: str, amount: str | None, unit: str | None) -> str | None:
         lowered = clean_text.lower()
+        pack_match = self.pack_regex.search(clean_text)
+        if pack_match:
+            return f"pack x {pack_match.group('count')}"
+        loose_pack_match = self.loose_pack_count_regex.search(clean_text)
+        if loose_pack_match and self._looks_like_pack_offer(clean_text):
+            return f"pack x {loose_pack_match.group('count')}"
+
         for word in ("sachet", "botella", "frasco", "sobre", "caja", "pack"):
             if re.search(rf"\b{word}s?\b", lowered):
                 if amount and unit:
                     return f"{word} {amount} {unit}"
                 return word
 
-        pack_match = self.pack_regex.search(clean_text)
-        if pack_match:
-            return f"pack x {pack_match.group('count')}"
-
         if amount and unit:
             return f"{amount} {unit}"
         return None
+
+    def _looks_like_pack_offer(self, clean_text: str) -> bool:
+        folded_text = self._fold(clean_text)
+        return any(
+            marker in folded_text
+            for marker in ("cremas dentales", "jabones", "oferta especial", "pack")
+        )
 
     def _build_product_name(
         self,
@@ -220,16 +300,21 @@ class ProductTextNormalizer:
     ) -> str | None:
         lines = [line.strip() for line in clean_text.splitlines() if line.strip()]
         meaningful = [line for line in lines if self._is_meaningful_line(line)]
-        if product_type:
-            return self._compose_product_name(product_type, brand, variant)
-
         if brand:
             brand_name = self._compose_brand_name(brand, variant)
             if brand_name:
                 product_line = self._find_product_descriptor(meaningful, brand, variant, category)
                 if product_line and self._fold(product_line) not in self._fold(brand_name):
-                    return f"{brand_name} {product_line}"[:120]
-                return brand_name[:120]
+                    return self._compose_descriptor_name(product_line, product_type, brand_name, variant)
+                if not product_type:
+                    return brand_name[:120]
+
+        if product_type:
+            return self._compose_product_name(
+                self._display_product_type(product_type, clean_text),
+                brand,
+                variant,
+            )
 
         if not meaningful:
             return brand
@@ -259,6 +344,36 @@ class ProductTextNormalizer:
             parts.append(variant_suffix)
 
         return " ".join(parts)[:120]
+
+    def _compose_descriptor_name(
+        self,
+        product_line: str,
+        product_type: str | None,
+        brand_name: str,
+        variant: str | None,
+    ) -> str:
+        parts = [self._title_product_phrase(product_line)]
+        folded_line = self._fold(product_line)
+        if product_type and self._fold(product_type) not in folded_line:
+            parts.append(product_type)
+        if self._fold(brand_name) not in folded_line:
+            parts.append(brand_name)
+        if variant:
+            folded_parts = self._fold(" ".join(parts))
+            if self._fold(variant) not in folded_parts:
+                parts.append(variant)
+        return " ".join(parts)[:120]
+
+    def _display_product_type(self, product_type: str, clean_text: str) -> str:
+        if product_type == "Crema" and "crema corporal" in self._fold(clean_text):
+            return "Crema Corporal"
+        return product_type
+
+    def _title_product_phrase(self, phrase: str) -> str:
+        words = re.findall(r"[A-Za-zÁÉÍÓÚÜÑáéíóúüñ0-9]+", phrase)
+        if not words:
+            return phrase.strip()
+        return " ".join(word.capitalize() for word in words)
 
     def _variant_suffix(
         self,
@@ -301,9 +416,10 @@ class ProductTextNormalizer:
         product_keywords = {
             "lacteos": ("leche", "yogurt", "queso"),
             "bebidas": ("gaseosa", "agua", "jugo", "nectar", "néctar"),
-            "snacks y golosinas": ("galleta", "chocolate", "snack"),
+            "snacks y golosinas": ("galleta", "chocolate", "snack", "morochas"),
             "limpieza": ("detergente", "lejia", "lejía", "lavavajilla"),
-            "cuidado personal": ("shampoo", "pasta dental", "crema", "jabon", "jabón"),
+            "cuidado personal": ("shampoo", "pasta dental", "crema", "crema corporal", "jabon", "jabón"),
+            "bebés y mamá": ("jabon", "jabón", "shampoo", "crema", "panal", "pañal"),
             "farmacia/otc": ("tableta", "pastilla", "alcohol", "jarabe"),
         }.get(category or "", ())
 
@@ -311,9 +427,16 @@ class ProductTextNormalizer:
             folded_line = self._fold(line)
             if folded_brand in folded_line or (folded_variant and folded_variant in folded_line):
                 continue
+            if self._is_pack_label_line(folded_line):
+                continue
             if any(self._fold(keyword) in folded_line for keyword in product_keywords):
                 return self.content_regex.sub("", line).strip(" -.,")
         return None
+
+    def _is_pack_label_line(self, folded_line: str) -> bool:
+        if re.search(r"\b(pack|paq|caja)\b", folded_line) and re.search(r"\bx\s*\d{1,3}\b", folded_line):
+            return True
+        return folded_line in {"cremas", "dentales", "oferta", "especial", "empaque", "familiar"}
 
     def _is_meaningful_line(self, line: str) -> bool:
         folded_line = self._fold(line)
