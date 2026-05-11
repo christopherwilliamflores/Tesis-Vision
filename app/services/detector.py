@@ -8,6 +8,14 @@ from app.core.exceptions import ModelUnavailableError, ProcessingError
 
 
 @dataclass(frozen=True)
+class FieldDetection:
+    bbox: tuple[int, int, int, int]
+    confidence: float | None
+    class_id: int | None
+    class_name: str | None
+
+
+@dataclass(frozen=True)
 class RegionDetection:
     bbox: tuple[int, int, int, int]
     model: str
@@ -15,6 +23,7 @@ class RegionDetection:
     class_id: int | None
     class_name: str | None
     used_full_image_fallback: bool = False
+    fields: tuple[FieldDetection, ...] = ()
 
 
 class ProductRegionDetector(Protocol):
@@ -75,8 +84,9 @@ class YoloRegionDetector:
             return self._fallback_or_fail(image)
 
         names = getattr(result, "names", {}) or {}
+        fields: tuple[FieldDetection, ...] = ()
         if self._is_roboflow_label_model(names):
-            xyxy, confidence, class_id, class_name = self._select_roboflow_roi(boxes, names)
+            xyxy, confidence, class_id, class_name, fields = self._select_roboflow_roi(boxes, names)
         else:
             best = self._select_best_box(boxes)
             xyxy = best.xyxy[0].detach().cpu().numpy().astype(int).tolist()
@@ -90,6 +100,7 @@ class YoloRegionDetector:
             confidence=confidence,
             class_id=class_id,
             class_name=class_name,
+            fields=fields,
         )
 
     def _is_roboflow_label_model(self, names: dict) -> bool:
@@ -97,16 +108,16 @@ class YoloRegionDetector:
         return {"brand", "product_name", "net_weight"}.issubset(class_names)
 
     def _select_roboflow_roi(self, boxes, names: dict):
-        selected = []
+        selected_fields = self._select_roboflow_fields(boxes, names)
+        selected = [list(field.bbox) for field in selected_fields]
         class_ids: set[int] = set()
         confidences: list[float] = []
-        for box in boxes:
-            xyxy = box.xyxy[0].detach().cpu().numpy().astype(int).tolist()
-            selected.append(xyxy)
-            if box.conf is not None:
-                confidences.append(float(box.conf[0].detach().cpu().item()))
-            if box.cls is not None:
-                class_ids.add(int(box.cls[0].detach().cpu().item()))
+        for field in selected_fields:
+            if field.confidence is not None:
+                confidences.append(field.confidence)
+            if field.class_id is not None:
+                class_id = field.class_id
+                class_ids.add(class_id)
 
         x_min = min(item[0] for item in selected)
         y_min = min(item[1] for item in selected)
@@ -115,7 +126,77 @@ class YoloRegionDetector:
         class_name = "+".join(
             str(names[class_id]) for class_id in sorted(class_ids) if class_id in names
         )
-        return [x_min, y_min, x_max, y_max], max(confidences) if confidences else None, None, class_name or None
+        fields = tuple(sorted(selected_fields, key=self._field_sort_key))
+        return [x_min, y_min, x_max, y_max], max(confidences) if confidences else None, None, class_name or None, fields
+
+    def _select_roboflow_fields(self, boxes, names: dict) -> list[FieldDetection]:
+        expected_classes = {"brand", "product_name", "net_weight", "extra_detail"}
+        per_class_limits = {
+            "brand": 1,
+            "product_name": 1,
+            "net_weight": 1,
+            "extra_detail": 2,
+        }
+        candidates_by_class: dict[str, list[FieldDetection]] = {
+            class_name: [] for class_name in expected_classes
+        }
+
+        for box in boxes:
+            class_id = int(box.cls[0].detach().cpu().item()) if box.cls is not None else None
+            class_name = names.get(class_id) if class_id is not None else None
+            if class_name not in expected_classes:
+                continue
+
+            xyxy = box.xyxy[0].detach().cpu().numpy().astype(int).tolist()
+            confidence = (
+                float(box.conf[0].detach().cpu().item())
+                if box.conf is not None
+                else None
+            )
+            candidates_by_class[class_name].append(
+                FieldDetection(
+                    bbox=(xyxy[0], xyxy[1], xyxy[2], xyxy[3]),
+                    confidence=confidence,
+                    class_id=class_id,
+                    class_name=class_name,
+                )
+            )
+
+        selected: list[FieldDetection] = []
+        for class_name, candidates in candidates_by_class.items():
+            limit = per_class_limits[class_name]
+            candidates.sort(key=lambda item: item.confidence or 0.0, reverse=True)
+            selected.extend(candidates[:limit])
+
+        if selected:
+            return selected
+
+        return [self._field_from_box(box, names) for box in boxes[:1]]
+
+    def _field_from_box(self, box, names: dict) -> FieldDetection:
+        xyxy = box.xyxy[0].detach().cpu().numpy().astype(int).tolist()
+        confidence = (
+            float(box.conf[0].detach().cpu().item())
+            if box.conf is not None
+            else None
+        )
+        class_id = int(box.cls[0].detach().cpu().item()) if box.cls is not None else None
+        return FieldDetection(
+            bbox=(xyxy[0], xyxy[1], xyxy[2], xyxy[3]),
+            confidence=confidence,
+            class_id=class_id,
+            class_name=names.get(class_id) if class_id is not None else None,
+        )
+
+    def _field_sort_key(self, field: FieldDetection) -> tuple[int, int, int]:
+        priority = {
+            "brand": 0,
+            "product_name": 1,
+            "extra_detail": 2,
+            "net_weight": 3,
+        }.get(field.class_name or "", 9)
+        x_min, y_min, _, _ = field.bbox
+        return priority, y_min, x_min
 
     def _select_best_box(self, boxes):
         scored = []

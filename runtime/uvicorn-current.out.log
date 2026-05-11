@@ -1,0 +1,992 @@
+INFO:     127.0.0.1:61375 - "GET /api/v1/health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61376 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61393 - "GET /api/v1/health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61393 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:61393 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61393 - "GET /static/styles.css?v=3 HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:61392 - "GET /static/app.js?v=3 HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:61401 - "GET /docs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61401 - "GET /openapi.json HTTP/1.1" 200 OK
+2026-05-11T12:54:23-0500 INFO app.services.pipeline trace_id=ui-1778522063575 inicio procesamiento producto
+2026-05-11T12:54:23-0500 INFO app.services.pipeline trace_id=ui-1778522063575 imagen decodificada
+2026-05-11T12:54:37-0500 INFO app.services.pipeline trace_id=ui-1778522063575 deteccion yolo completada bbox=(0, 0, 281, 258) confidence=0.006913881748914719 fallback=False
+[2026/05/11 12:54:48] ppocr DEBUG: Namespace(help='==SUPPRESS==', use_gpu=False, use_xpu=False, use_npu=False, use_mlu=False, use_gcu=False, ir_optim=True, use_tensorrt=False, min_subgraph_size=15, precision='fp32', gpu_mem=500, gpu_id=0, image_dir=None, page_num=0, det_algorithm='DB', det_model_dir='C:\\Users\\marcelo/.paddleocr/whl\\det\\en\\en_PP-OCRv3_det_infer', det_limit_side_len=960, det_limit_type='max', det_box_type='quad', det_db_thresh=0.3, det_db_box_thresh=0.6, det_db_unclip_ratio=1.5, max_batch_size=10, use_dilation=False, det_db_score_mode='fast', det_east_score_thresh=0.8, det_east_cover_thresh=0.1, det_east_nms_thresh=0.2, det_sast_score_thresh=0.5, det_sast_nms_thresh=0.2, det_pse_thresh=0, det_pse_box_thresh=0.85, det_pse_min_area=16, det_pse_scale=1, scales=[8, 16, 32], alpha=1.0, beta=1.0, fourier_degree=5, rec_algorithm='SVTR_LCNet', rec_model_dir='C:\\Users\\marcelo/.paddleocr/whl\\rec\\latin\\latin_PP-OCRv3_rec_infer', rec_image_inverse=True, rec_image_shape='3, 48, 320', rec_batch_num=6, max_text_length=25, rec_char_dict_path='C:\\Users\\marcelo\\AppData\\Roaming\\Python\\Python311\\site-packages\\paddleocr\\ppocr\\utils\\dict\\latin_dict.txt', use_space_char=True, vis_font_path='./doc/fonts/simfang.ttf', drop_score=0.5, e2e_algorithm='PGNet', e2e_model_dir=None, e2e_limit_side_len=768, e2e_limit_type='max', e2e_pgnet_score_thresh=0.5, e2e_char_dict_path='./ppocr/utils/ic15_dict.txt', e2e_pgnet_valid_set='totaltext', e2e_pgnet_mode='fast', use_angle_cls=False, cls_model_dir='C:\\Users\\marcelo/.paddleocr/whl\\cls\\ch_ppocr_mobile_v2.0_cls_infer', cls_image_shape='3, 48, 192', label_list=['0', '180'], cls_batch_num=6, cls_thresh=0.9, enable_mkldnn=False, cpu_threads=10, use_pdserving=False, warmup=False, sr_model_dir=None, sr_image_shape='3, 32, 128', sr_batch_num=1, draw_img_save_dir='./inference_results', save_crop_res=False, crop_res_save_dir='./output', use_mp=False, total_process_num=1, process_id=0, benchmark=False, save_log_path='./log_output/', show_log=True, use_onnx=False, onnx_providers=False, onnx_sess_options=False, return_word_box=False, output='./output', table_max_len=488, table_algorithm='TableAttn', table_model_dir=None, merge_no_span_structure=True, table_char_dict_path=None, formula_algorithm='LaTeXOCR', formula_model_dir=None, formula_char_dict_path=None, formula_batch_num=1, layout_model_dir=None, layout_dict_path=None, layout_score_threshold=0.5, layout_nms_threshold=0.5, kie_algorithm='LayoutXLM', ser_model_dir=None, re_model_dir=None, use_visual_backbone=True, ser_dict_path='../train_data/XFUND/class_list_xfun.txt', ocr_order_method=None, mode='structure', image_orientation=False, layout=True, table=True, formula=False, ocr=True, recovery=False, recovery_to_markdown=False, use_pdf2docx_api=False, invert=False, binarize=False, alphacolor=(255, 255, 255), lang='es', det=True, rec=True, type='ocr', savefile=False, ocr_version='PP-OCRv4', structure_version='PP-StructureV2', use_textline_orientation=True)
+[2026/05/11 12:54:50] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 12:54:51] ppocr DEBUG: dt_boxes num : 9, elapsed : 1.445483922958374
+[2026/05/11 12:54:53] ppocr DEBUG: rec_res num  : 9, elapsed : 1.4518616199493408
+INFO:     127.0.0.1:61419 - "POST /api/v1/products/recognize HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61431 - "GET /api/v1/productos/suggestions?q=Jab%C3%B3n+Dove+Sensible&limit=3&context=CADONED%0AbabyDove%0Ajabon+en+barra%0Ahipoalergenico%0Ahumectacion+sensible%0ApH+nauRrO+para+p+clcs+Osllccsb%0A3x75.g%0Acioadolln.coc.&source_name=dove-ba_png.rf.6e9d837efbc5e6fe1f01639315727276.jpg HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61430 - "GET /api/v1/productos/suggestions?q=Jab%C3%B3n+Dove+Sensible&limit=3&context=CADONED%0AbabyDove%0Ajabon+en+barra%0Ahipoalergenico%0Ahumectacion+sensible%0ApH+nauRrO+para+p+clcs+Osllccsb%0A3x75.g%0Acioadolln.coc.&source_name=dove-ba_png.rf.6e9d837efbc5e6fe1f01639315727276.jpg HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61435 - "GET /api/v1/productos/suggestions?q=Jab%C3%B3n+Dove+Sensible&limit=3&context=CADONED%0AbabyDove%0Ajabon+en+barra%0Ahipoalergenico%0Ahumectacion+sensible%0ApH+nauRrO+para+p+clcs+Osllccsb%0A3x75.g%0Acioadolln.coc.&source_name=dove-ba_png.rf.6e9d837efbc5e6fe1f01639315727276.jpg HTTP/1.1" 200 OK
+[2026/05/11 12:56:14] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 12:56:15] ppocr DEBUG: dt_boxes num : 4, elapsed : 0.6839108467102051
+[2026/05/11 12:56:15] ppocr DEBUG: rec_res num  : 4, elapsed : 0.35919713973999023
+INFO:     127.0.0.1:61438 - "POST /api/v1/products/recognize HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61438 - "GET /api/v1/productos/suggestions?q=Pasta+dental+Kolynos+Blanca&limit=3&context=ESUPER%0AKolynos%0ABLANCO%0A180g&source_name=kolynos-amari_png.rf.844898f0243f862addbb2eb96876d45d.jpg HTTP/1.1" 200 OK
+[2026/05/11 12:59:29] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 12:59:30] ppocr DEBUG: dt_boxes num : 9, elapsed : 0.8596746921539307
+[2026/05/11 12:59:32] ppocr DEBUG: rec_res num  : 9, elapsed : 1.172820806503296
+INFO:     127.0.0.1:61466 - "POST /api/v1/products/recognize HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61465 - "GET /api/v1/productos/suggestions?q=Panales+Huggies&limit=3&context=HUGGIES%0Adermacare%0AELGUIDADO+MAS+AVANZADO%0APARALAPIELDELBEBE%0AUltrasuave%0Ayrespirable%0A48%0APANALES%0A9-12.5KG&source_name=huggees_png.rf.c6039e2f8cd42cb4e516583a1e0e6bc1.jpg HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61469 - "GET /api/v1/productos/suggestions?q=Panales+Huggies&limit=3&context=HUGGIES%0Adermacare%0AELGUIDADO+MAS+AVANZADO%0APARALAPIELDELBEBE%0AUltrasuave%0Ayrespirable%0A48%0APANALES%0A9-12.5KG&source_name=huggees_png.rf.c6039e2f8cd42cb4e516583a1e0e6bc1.jpg HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61480 - "GET /api/v1/productos/suggestions?q=Panales+Huggies&limit=3&context=HUGGIES%0Adermacare%0AELGUIDADO+MAS+AVANZADO%0APARALAPIELDELBEBE%0AUltrasuave%0Ayrespirable%0A48%0APANALES%0A9-12.5KG&source_name=huggees_png.rf.c6039e2f8cd42cb4e516583a1e0e6bc1.jpg HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61485 - "GET /api/v1/productos/suggestions?q=Panales+Huggies&limit=3&context=HUGGIES%0Adermacare%0AELGUIDADO+MAS+AVANZADO%0APARALAPIELDELBEBE%0AUltrasuave%0Ayrespirable%0A48%0APANALES%0A9-12.5KG&source_name=huggees_png.rf.c6039e2f8cd42cb4e516583a1e0e6bc1.jpg HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61496 - "GET /api/v1/productos/suggestions?q=Panales+Huggies&limit=3&context=HUGGIES%0Adermacare%0AELGUIDADO+MAS+AVANZADO%0APARALAPIELDELBEBE%0AUltrasuave%0Ayrespirable%0A48%0APANALES%0A9-12.5KG&source_name=huggees_png.rf.c6039e2f8cd42cb4e516583a1e0e6bc1.jpg HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61662 - "GET /api/v1/productos/suggestions?q=Panales+Huggies&limit=3&context=HUGGIES%0Adermacare%0AELGUIDADO+MAS+AVANZADO%0APARALAPIELDELBEBE%0AUltrasuave%0Ayrespirable%0A48%0APANALES%0A9-12.5KG&source_name=huggees_png.rf.c6039e2f8cd42cb4e516583a1e0e6bc1.jpg HTTP/1.1" 200 OK
+ INFO:     127.0.0.1:61725 - "GET /api/v1/health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61751 - "GET /api/v1/health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61766 - "GET /api/v1/productos/suggestions?q=Panales+Huggies&limit=3&context=HUGGIES%0Adermacare%0AELGUIDADO+MAS+AVANZADO%0APARALAPIELDELBEBE%0AUltrasuave%0Ayrespirable%0A48%0APANALES%0A9-12.5KG&source_name=huggees_png.rf.c6039e2f8cd42cb4e516583a1e0e6bc1.jpg HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61766 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61766 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61766 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61766 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61766 - "GET / HTTP/1.1" 200 OK
+[2026/05/11 13:10:29] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 13:10:30] ppocr DEBUG: dt_boxes num : 9, elapsed : 0.2713134288787842
+[2026/05/11 13:10:31] ppocr DEBUG: rec_res num  : 9, elapsed : 1.1090750694274902
+INFO:     127.0.0.1:61767 - "POST /api/v1/products/recognize HTTP/1.1" 200 OK
+ INFO:     127.0.0.1:61776 - "GET /api/v1/productos/suggestions?q=Panales+Huggies&limit=3&context=HUGGIES%0Adermacare%0AELGUIDADO+MAS+AVANZADO%0APARALAPIELDELBEBE%0AUltrasuave%0Ayrespirable%0A48%0APANALES%0A9-12.5KG&source_name=huggees_png.rf.c6039e2f8cd42cb4e516583a1e0e6bc1.jpg HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61778 - "GET /api/v1/productos/suggestions?q=Pa%C3%B1al+Huggies+48+pa%C3%B1ales&limit=3&context=HUGGIES%0Adermacare%0AELGUIDADO+MAS+AVANZADO%0APARALAPIELDELBEBE%0AUltrasuave%0Ayrespirable%0A48%0APANALES%0A9-12.5KG&source_name=huggees_png.rf.c6039e2f8cd42cb4e516583a1e0e6bc1.jpg HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62081 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62081 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62081 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62081 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62081 - "GET / HTTP/1.1" 200 OK
+2026-05-11T13:35:26-0500 INFO app.services.pipeline trace_id=ui-1778524526755 inicio procesamiento producto
+2026-05-11T13:35:26-0500 INFO app.services.pipeline trace_id=ui-1778524526755 imagen decodificada
+2026-05-11T13:35:32-0500 INFO app.services.pipeline trace_id=ui-1778524526755 deteccion yolo completada bbox=(0, 0, 384, 394) confidence=0.009483844973146915 fallback=False
+[2026/05/11 13:35:35] ppocr DEBUG: Namespace(help='==SUPPRESS==', use_gpu=False, use_xpu=False, use_npu=False, use_mlu=False, use_gcu=False, ir_optim=True, use_tensorrt=False, min_subgraph_size=15, precision='fp32', gpu_mem=500, gpu_id=0, image_dir=None, page_num=0, det_algorithm='DB', det_model_dir='C:\\Users\\marcelo/.paddleocr/whl\\det\\en\\en_PP-OCRv3_det_infer', det_limit_side_len=960, det_limit_type='max', det_box_type='quad', det_db_thresh=0.3, det_db_box_thresh=0.6, det_db_unclip_ratio=1.5, max_batch_size=10, use_dilation=False, det_db_score_mode='fast', det_east_score_thresh=0.8, det_east_cover_thresh=0.1, det_east_nms_thresh=0.2, det_sast_score_thresh=0.5, det_sast_nms_thresh=0.2, det_pse_thresh=0, det_pse_box_thresh=0.85, det_pse_min_area=16, det_pse_scale=1, scales=[8, 16, 32], alpha=1.0, beta=1.0, fourier_degree=5, rec_algorithm='SVTR_LCNet', rec_model_dir='C:\\Users\\marcelo/.paddleocr/whl\\rec\\latin\\latin_PP-OCRv3_rec_infer', rec_image_inverse=True, rec_image_shape='3, 48, 320', rec_batch_num=6, max_text_length=25, rec_char_dict_path='C:\\Users\\marcelo\\AppData\\Roaming\\Python\\Python311\\site-packages\\paddleocr\\ppocr\\utils\\dict\\latin_dict.txt', use_space_char=True, vis_font_path='./doc/fonts/simfang.ttf', drop_score=0.5, e2e_algorithm='PGNet', e2e_model_dir=None, e2e_limit_side_len=768, e2e_limit_type='max', e2e_pgnet_score_thresh=0.5, e2e_char_dict_path='./ppocr/utils/ic15_dict.txt', e2e_pgnet_valid_set='totaltext', e2e_pgnet_mode='fast', use_angle_cls=False, cls_model_dir='C:\\Users\\marcelo/.paddleocr/whl\\cls\\ch_ppocr_mobile_v2.0_cls_infer', cls_image_shape='3, 48, 192', label_list=['0', '180'], cls_batch_num=6, cls_thresh=0.9, enable_mkldnn=False, cpu_threads=10, use_pdserving=False, warmup=False, sr_model_dir=None, sr_image_shape='3, 32, 128', sr_batch_num=1, draw_img_save_dir='./inference_results', save_crop_res=False, crop_res_save_dir='./output', use_mp=False, total_process_num=1, process_id=0, benchmark=False, save_log_path='./log_output/', show_log=True, use_onnx=False, onnx_providers=False, onnx_sess_options=False, return_word_box=False, output='./output', table_max_len=488, table_algorithm='TableAttn', table_model_dir=None, merge_no_span_structure=True, table_char_dict_path=None, formula_algorithm='LaTeXOCR', formula_model_dir=None, formula_char_dict_path=None, formula_batch_num=1, layout_model_dir=None, layout_dict_path=None, layout_score_threshold=0.5, layout_nms_threshold=0.5, kie_algorithm='LayoutXLM', ser_model_dir=None, re_model_dir=None, use_visual_backbone=True, ser_dict_path='../train_data/XFUND/class_list_xfun.txt', ocr_order_method=None, mode='structure', image_orientation=False, layout=True, table=True, formula=False, ocr=True, recovery=False, recovery_to_markdown=False, use_pdf2docx_api=False, invert=False, binarize=False, alphacolor=(255, 255, 255), lang='es', det=True, rec=True, type='ocr', savefile=False, ocr_version='PP-OCRv4', structure_version='PP-StructureV2', use_textline_orientation=True)
+[2026/05/11 13:35:36] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 13:35:37] ppocr DEBUG: dt_boxes num : 4, elapsed : 0.8105261325836182
+[2026/05/11 13:35:38] ppocr DEBUG: rec_res num  : 4, elapsed : 0.9422533512115479
+[2026/05/11 13:35:38] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 13:35:38] ppocr DEBUG: dt_boxes num : 4, elapsed : 0.7463345527648926
+[2026/05/11 13:35:39] ppocr DEBUG: rec_res num  : 4, elapsed : 0.837540864944458
+[2026/05/11 13:35:39] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 13:35:40] ppocr DEBUG: dt_boxes num : 4, elapsed : 0.2537720203399658
+[2026/05/11 13:35:41] ppocr DEBUG: rec_res num  : 4, elapsed : 0.9162888526916504
+[2026/05/11 13:35:41] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 13:35:42] ppocr DEBUG: dt_boxes num : 6, elapsed : 0.8757727146148682
+[2026/05/11 13:35:43] ppocr DEBUG: rec_res num  : 6, elapsed : 1.4722633361816406
+[2026/05/11 13:35:43] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 13:35:44] ppocr DEBUG: dt_boxes num : 1, elapsed : 0.6981451511383057
+[2026/05/11 13:35:44] ppocr DEBUG: rec_res num  : 1, elapsed : 0.12530803680419922
+[2026/05/11 13:35:44] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 13:35:44] ppocr DEBUG: dt_boxes num : 1, elapsed : 0.12926959991455078
+[2026/05/11 13:35:44] ppocr DEBUG: rec_res num  : 1, elapsed : 0.0852961540222168
+[2026/05/11 13:35:44] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 13:35:45] ppocr DEBUG: dt_boxes num : 6, elapsed : 0.8846328258514404
+[2026/05/11 13:35:47] ppocr DEBUG: rec_res num  : 6, elapsed : 1.3925573825836182
+[2026/05/11 13:35:47] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 13:35:47] ppocr DEBUG: dt_boxes num : 2, elapsed : 0.6822934150695801
+[2026/05/11 13:35:47] ppocr DEBUG: rec_res num  : 2, elapsed : 0.18351030349731445
+[2026/05/11 13:35:47] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 13:35:48] ppocr DEBUG: dt_boxes num : 1, elapsed : 0.6333084106445312
+[2026/05/11 13:35:48] ppocr DEBUG: rec_res num  : 1, elapsed : 0.07427859306335449
+[2026/05/11 13:35:48] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 13:35:49] ppocr DEBUG: dt_boxes num : 2, elapsed : 0.7088272571563721
+[2026/05/11 13:35:49] ppocr DEBUG: rec_res num  : 2, elapsed : 0.16892218589782715
+[2026/05/11 13:35:49] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 13:35:50] ppocr DEBUG: dt_boxes num : 3, elapsed : 0.7426519393920898
+[2026/05/11 13:35:50] ppocr DEBUG: rec_res num  : 3, elapsed : 0.2868156433105469
+[2026/05/11 13:35:50] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 13:35:51] ppocr DEBUG: dt_boxes num : 5, elapsed : 0.6995294094085693
+[2026/05/11 13:35:52] ppocr DEBUG: rec_res num  : 5, elapsed : 0.5397026538848877
+[2026/05/11 13:35:52] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 13:35:52] ppocr DEBUG: dt_boxes num : 2, elapsed : 0.12145733833312988
+[2026/05/11 13:35:52] ppocr DEBUG: rec_res num  : 2, elapsed : 0.1680312156677246
+[2026/05/11 13:35:52] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 13:35:53] ppocr DEBUG: dt_boxes num : 4, elapsed : 0.7415692806243896
+[2026/05/11 13:35:53] ppocr DEBUG: rec_res num  : 4, elapsed : 0.747699499130249
+[2026/05/11 13:35:53] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 13:35:54] ppocr DEBUG: dt_boxes num : 4, elapsed : 0.16729402542114258
+[2026/05/11 13:35:54] ppocr DEBUG: rec_res num  : 4, elapsed : 0.8374166488647461
+[2026/05/11 13:35:54] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 13:35:55] ppocr DEBUG: dt_boxes num : 1, elapsed : 0.6743667125701904
+[2026/05/11 13:35:55] ppocr DEBUG: rec_res num  : 1, elapsed : 0.11073517799377441
+[2026/05/11 13:35:55] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 13:35:56] ppocr DEBUG: dt_boxes num : 1, elapsed : 0.6262521743774414
+[2026/05/11 13:35:56] ppocr DEBUG: rec_res num  : 1, elapsed : 0.12172985076904297
+[2026/05/11 13:35:56] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 13:35:57] ppocr DEBUG: dt_boxes num : 3, elapsed : 0.6750459671020508
+[2026/05/11 13:35:57] ppocr DEBUG: rec_res num  : 3, elapsed : 0.5801570415496826
+[2026/05/11 13:35:57] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 13:35:58] ppocr DEBUG: dt_boxes num : 8, elapsed : 0.6172523498535156
+[2026/05/11 13:35:59] ppocr DEBUG: rec_res num  : 8, elapsed : 0.8649470806121826
+[2026/05/11 13:35:59] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 13:35:59] ppocr DEBUG: dt_boxes num : 4, elapsed : 0.09633827209472656
+[2026/05/11 13:36:00] ppocr DEBUG: rec_res num  : 4, elapsed : 0.9793543815612793
+[2026/05/11 13:36:00] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 13:36:01] ppocr DEBUG: dt_boxes num : 3, elapsed : 0.7197096347808838
+[2026/05/11 13:36:02] ppocr DEBUG: rec_res num  : 3, elapsed : 0.8594591617584229
+[2026/05/11 13:36:02] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 13:36:02] ppocr DEBUG: dt_boxes num : 5, elapsed : 0.7428827285766602
+[2026/05/11 13:36:04] ppocr DEBUG: rec_res num  : 5, elapsed : 1.7136361598968506
+[2026/05/11 13:36:04] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 13:36:05] ppocr DEBUG: dt_boxes num : 10, elapsed : 0.8667426109313965
+[2026/05/11 13:36:07] ppocr DEBUG: rec_res num  : 10, elapsed : 1.489816665649414
+[2026/05/11 13:36:07] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 13:36:07] ppocr DEBUG: dt_boxes num : 0, elapsed : 0.5326707363128662
+[2026/05/11 13:36:07] ppocr DEBUG: rec_res num  : 0, elapsed : 0.0
+[2026/05/11 13:36:07] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 13:36:08] ppocr DEBUG: dt_boxes num : 6, elapsed : 0.7971537113189697
+[2026/05/11 13:36:09] ppocr DEBUG: rec_res num  : 6, elapsed : 0.895484209060669
+[2026/05/11 13:36:09] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 13:36:10] ppocr DEBUG: dt_boxes num : 4, elapsed : 0.721001386642456
+[2026/05/11 13:36:10] ppocr DEBUG: rec_res num  : 4, elapsed : 0.38507628440856934
+[2026/05/11 13:36:10] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 13:36:10] ppocr DEBUG: dt_boxes num : 0, elapsed : 0.21296906471252441
+[2026/05/11 13:36:10] ppocr DEBUG: rec_res num  : 0, elapsed : 0.0
+[2026/05/11 13:36:10] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 13:36:11] ppocr DEBUG: dt_boxes num : 7, elapsed : 0.7904272079467773
+[2026/05/11 13:36:13] ppocr DEBUG: rec_res num  : 7, elapsed : 1.394636869430542
+[2026/05/11 13:36:13] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 13:36:13] ppocr DEBUG: dt_boxes num : 1, elapsed : 0.7160439491271973
+[2026/05/11 13:36:13] ppocr DEBUG: rec_res num  : 1, elapsed : 0.12634563446044922
+[2026/05/11 13:36:13] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 13:36:14] ppocr DEBUG: dt_boxes num : 4, elapsed : 0.7475399971008301
+[2026/05/11 13:36:15] ppocr DEBUG: rec_res num  : 4, elapsed : 0.6053969860076904
+[2026/05/11 13:36:15] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 13:36:15] ppocr DEBUG: dt_boxes num : 0, elapsed : 0.05388164520263672
+[2026/05/11 13:36:15] ppocr DEBUG: rec_res num  : 0, elapsed : 0.0
+[2026/05/11 13:36:15] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 13:36:16] ppocr DEBUG: dt_boxes num : 1, elapsed : 0.717780590057373
+[2026/05/11 13:36:16] ppocr DEBUG: rec_res num  : 1, elapsed : 0.08141779899597168
+[2026/05/11 13:36:16] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 13:36:16] ppocr DEBUG: dt_boxes num : 6, elapsed : 0.1142880916595459
+[2026/05/11 13:36:17] ppocr DEBUG: rec_res num  : 6, elapsed : 0.6201767921447754
+[2026/05/11 13:36:17] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 13:36:17] ppocr DEBUG: dt_boxes num : 3, elapsed : 0.6930744647979736
+[2026/05/11 13:36:18] ppocr DEBUG: rec_res num  : 3, elapsed : 0.334578275680542
+[2026/05/11 13:36:18] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 13:36:18] ppocr DEBUG: dt_boxes num : 1, elapsed : 0.2583763599395752
+[2026/05/11 13:36:18] ppocr DEBUG: rec_res num  : 1, elapsed : 0.09773826599121094
+[2026/05/11 13:36:18] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 13:36:18] ppocr DEBUG: dt_boxes num : 0, elapsed : 0.11070609092712402
+[2026/05/11 13:36:18] ppocr DEBUG: rec_res num  : 0, elapsed : 0.0
+[2026/05/11 13:36:18] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 13:36:19] ppocr DEBUG: dt_boxes num : 6, elapsed : 0.4634695053100586
+[2026/05/11 13:36:19] ppocr DEBUG: rec_res num  : 6, elapsed : 0.4503319263458252
+[2026/05/11 13:36:19] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 13:36:20] ppocr DEBUG: dt_boxes num : 7, elapsed : 0.5402593612670898
+[2026/05/11 13:36:21] ppocr DEBUG: rec_res num  : 7, elapsed : 1.057016372680664
+[2026/05/11 13:36:21] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 13:36:21] ppocr DEBUG: dt_boxes num : 4, elapsed : 0.12884998321533203
+[2026/05/11 13:36:21] ppocr DEBUG: rec_res num  : 4, elapsed : 0.41497373580932617
+[2026/05/11 13:36:21] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 13:36:22] ppocr DEBUG: dt_boxes num : 9, elapsed : 0.6891906261444092
+[2026/05/11 13:36:23] ppocr DEBUG: rec_res num  : 9, elapsed : 0.8805601596832275
+[2026/05/11 13:36:23] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 13:36:23] ppocr DEBUG: dt_boxes num : 1, elapsed : 0.30477237701416016
+[2026/05/11 13:36:23] ppocr DEBUG: rec_res num  : 1, elapsed : 0.1576085090637207
+[2026/05/11 13:36:24] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 13:36:24] ppocr DEBUG: dt_boxes num : 9, elapsed : 0.9103713035583496
+[2026/05/11 13:36:26] ppocr DEBUG: rec_res num  : 9, elapsed : 1.3060836791992188
+[2026/05/11 13:36:26] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 13:36:26] ppocr DEBUG: dt_boxes num : 4, elapsed : 0.6894073486328125
+[2026/05/11 13:36:27] ppocr DEBUG: rec_res num  : 4, elapsed : 0.5366754531860352
+[2026/05/11 13:36:27] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 13:36:27] ppocr DEBUG: dt_boxes num : 2, elapsed : 0.07914924621582031
+[2026/05/11 13:36:27] ppocr DEBUG: rec_res num  : 2, elapsed : 0.2800123691558838
+[2026/05/11 13:36:27] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 13:36:28] ppocr DEBUG: dt_boxes num : 2, elapsed : 0.5928881168365479
+[2026/05/11 13:36:28] ppocr DEBUG: rec_res num  : 2, elapsed : 0.23539972305297852
+[2026/05/11 13:36:28] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 13:36:29] ppocr DEBUG: dt_boxes num : 2, elapsed : 0.6632106304168701
+[2026/05/11 13:36:29] ppocr DEBUG: rec_res num  : 2, elapsed : 0.2636377811431885
+[2026/05/11 13:36:29] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 13:36:30] ppocr DEBUG: dt_boxes num : 0, elapsed : 0.36815667152404785
+[2026/05/11 13:36:30] ppocr DEBUG: rec_res num  : 0, elapsed : 0.0
+[2026/05/11 13:36:30] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 13:36:30] ppocr DEBUG: dt_boxes num : 6, elapsed : 0.7379097938537598
+[2026/05/11 13:36:31] ppocr DEBUG: rec_res num  : 6, elapsed : 0.5039768218994141
+[2026/05/11 13:36:31] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 13:36:31] ppocr DEBUG: dt_boxes num : 0, elapsed : 0.29383063316345215
+[2026/05/11 13:36:31] ppocr DEBUG: rec_res num  : 0, elapsed : 0.0
+[2026/05/11 13:36:31] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 13:36:32] ppocr DEBUG: dt_boxes num : 8, elapsed : 0.7764401435852051
+[2026/05/11 13:36:33] ppocr DEBUG: rec_res num  : 8, elapsed : 0.7858753204345703
+[2026/05/11 13:36:33] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 13:36:34] ppocr DEBUG: dt_boxes num : 0, elapsed : 0.6178457736968994
+[2026/05/11 13:36:34] ppocr DEBUG: rec_res num  : 0, elapsed : 0.0
+[2026/05/11 13:36:34] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 13:36:34] ppocr DEBUG: dt_boxes num : 0, elapsed : 0.2121286392211914
+[2026/05/11 13:36:34] ppocr DEBUG: rec_res num  : 0, elapsed : 0.0
+[2026/05/11 13:36:34] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 13:36:34] ppocr DEBUG: dt_boxes num : 0, elapsed : 0.2949056625366211
+[2026/05/11 13:36:34] ppocr DEBUG: rec_res num  : 0, elapsed : 0.0
+[2026/05/11 13:36:34] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 13:36:34] ppocr DEBUG: dt_boxes num : 0, elapsed : 0.07827067375183105
+[2026/05/11 13:36:34] ppocr DEBUG: rec_res num  : 0, elapsed : 0.0
+[2026/05/11 13:36:34] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 13:36:35] ppocr DEBUG: dt_boxes num : 0, elapsed : 0.8779287338256836
+[2026/05/11 13:36:35] ppocr DEBUG: rec_res num  : 0, elapsed : 0.0
+[2026/05/11 13:36:35] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 13:36:36] ppocr DEBUG: dt_boxes num : 0, elapsed : 0.9906575679779053
+[2026/05/11 13:36:36] ppocr DEBUG: rec_res num  : 0, elapsed : 0.0
+[2026/05/11 13:36:36] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 13:36:36] ppocr DEBUG: dt_boxes num : 0, elapsed : 0.06192660331726074
+[2026/05/11 13:36:36] ppocr DEBUG: rec_res num  : 0, elapsed : 0.0
+[2026/05/11 13:36:36] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 13:36:37] ppocr DEBUG: dt_boxes num : 6, elapsed : 0.1899726390838623
+[2026/05/11 13:36:37] ppocr DEBUG: rec_res num  : 6, elapsed : 0.4924592971801758
+[2026/05/11 13:36:37] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 13:36:37] ppocr DEBUG: dt_boxes num : 0, elapsed : 0.11564755439758301
+[2026/05/11 13:36:37] ppocr DEBUG: rec_res num  : 0, elapsed : 0.0
+[2026/05/11 13:36:37] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 13:36:38] ppocr DEBUG: dt_boxes num : 0, elapsed : 0.4939463138580322
+[2026/05/11 13:36:38] ppocr DEBUG: rec_res num  : 0, elapsed : 0.0
+[2026/05/11 13:36:38] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 13:36:39] ppocr DEBUG: dt_boxes num : 4, elapsed : 0.7780051231384277
+[2026/05/11 13:36:39] ppocr DEBUG: rec_res num  : 4, elapsed : 0.4324679374694824
+[2026/05/11 13:36:39] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 13:36:39] ppocr DEBUG: dt_boxes num : 0, elapsed : 0.1790907382965088
+[2026/05/11 13:36:39] ppocr DEBUG: rec_res num  : 0, elapsed : 0.0
+[2026/05/11 13:36:39] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 13:36:40] ppocr DEBUG: dt_boxes num : 4, elapsed : 0.7690961360931396
+[2026/05/11 13:36:41] ppocr DEBUG: rec_res num  : 4, elapsed : 0.4867441654205322
+[2026/05/11 13:36:41] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 13:36:41] ppocr DEBUG: dt_boxes num : 0, elapsed : 0.8346436023712158
+[2026/05/11 13:36:41] ppocr DEBUG: rec_res num  : 0, elapsed : 0.0
+[2026/05/11 13:36:41] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 13:36:42] ppocr DEBUG: dt_boxes num : 0, elapsed : 0.848546028137207
+[2026/05/11 13:36:42] ppocr DEBUG: rec_res num  : 0, elapsed : 0.0
+[2026/05/11 13:36:42] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 13:36:43] ppocr DEBUG: dt_boxes num : 0, elapsed : 0.15960383415222168
+[2026/05/11 13:36:43] ppocr DEBUG: rec_res num  : 0, elapsed : 0.0
+[2026/05/11 13:36:43] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 13:36:44] ppocr DEBUG: dt_boxes num : 3, elapsed : 0.9350738525390625
+[2026/05/11 13:36:44] ppocr DEBUG: rec_res num  : 3, elapsed : 0.31058216094970703
+[2026/05/11 13:36:44] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 13:36:45] ppocr DEBUG: dt_boxes num : 0, elapsed : 0.8016550540924072
+[2026/05/11 13:36:45] ppocr DEBUG: rec_res num  : 0, elapsed : 0.0
+[2026/05/11 13:36:45] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 13:36:46] ppocr DEBUG: dt_boxes num : 9, elapsed : 1.0144507884979248
+[2026/05/11 13:36:47] ppocr DEBUG: rec_res num  : 9, elapsed : 1.593390703201294
+[2026/05/11 13:36:47] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 13:36:48] ppocr DEBUG: dt_boxes num : 4, elapsed : 1.0782790184020996
+[2026/05/11 13:36:50] ppocr DEBUG: rec_res num  : 4, elapsed : 1.3379497528076172
+[2026/05/11 13:36:50] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 13:36:51] ppocr DEBUG: dt_boxes num : 2, elapsed : 0.9016807079315186
+[2026/05/11 13:36:51] ppocr DEBUG: rec_res num  : 2, elapsed : 0.23952388763427734
+[2026/05/11 13:36:51] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 13:36:51] ppocr DEBUG: dt_boxes num : 0, elapsed : 0.41703295707702637
+[2026/05/11 13:36:51] ppocr DEBUG: rec_res num  : 0, elapsed : 0.0
+[2026/05/11 13:36:52] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 13:36:52] ppocr DEBUG: dt_boxes num : 6, elapsed : 0.6088011264801025
+[2026/05/11 13:36:54] ppocr DEBUG: rec_res num  : 6, elapsed : 1.5882368087768555
+[2026/05/11 13:36:54] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 13:36:54] ppocr DEBUG: dt_boxes num : 1, elapsed : 0.15176725387573242
+[2026/05/11 13:36:54] ppocr DEBUG: rec_res num  : 1, elapsed : 0.14380264282226562
+[2026/05/11 13:36:54] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 13:36:55] ppocr DEBUG: dt_boxes num : 9, elapsed : 0.5967106819152832
+[2026/05/11 13:36:56] ppocr DEBUG: rec_res num  : 9, elapsed : 0.973069429397583
+[2026/05/11 13:36:56] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 13:36:57] ppocr DEBUG: dt_boxes num : 8, elapsed : 1.2426865100860596
+[2026/05/11 13:37:00] ppocr DEBUG: rec_res num  : 8, elapsed : 2.60504150390625
+[2026/05/11 13:37:00] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 13:37:00] ppocr DEBUG: dt_boxes num : 7, elapsed : 0.2353804111480713
+[2026/05/11 13:37:01] ppocr DEBUG: rec_res num  : 7, elapsed : 0.8902547359466553
+[2026/05/11 13:37:01] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 13:37:02] ppocr DEBUG: dt_boxes num : 0, elapsed : 0.8308391571044922
+[2026/05/11 13:37:02] ppocr DEBUG: rec_res num  : 0, elapsed : 0.0
+[2026/05/11 13:37:02] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 13:37:03] ppocr DEBUG: dt_boxes num : 5, elapsed : 0.7859625816345215
+[2026/05/11 13:37:03] ppocr DEBUG: rec_res num  : 5, elapsed : 0.44411468505859375
+[2026/05/11 13:37:03] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 13:37:04] ppocr DEBUG: dt_boxes num : 5, elapsed : 0.8238458633422852
+[2026/05/11 13:37:04] ppocr DEBUG: rec_res num  : 5, elapsed : 0.43816494941711426
+[2026/05/11 13:37:04] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 13:37:05] ppocr DEBUG: dt_boxes num : 3, elapsed : 0.6990761756896973
+[2026/05/11 13:37:05] ppocr DEBUG: rec_res num  : 3, elapsed : 0.2933831214904785
+[2026/05/11 13:37:05] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 13:37:06] ppocr DEBUG: dt_boxes num : 4, elapsed : 0.9161999225616455
+[2026/05/11 13:37:07] ppocr DEBUG: rec_res num  : 4, elapsed : 0.399761438369751
+[2026/05/11 13:37:07] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 13:37:08] ppocr DEBUG: dt_boxes num : 4, elapsed : 0.7174603939056396
+[2026/05/11 13:37:08] ppocr DEBUG: rec_res num  : 4, elapsed : 0.33621835708618164
+[2026/05/11 13:37:08] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 13:37:08] ppocr DEBUG: dt_boxes num : 1, elapsed : 0.39099645614624023
+[2026/05/11 13:37:08] ppocr DEBUG: rec_res num  : 1, elapsed : 0.15235042572021484
+[2026/05/11 13:37:09] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 13:37:09] ppocr DEBUG: dt_boxes num : 1, elapsed : 0.9305675029754639
+[2026/05/11 13:37:10] ppocr DEBUG: rec_res num  : 1, elapsed : 0.08544254302978516
+[2026/05/11 13:37:10] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 13:37:10] ppocr DEBUG: dt_boxes num : 1, elapsed : 0.3023800849914551
+[2026/05/11 13:37:10] ppocr DEBUG: rec_res num  : 1, elapsed : 0.1047048568725586
+[2026/05/11 13:37:10] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 13:37:11] ppocr DEBUG: dt_boxes num : 4, elapsed : 0.5106432437896729
+[2026/05/11 13:37:11] ppocr DEBUG: rec_res num  : 4, elapsed : 0.5530509948730469
+[2026/05/11 13:37:11] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 13:37:11] ppocr DEBUG: dt_boxes num : 0, elapsed : 0.24908685684204102
+[2026/05/11 13:37:11] ppocr DEBUG: rec_res num  : 0, elapsed : 0.0
+[2026/05/11 13:37:11] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 13:37:12] ppocr DEBUG: dt_boxes num : 1, elapsed : 0.2572028636932373
+[2026/05/11 13:37:12] ppocr DEBUG: rec_res num  : 1, elapsed : 0.0986940860748291
+[2026/05/11 13:37:12] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 13:37:12] ppocr DEBUG: dt_boxes num : 1, elapsed : 0.10282468795776367
+[2026/05/11 13:37:12] ppocr DEBUG: rec_res num  : 1, elapsed : 0.11391878128051758
+[2026/05/11 13:37:12] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 13:37:13] ppocr DEBUG: dt_boxes num : 6, elapsed : 1.1293435096740723
+[2026/05/11 13:37:15] ppocr DEBUG: rec_res num  : 6, elapsed : 1.3529770374298096
+[2026/05/11 13:37:15] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 13:37:16] ppocr DEBUG: dt_boxes num : 2, elapsed : 0.9822084903717041
+[2026/05/11 13:37:16] ppocr DEBUG: rec_res num  : 2, elapsed : 0.3186044692993164
+[2026/05/11 13:37:16] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 13:37:17] ppocr DEBUG: dt_boxes num : 3, elapsed : 0.8657550811767578
+[2026/05/11 13:37:17] ppocr DEBUG: rec_res num  : 3, elapsed : 0.4809901714324951
+[2026/05/11 13:37:17] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 13:37:18] ppocr DEBUG: dt_boxes num : 1, elapsed : 0.7284729480743408
+[2026/05/11 13:37:18] ppocr DEBUG: rec_res num  : 1, elapsed : 0.13865065574645996
+[2026/05/11 13:37:18] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 13:37:19] ppocr DEBUG: dt_boxes num : 6, elapsed : 0.8358523845672607
+[2026/05/11 13:37:20] ppocr DEBUG: rec_res num  : 6, elapsed : 1.0867464542388916
+[2026/05/11 13:37:20] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 13:37:21] ppocr DEBUG: dt_boxes num : 7, elapsed : 0.8733367919921875
+[2026/05/11 13:37:23] ppocr DEBUG: rec_res num  : 7, elapsed : 1.9433519840240479
+[2026/05/11 13:37:23] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 13:37:24] ppocr DEBUG: dt_boxes num : 3, elapsed : 0.9670989513397217
+[2026/05/11 13:37:25] ppocr DEBUG: rec_res num  : 3, elapsed : 0.32880520820617676
+[2026/05/11 13:37:25] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 13:37:25] ppocr DEBUG: dt_boxes num : 4, elapsed : 0.7383606433868408
+[2026/05/11 13:37:26] ppocr DEBUG: rec_res num  : 4, elapsed : 0.4159362316131592
+[2026/05/11 13:37:26] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 13:37:27] ppocr DEBUG: dt_boxes num : 2, elapsed : 0.7284116744995117
+[2026/05/11 13:37:27] ppocr DEBUG: rec_res num  : 2, elapsed : 0.21944379806518555
+[2026/05/11 13:37:27] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 13:37:27] ppocr DEBUG: dt_boxes num : 7, elapsed : 0.3564751148223877
+[2026/05/11 13:37:28] ppocr DEBUG: rec_res num  : 7, elapsed : 0.820993185043335
+[2026/05/11 13:37:28] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 13:37:29] ppocr DEBUG: dt_boxes num : 7, elapsed : 0.4429450035095215
+[2026/05/11 13:37:29] ppocr DEBUG: rec_res num  : 7, elapsed : 0.6569490432739258
+[2026/05/11 13:37:29] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 13:37:30] ppocr DEBUG: dt_boxes num : 3, elapsed : 0.5000796318054199
+[2026/05/11 13:37:30] ppocr DEBUG: rec_res num  : 3, elapsed : 0.27245116233825684
+[2026/05/11 13:37:30] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 13:37:30] ppocr DEBUG: dt_boxes num : 6, elapsed : 0.29710888862609863
+[2026/05/11 13:37:31] ppocr DEBUG: rec_res num  : 6, elapsed : 0.6936144828796387
+[2026/05/11 13:37:31] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 13:37:31] ppocr DEBUG: dt_boxes num : 0, elapsed : 0.32253026962280273
+[2026/05/11 13:37:31] ppocr DEBUG: rec_res num  : 0, elapsed : 0.0
+[2026/05/11 13:37:31] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 13:37:32] ppocr DEBUG: dt_boxes num : 0, elapsed : 0.24883341789245605
+[2026/05/11 13:37:32] ppocr DEBUG: rec_res num  : 0, elapsed : 0.0
+[2026/05/11 13:37:32] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 13:37:33] ppocr DEBUG: dt_boxes num : 7, elapsed : 1.0774126052856445
+[2026/05/11 13:37:34] ppocr DEBUG: rec_res num  : 7, elapsed : 1.5911462306976318
+[2026/05/11 13:37:34] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 13:37:35] ppocr DEBUG: dt_boxes num : 2, elapsed : 0.7330079078674316
+[2026/05/11 13:37:35] ppocr DEBUG: rec_res num  : 2, elapsed : 0.19747161865234375
+[2026/05/11 13:37:35] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 13:37:36] ppocr DEBUG: dt_boxes num : 3, elapsed : 0.2552757263183594
+[2026/05/11 13:37:36] ppocr DEBUG: rec_res num  : 3, elapsed : 0.3739347457885742
+[2026/05/11 13:37:36] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 13:37:37] ppocr DEBUG: dt_boxes num : 8, elapsed : 0.6932060718536377
+[2026/05/11 13:37:38] ppocr DEBUG: rec_res num  : 8, elapsed : 0.9058647155761719
+[2026/05/11 13:37:38] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 13:37:39] ppocr DEBUG: dt_boxes num : 9, elapsed : 0.8851475715637207
+[2026/05/11 13:37:40] ppocr DEBUG: rec_res num  : 9, elapsed : 1.1004014015197754
+[2026/05/11 13:37:40] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 13:37:40] ppocr DEBUG: dt_boxes num : 9, elapsed : 0.5272810459136963
+[2026/05/11 13:37:41] ppocr DEBUG: rec_res num  : 9, elapsed : 1.0607788562774658
+[2026/05/11 13:37:41] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 13:37:42] ppocr DEBUG: dt_boxes num : 0, elapsed : 0.20445537567138672
+[2026/05/11 13:37:42] ppocr DEBUG: rec_res num  : 0, elapsed : 0.0
+[2026/05/11 13:37:42] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 13:37:43] ppocr DEBUG: dt_boxes num : 4, elapsed : 0.8414814472198486
+[2026/05/11 13:37:43] ppocr DEBUG: rec_res num  : 4, elapsed : 0.7754671573638916
+[2026/05/11 13:37:43] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 13:37:44] ppocr DEBUG: dt_boxes num : 0, elapsed : 0.1765305995941162
+[2026/05/11 13:37:44] ppocr DEBUG: rec_res num  : 0, elapsed : 0.0
+[2026/05/11 13:37:44] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 13:37:44] ppocr DEBUG: dt_boxes num : 1, elapsed : 0.05186033248901367
+[2026/05/11 13:37:44] ppocr DEBUG: rec_res num  : 1, elapsed : 0.1486039161682129
+[2026/05/11 13:37:44] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 13:37:44] ppocr DEBUG: dt_boxes num : 9, elapsed : 0.46276307106018066
+[2026/05/11 13:37:45] ppocr DEBUG: rec_res num  : 9, elapsed : 0.8083155155181885
+[2026/05/11 13:37:45] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 13:37:45] ppocr DEBUG: dt_boxes num : 4, elapsed : 0.3171803951263428
+[2026/05/11 13:37:46] ppocr DEBUG: rec_res num  : 4, elapsed : 0.41791343688964844
+[2026/05/11 13:37:46] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 13:37:46] ppocr DEBUG: dt_boxes num : 0, elapsed : 0.0419154167175293
+[2026/05/11 13:37:46] ppocr DEBUG: rec_res num  : 0, elapsed : 0.0
+[2026/05/11 13:37:46] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 13:37:46] ppocr DEBUG: dt_boxes num : 3, elapsed : 0.2583119869232178
+[2026/05/11 13:37:47] ppocr DEBUG: rec_res num  : 3, elapsed : 0.3207430839538574
+[2026/05/11 13:37:47] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 13:37:47] ppocr DEBUG: dt_boxes num : 6, elapsed : 0.8124299049377441
+[2026/05/11 13:37:49] ppocr DEBUG: rec_res num  : 6, elapsed : 1.1150193214416504
+[2026/05/11 13:37:49] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 13:37:49] ppocr DEBUG: dt_boxes num : 9, elapsed : 0.5206079483032227
+[2026/05/11 13:37:50] ppocr DEBUG: rec_res num  : 9, elapsed : 1.0572054386138916
+[2026/05/11 13:37:50] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 13:37:51] ppocr DEBUG: dt_boxes num : 9, elapsed : 0.6681840419769287
+[2026/05/11 13:37:52] ppocr DEBUG: rec_res num  : 9, elapsed : 0.9500830173492432
+[2026/05/11 13:37:52] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 13:37:52] ppocr DEBUG: dt_boxes num : 0, elapsed : 0.14871907234191895
+[2026/05/11 13:37:52] ppocr DEBUG: rec_res num  : 0, elapsed : 0.0
+[2026/05/11 13:37:52] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 13:37:53] ppocr DEBUG: dt_boxes num : 3, elapsed : 0.5575094223022461
+[2026/05/11 13:37:53] ppocr DEBUG: rec_res num  : 3, elapsed : 0.35402560234069824
+[2026/05/11 13:37:53] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 13:37:53] ppocr DEBUG: dt_boxes num : 9, elapsed : 0.2583425045013428
+[2026/05/11 13:37:54] ppocr DEBUG: rec_res num  : 9, elapsed : 1.106069564819336
+[2026/05/11 13:37:54] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 13:37:55] ppocr DEBUG: dt_boxes num : 0, elapsed : 0.176527738571167
+[2026/05/11 13:37:55] ppocr DEBUG: rec_res num  : 0, elapsed : 0.0
+[2026/05/11 13:37:55] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 13:37:56] ppocr DEBUG: dt_boxes num : 8, elapsed : 0.8427474498748779
+[2026/05/11 13:37:56] ppocr DEBUG: rec_res num  : 8, elapsed : 0.9220991134643555
+[2026/05/11 13:37:56] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 13:37:57] ppocr DEBUG: dt_boxes num : 0, elapsed : 0.23038482666015625
+[2026/05/11 13:37:57] ppocr DEBUG: rec_res num  : 0, elapsed : 0.0
+[2026/05/11 13:37:57] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 13:37:57] ppocr DEBUG: dt_boxes num : 0, elapsed : 0.2543511390686035
+[2026/05/11 13:37:57] ppocr DEBUG: rec_res num  : 0, elapsed : 0.0
+[2026/05/11 13:37:57] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 13:37:57] ppocr DEBUG: dt_boxes num : 1, elapsed : 0.30521535873413086
+[2026/05/11 13:37:57] ppocr DEBUG: rec_res num  : 1, elapsed : 0.15259337425231934
+[2026/05/11 13:37:57] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 13:37:58] ppocr DEBUG: dt_boxes num : 0, elapsed : 0.040892601013183594
+[2026/05/11 13:37:58] ppocr DEBUG: rec_res num  : 0, elapsed : 0.0
+[2026/05/11 13:37:58] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 13:37:58] ppocr DEBUG: dt_boxes num : 2, elapsed : 0.48669958114624023
+[2026/05/11 13:37:58] ppocr DEBUG: rec_res num  : 2, elapsed : 0.31615519523620605
+[2026/05/11 13:37:58] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 13:37:59] ppocr DEBUG: dt_boxes num : 7, elapsed : 0.8118579387664795
+[2026/05/11 13:38:00] ppocr DEBUG: rec_res num  : 7, elapsed : 0.6652493476867676
+[2026/05/11 13:38:00] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 13:38:01] ppocr DEBUG: dt_boxes num : 0, elapsed : 0.5720443725585938
+[2026/05/11 13:38:01] ppocr DEBUG: rec_res num  : 0, elapsed : 0.0
+[2026/05/11 13:38:01] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 13:38:01] ppocr DEBUG: dt_boxes num : 0, elapsed : 0.24434924125671387
+[2026/05/11 13:38:01] ppocr DEBUG: rec_res num  : 0, elapsed : 0.0
+[2026/05/11 13:38:01] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 13:38:02] ppocr DEBUG: dt_boxes num : 6, elapsed : 0.8188395500183105
+[2026/05/11 13:38:02] ppocr DEBUG: rec_res num  : 6, elapsed : 0.4996604919433594
+[2026/05/11 13:38:02] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 13:38:02] ppocr DEBUG: dt_boxes num : 0, elapsed : 0.0917348861694336
+[2026/05/11 13:38:02] ppocr DEBUG: rec_res num  : 0, elapsed : 0.0
+[2026/05/11 13:38:02] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 13:38:03] ppocr DEBUG: dt_boxes num : 5, elapsed : 0.7220966815948486
+[2026/05/11 13:38:04] ppocr DEBUG: rec_res num  : 5, elapsed : 0.48171448707580566
+[2026/05/11 13:38:04] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 13:38:04] ppocr DEBUG: dt_boxes num : 6, elapsed : 0.2263960838317871
+[2026/05/11 13:38:04] ppocr DEBUG: rec_res num  : 6, elapsed : 0.5096373558044434
+[2026/05/11 13:38:04] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 13:38:05] ppocr DEBUG: dt_boxes num : 0, elapsed : 0.3201432228088379
+[2026/05/11 13:38:05] ppocr DEBUG: rec_res num  : 0, elapsed : 0.0
+[2026/05/11 13:38:05] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 13:38:06] ppocr DEBUG: dt_boxes num : 3, elapsed : 0.8068432807922363
+[2026/05/11 13:38:06] ppocr DEBUG: rec_res num  : 3, elapsed : 0.32117581367492676
+[2026/05/11 13:38:06] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 13:38:07] ppocr DEBUG: dt_boxes num : 2, elapsed : 0.7330734729766846
+[2026/05/11 13:38:07] ppocr DEBUG: rec_res num  : 2, elapsed : 0.23440122604370117
+[2026/05/11 13:38:07] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 13:38:08] ppocr DEBUG: dt_boxes num : 2, elapsed : 0.8557417392730713
+[2026/05/11 13:38:08] ppocr DEBUG: rec_res num  : 2, elapsed : 0.16647911071777344
+[2026/05/11 13:38:08] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 13:38:09] ppocr DEBUG: dt_boxes num : 9, elapsed : 0.86826491355896
+[2026/05/11 13:38:11] ppocr DEBUG: rec_res num  : 9, elapsed : 1.6287808418273926
+INFO:     127.0.0.1:62082 - "POST /api/v1/products/recognize HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62089 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63318 - "GET / HTTP/1.1" 200 OK
+[2026/05/11 15:01:41] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:01:41] ppocr DEBUG: dt_boxes num : 2, elapsed : 0.16199326515197754
+[2026/05/11 15:01:41] ppocr DEBUG: rec_res num  : 2, elapsed : 0.18849635124206543
+[2026/05/11 15:01:41] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:01:42] ppocr DEBUG: dt_boxes num : 3, elapsed : 0.9823157787322998
+[2026/05/11 15:01:42] ppocr DEBUG: rec_res num  : 3, elapsed : 0.26429224014282227
+[2026/05/11 15:01:42] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:01:43] ppocr DEBUG: dt_boxes num : 6, elapsed : 0.6834726333618164
+[2026/05/11 15:01:44] ppocr DEBUG: rec_res num  : 6, elapsed : 0.6312808990478516
+[2026/05/11 15:01:44] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:01:45] ppocr DEBUG: dt_boxes num : 1, elapsed : 0.7873528003692627
+[2026/05/11 15:01:45] ppocr DEBUG: rec_res num  : 1, elapsed : 0.14777851104736328
+[2026/05/11 15:01:45] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:01:45] ppocr DEBUG: dt_boxes num : 6, elapsed : 0.6706259250640869
+[2026/05/11 15:01:46] ppocr DEBUG: rec_res num  : 6, elapsed : 0.6674056053161621
+[2026/05/11 15:01:46] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:01:47] ppocr DEBUG: dt_boxes num : 7, elapsed : 0.5669050216674805
+[2026/05/11 15:01:48] ppocr DEBUG: rec_res num  : 7, elapsed : 0.76104736328125
+[2026/05/11 15:01:48] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:01:48] ppocr DEBUG: dt_boxes num : 1, elapsed : 0.8084688186645508
+[2026/05/11 15:01:48] ppocr DEBUG: rec_res num  : 1, elapsed : 0.10604190826416016
+[2026/05/11 15:01:49] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:01:49] ppocr DEBUG: dt_boxes num : 6, elapsed : 0.16217637062072754
+[2026/05/11 15:01:49] ppocr DEBUG: rec_res num  : 6, elapsed : 0.5773229598999023
+[2026/05/11 15:01:49] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:01:50] ppocr DEBUG: dt_boxes num : 0, elapsed : 0.6991903781890869
+[2026/05/11 15:01:50] ppocr DEBUG: rec_res num  : 0, elapsed : 0.0
+[2026/05/11 15:01:50] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:01:51] ppocr DEBUG: dt_boxes num : 4, elapsed : 0.7969307899475098
+[2026/05/11 15:01:51] ppocr DEBUG: rec_res num  : 4, elapsed : 0.44956278800964355
+[2026/05/11 15:01:51] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:01:51] ppocr DEBUG: dt_boxes num : 1, elapsed : 0.11776971817016602
+[2026/05/11 15:01:52] ppocr DEBUG: rec_res num  : 1, elapsed : 0.08533930778503418
+[2026/05/11 15:01:52] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:01:52] ppocr DEBUG: dt_boxes num : 3, elapsed : 0.7511231899261475
+[2026/05/11 15:01:53] ppocr DEBUG: rec_res num  : 3, elapsed : 0.3202803134918213
+[2026/05/11 15:01:53] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:01:54] ppocr DEBUG: dt_boxes num : 0, elapsed : 0.8286447525024414
+[2026/05/11 15:01:54] ppocr DEBUG: rec_res num  : 0, elapsed : 0.0
+[2026/05/11 15:01:54] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:01:54] ppocr DEBUG: dt_boxes num : 1, elapsed : 0.8423967361450195
+[2026/05/11 15:01:55] ppocr DEBUG: rec_res num  : 1, elapsed : 0.11968231201171875
+[2026/05/11 15:01:55] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:01:55] ppocr DEBUG: dt_boxes num : 4, elapsed : 0.11967992782592773
+[2026/05/11 15:01:55] ppocr DEBUG: rec_res num  : 4, elapsed : 0.38163280487060547
+[2026/05/11 15:01:55] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:01:56] ppocr DEBUG: dt_boxes num : 1, elapsed : 0.647935152053833
+[2026/05/11 15:01:56] ppocr DEBUG: rec_res num  : 1, elapsed : 0.08377647399902344
+[2026/05/11 15:01:56] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:01:57] ppocr DEBUG: dt_boxes num : 2, elapsed : 0.7311933040618896
+[2026/05/11 15:01:57] ppocr DEBUG: rec_res num  : 2, elapsed : 0.24325990676879883
+[2026/05/11 15:01:57] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:01:57] ppocr DEBUG: dt_boxes num : 0, elapsed : 0.12369489669799805
+[2026/05/11 15:01:57] ppocr DEBUG: rec_res num  : 0, elapsed : 0.0
+[2026/05/11 15:01:57] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:01:58] ppocr DEBUG: dt_boxes num : 6, elapsed : 0.496232271194458
+[2026/05/11 15:01:58] ppocr DEBUG: rec_res num  : 6, elapsed : 0.5488355159759521
+[2026/05/11 15:01:58] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:01:59] ppocr DEBUG: dt_boxes num : 2, elapsed : 0.7113358974456787
+[2026/05/11 15:01:59] ppocr DEBUG: rec_res num  : 2, elapsed : 0.1725175380706787
+[2026/05/11 15:01:59] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:02:00] ppocr DEBUG: dt_boxes num : 6, elapsed : 0.8158900737762451
+[2026/05/11 15:02:01] ppocr DEBUG: rec_res num  : 6, elapsed : 0.631394624710083
+[2026/05/11 15:02:01] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:02:02] ppocr DEBUG: dt_boxes num : 4, elapsed : 0.8666584491729736
+[2026/05/11 15:02:02] ppocr DEBUG: rec_res num  : 4, elapsed : 0.32367515563964844
+[2026/05/11 15:02:02] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:02:03] ppocr DEBUG: dt_boxes num : 6, elapsed : 0.6904747486114502
+[2026/05/11 15:02:03] ppocr DEBUG: rec_res num  : 6, elapsed : 0.7236847877502441
+[2026/05/11 15:02:03] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:02:04] ppocr DEBUG: dt_boxes num : 1, elapsed : 0.4538295269012451
+[2026/05/11 15:02:04] ppocr DEBUG: rec_res num  : 1, elapsed : 0.14564132690429688
+[2026/05/11 15:02:04] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:02:04] ppocr DEBUG: dt_boxes num : 0, elapsed : 0.340653657913208
+[2026/05/11 15:02:04] ppocr DEBUG: rec_res num  : 0, elapsed : 0.0
+[2026/05/11 15:02:04] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:02:05] ppocr DEBUG: dt_boxes num : 0, elapsed : 0.31485915184020996
+[2026/05/11 15:02:05] ppocr DEBUG: rec_res num  : 0, elapsed : 0.0
+[2026/05/11 15:02:05] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:02:05] ppocr DEBUG: dt_boxes num : 0, elapsed : 0.2762784957885742
+[2026/05/11 15:02:05] ppocr DEBUG: rec_res num  : 0, elapsed : 0.0
+[2026/05/11 15:02:05] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:02:05] ppocr DEBUG: dt_boxes num : 0, elapsed : 0.21593785285949707
+[2026/05/11 15:02:05] ppocr DEBUG: rec_res num  : 0, elapsed : 0.0
+[2026/05/11 15:02:05] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:02:05] ppocr DEBUG: dt_boxes num : 0, elapsed : 0.20348739624023438
+[2026/05/11 15:02:05] ppocr DEBUG: rec_res num  : 0, elapsed : 0.0
+[2026/05/11 15:02:05] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:02:06] ppocr DEBUG: dt_boxes num : 4, elapsed : 0.32630252838134766
+[2026/05/11 15:02:06] ppocr DEBUG: rec_res num  : 4, elapsed : 0.38956594467163086
+[2026/05/11 15:02:06] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:02:07] ppocr DEBUG: dt_boxes num : 8, elapsed : 0.6523420810699463
+[2026/05/11 15:02:08] ppocr DEBUG: rec_res num  : 8, elapsed : 0.7902495861053467
+[2026/05/11 15:02:08] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:02:08] ppocr DEBUG: dt_boxes num : 8, elapsed : 0.6144795417785645
+[2026/05/11 15:02:09] ppocr DEBUG: rec_res num  : 8, elapsed : 0.6575589179992676
+[2026/05/11 15:02:09] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:02:10] ppocr DEBUG: dt_boxes num : 1, elapsed : 0.6986074447631836
+[2026/05/11 15:02:10] ppocr DEBUG: rec_res num  : 1, elapsed : 0.16109180450439453
+[2026/05/11 15:02:10] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:02:10] ppocr DEBUG: dt_boxes num : 0, elapsed : 0.050309181213378906
+[2026/05/11 15:02:10] ppocr DEBUG: rec_res num  : 0, elapsed : 0.0
+[2026/05/11 15:02:10] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:02:10] ppocr DEBUG: dt_boxes num : 0, elapsed : 0.16461753845214844
+[2026/05/11 15:02:10] ppocr DEBUG: rec_res num  : 0, elapsed : 0.0
+[2026/05/11 15:02:10] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:02:10] ppocr DEBUG: dt_boxes num : 0, elapsed : 0.24186038970947266
+[2026/05/11 15:02:10] ppocr DEBUG: rec_res num  : 0, elapsed : 0.0
+[2026/05/11 15:02:10] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:02:11] ppocr DEBUG: dt_boxes num : 1, elapsed : 0.3551480770111084
+[2026/05/11 15:02:11] ppocr DEBUG: rec_res num  : 1, elapsed : 0.11469435691833496
+[2026/05/11 15:02:11] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:02:12] ppocr DEBUG: dt_boxes num : 5, elapsed : 0.668736457824707
+[2026/05/11 15:02:12] ppocr DEBUG: rec_res num  : 5, elapsed : 0.6594557762145996
+[2026/05/11 15:02:12] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:02:13] ppocr DEBUG: dt_boxes num : 0, elapsed : 0.3170654773712158
+[2026/05/11 15:02:13] ppocr DEBUG: rec_res num  : 0, elapsed : 0.0
+[2026/05/11 15:02:13] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:02:14] ppocr DEBUG: dt_boxes num : 5, elapsed : 0.7834253311157227
+[2026/05/11 15:02:14] ppocr DEBUG: rec_res num  : 5, elapsed : 0.6916935443878174
+[2026/05/11 15:02:14] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:02:15] ppocr DEBUG: dt_boxes num : 5, elapsed : 0.5632827281951904
+[2026/05/11 15:02:16] ppocr DEBUG: rec_res num  : 5, elapsed : 0.7642397880554199
+[2026/05/11 15:02:16] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:02:16] ppocr DEBUG: dt_boxes num : 2, elapsed : 0.35196423530578613
+[2026/05/11 15:02:16] ppocr DEBUG: rec_res num  : 2, elapsed : 0.28382158279418945
+[2026/05/11 15:02:16] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:02:18] ppocr DEBUG: dt_boxes num : 5, elapsed : 1.1925437450408936
+[2026/05/11 15:02:18] ppocr DEBUG: rec_res num  : 5, elapsed : 0.559145450592041
+[2026/05/11 15:02:18] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:02:19] ppocr DEBUG: dt_boxes num : 2, elapsed : 0.499237060546875
+[2026/05/11 15:02:19] ppocr DEBUG: rec_res num  : 2, elapsed : 0.17866110801696777
+[2026/05/11 15:02:19] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:02:20] ppocr DEBUG: dt_boxes num : 1, elapsed : 0.7032256126403809
+[2026/05/11 15:02:20] ppocr DEBUG: rec_res num  : 1, elapsed : 0.1470797061920166
+[2026/05/11 15:02:20] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:02:21] ppocr DEBUG: dt_boxes num : 5, elapsed : 0.7746307849884033
+[2026/05/11 15:02:21] ppocr DEBUG: rec_res num  : 5, elapsed : 0.5445044040679932
+[2026/05/11 15:02:21] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:02:21] ppocr DEBUG: dt_boxes num : 1, elapsed : 0.11399531364440918
+[2026/05/11 15:02:21] ppocr DEBUG: rec_res num  : 1, elapsed : 0.09175682067871094
+[2026/05/11 15:02:21] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:02:22] ppocr DEBUG: dt_boxes num : 0, elapsed : 0.21901917457580566
+[2026/05/11 15:02:22] ppocr DEBUG: rec_res num  : 0, elapsed : 0.0
+[2026/05/11 15:02:22] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:02:22] ppocr DEBUG: dt_boxes num : 0, elapsed : 0.2788569927215576
+[2026/05/11 15:02:22] ppocr DEBUG: rec_res num  : 0, elapsed : 0.0
+[2026/05/11 15:02:22] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:02:23] ppocr DEBUG: dt_boxes num : 3, elapsed : 0.8324358463287354
+[2026/05/11 15:02:23] ppocr DEBUG: rec_res num  : 3, elapsed : 0.5479421615600586
+[2026/05/11 15:02:23] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:02:24] ppocr DEBUG: dt_boxes num : 1, elapsed : 0.6404931545257568
+[2026/05/11 15:02:24] ppocr DEBUG: rec_res num  : 1, elapsed : 0.08776736259460449
+[2026/05/11 15:02:24] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:02:25] ppocr DEBUG: dt_boxes num : 0, elapsed : 0.6325199604034424
+[2026/05/11 15:02:25] ppocr DEBUG: rec_res num  : 0, elapsed : 0.0
+[2026/05/11 15:02:25] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:02:25] ppocr DEBUG: dt_boxes num : 0, elapsed : 0.2389659881591797
+[2026/05/11 15:02:25] ppocr DEBUG: rec_res num  : 0, elapsed : 0.0
+[2026/05/11 15:02:25] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:02:26] ppocr DEBUG: dt_boxes num : 0, elapsed : 0.8742220401763916
+[2026/05/11 15:02:26] ppocr DEBUG: rec_res num  : 0, elapsed : 0.0
+[2026/05/11 15:02:26] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:02:26] ppocr DEBUG: dt_boxes num : 1, elapsed : 0.1841282844543457
+[2026/05/11 15:02:26] ppocr DEBUG: rec_res num  : 1, elapsed : 0.08486104011535645
+[2026/05/11 15:02:26] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:02:27] ppocr DEBUG: dt_boxes num : 1, elapsed : 0.18656277656555176
+[2026/05/11 15:02:27] ppocr DEBUG: rec_res num  : 1, elapsed : 0.08779358863830566
+[2026/05/11 15:02:27] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:02:27] ppocr DEBUG: dt_boxes num : 0, elapsed : 0.1894512176513672
+[2026/05/11 15:02:27] ppocr DEBUG: rec_res num  : 0, elapsed : 0.0
+[2026/05/11 15:02:27] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:02:28] ppocr DEBUG: dt_boxes num : 2, elapsed : 0.7990634441375732
+[2026/05/11 15:02:28] ppocr DEBUG: rec_res num  : 2, elapsed : 0.27529382705688477
+[2026/05/11 15:02:28] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:02:28] ppocr DEBUG: dt_boxes num : 1, elapsed : 0.19501709938049316
+[2026/05/11 15:02:28] ppocr DEBUG: rec_res num  : 1, elapsed : 0.08528923988342285
+[2026/05/11 15:02:28] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:02:29] ppocr DEBUG: dt_boxes num : 1, elapsed : 0.6682064533233643
+[2026/05/11 15:02:29] ppocr DEBUG: rec_res num  : 1, elapsed : 0.08380842208862305
+[2026/05/11 15:02:29] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:02:30] ppocr DEBUG: dt_boxes num : 1, elapsed : 0.7106788158416748
+[2026/05/11 15:02:30] ppocr DEBUG: rec_res num  : 1, elapsed : 0.0868232250213623
+[2026/05/11 15:02:30] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:02:31] ppocr DEBUG: dt_boxes num : 2, elapsed : 0.7124977111816406
+[2026/05/11 15:02:31] ppocr DEBUG: rec_res num  : 2, elapsed : 0.23138117790222168
+[2026/05/11 15:02:31] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:02:32] ppocr DEBUG: dt_boxes num : 0, elapsed : 0.5566649436950684
+[2026/05/11 15:02:32] ppocr DEBUG: rec_res num  : 0, elapsed : 0.0
+[2026/05/11 15:02:32] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:02:32] ppocr DEBUG: dt_boxes num : 1, elapsed : 0.7499246597290039
+[2026/05/11 15:02:32] ppocr DEBUG: rec_res num  : 1, elapsed : 0.08362364768981934
+[2026/05/11 15:02:32] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:02:33] ppocr DEBUG: dt_boxes num : 0, elapsed : 0.3135988712310791
+[2026/05/11 15:02:33] ppocr DEBUG: rec_res num  : 0, elapsed : 0.0
+[2026/05/11 15:02:33] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:02:33] ppocr DEBUG: dt_boxes num : 0, elapsed : 0.11719346046447754
+[2026/05/11 15:02:33] ppocr DEBUG: rec_res num  : 0, elapsed : 0.0
+[2026/05/11 15:02:33] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:02:34] ppocr DEBUG: dt_boxes num : 1, elapsed : 0.6708025932312012
+[2026/05/11 15:02:34] ppocr DEBUG: rec_res num  : 1, elapsed : 0.13968563079833984
+[2026/05/11 15:02:34] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:02:35] ppocr DEBUG: dt_boxes num : 1, elapsed : 0.7631096839904785
+[2026/05/11 15:02:35] ppocr DEBUG: rec_res num  : 1, elapsed : 0.08880996704101562
+[2026/05/11 15:02:35] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:02:36] ppocr DEBUG: dt_boxes num : 2, elapsed : 0.8420369625091553
+[2026/05/11 15:02:36] ppocr DEBUG: rec_res num  : 2, elapsed : 0.17008018493652344
+[2026/05/11 15:02:36] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:02:36] ppocr DEBUG: dt_boxes num : 6, elapsed : 0.5348460674285889
+[2026/05/11 15:02:37] ppocr DEBUG: rec_res num  : 6, elapsed : 0.6334426403045654
+[2026/05/11 15:02:37] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:02:37] ppocr DEBUG: dt_boxes num : 0, elapsed : 0.13334941864013672
+[2026/05/11 15:02:37] ppocr DEBUG: rec_res num  : 0, elapsed : 0.0
+[2026/05/11 15:02:37] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:02:38] ppocr DEBUG: dt_boxes num : 6, elapsed : 0.6109664440155029
+[2026/05/11 15:02:38] ppocr DEBUG: rec_res num  : 6, elapsed : 0.6680953502655029
+[2026/05/11 15:02:39] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:02:39] ppocr DEBUG: dt_boxes num : 4, elapsed : 0.5794477462768555
+[2026/05/11 15:02:40] ppocr DEBUG: rec_res num  : 4, elapsed : 0.4593493938446045
+[2026/05/11 15:02:40] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:02:40] ppocr DEBUG: dt_boxes num : 3, elapsed : 0.15656304359436035
+[2026/05/11 15:02:40] ppocr DEBUG: rec_res num  : 3, elapsed : 0.31778645515441895
+[2026/05/11 15:02:40] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:02:40] ppocr DEBUG: dt_boxes num : 4, elapsed : 0.22742247581481934
+[2026/05/11 15:02:41] ppocr DEBUG: rec_res num  : 4, elapsed : 0.4185199737548828
+[2026/05/11 15:02:41] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:02:42] ppocr DEBUG: dt_boxes num : 2, elapsed : 0.715132474899292
+[2026/05/11 15:02:42] ppocr DEBUG: rec_res num  : 2, elapsed : 0.21348071098327637
+[2026/05/11 15:02:42] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:02:42] ppocr DEBUG: dt_boxes num : 0, elapsed : 0.32709455490112305
+[2026/05/11 15:02:42] ppocr DEBUG: rec_res num  : 0, elapsed : 0.0
+[2026/05/11 15:02:42] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:02:42] ppocr DEBUG: dt_boxes num : 0, elapsed : 0.16127634048461914
+[2026/05/11 15:02:42] ppocr DEBUG: rec_res num  : 0, elapsed : 0.0
+[2026/05/11 15:02:42] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:02:42] ppocr DEBUG: dt_boxes num : 0, elapsed : 0.13055729866027832
+[2026/05/11 15:02:42] ppocr DEBUG: rec_res num  : 0, elapsed : 0.0
+[2026/05/11 15:02:42] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:02:43] ppocr DEBUG: dt_boxes num : 0, elapsed : 0.18768525123596191
+[2026/05/11 15:02:43] ppocr DEBUG: rec_res num  : 0, elapsed : 0.0
+[2026/05/11 15:02:43] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:02:43] ppocr DEBUG: dt_boxes num : 0, elapsed : 0.2628190517425537
+[2026/05/11 15:02:43] ppocr DEBUG: rec_res num  : 0, elapsed : 0.0
+[2026/05/11 15:02:43] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:02:43] ppocr DEBUG: dt_boxes num : 5, elapsed : 0.5122299194335938
+[2026/05/11 15:02:44] ppocr DEBUG: rec_res num  : 5, elapsed : 0.4935948848724365
+[2026/05/11 15:02:44] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:02:45] ppocr DEBUG: dt_boxes num : 1, elapsed : 0.6902697086334229
+[2026/05/11 15:02:45] ppocr DEBUG: rec_res num  : 1, elapsed : 0.16013669967651367
+[2026/05/11 15:02:45] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:02:45] ppocr DEBUG: dt_boxes num : 6, elapsed : 0.20551490783691406
+[2026/05/11 15:02:46] ppocr DEBUG: rec_res num  : 6, elapsed : 0.6323540210723877
+[2026/05/11 15:02:46] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:02:47] ppocr DEBUG: dt_boxes num : 6, elapsed : 0.8427290916442871
+[2026/05/11 15:02:47] ppocr DEBUG: rec_res num  : 6, elapsed : 0.7088391780853271
+[2026/05/11 15:02:47] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:02:48] ppocr DEBUG: dt_boxes num : 2, elapsed : 0.868560791015625
+[2026/05/11 15:02:49] ppocr DEBUG: rec_res num  : 2, elapsed : 0.24634146690368652
+[2026/05/11 15:02:49] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:02:49] ppocr DEBUG: dt_boxes num : 0, elapsed : 0.663902997970581
+[2026/05/11 15:02:49] ppocr DEBUG: rec_res num  : 0, elapsed : 0.0
+[2026/05/11 15:02:49] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:02:50] ppocr DEBUG: dt_boxes num : 5, elapsed : 0.25330471992492676
+[2026/05/11 15:02:50] ppocr DEBUG: rec_res num  : 5, elapsed : 0.5566244125366211
+[2026/05/11 15:02:50] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:02:51] ppocr DEBUG: dt_boxes num : 2, elapsed : 0.7292394638061523
+[2026/05/11 15:02:51] ppocr DEBUG: rec_res num  : 2, elapsed : 0.17453384399414062
+[2026/05/11 15:02:51] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:02:52] ppocr DEBUG: dt_boxes num : 2, elapsed : 0.8168032169342041
+[2026/05/11 15:02:52] ppocr DEBUG: rec_res num  : 2, elapsed : 0.1740424633026123
+[2026/05/11 15:02:52] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:02:53] ppocr DEBUG: dt_boxes num : 2, elapsed : 0.766857385635376
+[2026/05/11 15:02:53] ppocr DEBUG: rec_res num  : 2, elapsed : 0.17357420921325684
+[2026/05/11 15:02:53] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:02:54] ppocr DEBUG: dt_boxes num : 2, elapsed : 0.9448814392089844
+[2026/05/11 15:02:54] ppocr DEBUG: rec_res num  : 2, elapsed : 0.18131017684936523
+[2026/05/11 15:02:54] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:02:55] ppocr DEBUG: dt_boxes num : 4, elapsed : 0.7071533203125
+[2026/05/11 15:02:56] ppocr DEBUG: rec_res num  : 4, elapsed : 0.5500366687774658
+[2026/05/11 15:02:56] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:02:56] ppocr DEBUG: dt_boxes num : 0, elapsed : 0.7060666084289551
+[2026/05/11 15:02:56] ppocr DEBUG: rec_res num  : 0, elapsed : 0.0
+[2026/05/11 15:02:56] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:02:57] ppocr DEBUG: dt_boxes num : 0, elapsed : 0.4966158866882324
+[2026/05/11 15:02:57] ppocr DEBUG: rec_res num  : 0, elapsed : 0.0
+[2026/05/11 15:02:57] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:02:57] ppocr DEBUG: dt_boxes num : 0, elapsed : 0.36159539222717285
+[2026/05/11 15:02:57] ppocr DEBUG: rec_res num  : 0, elapsed : 0.0
+[2026/05/11 15:02:57] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:02:58] ppocr DEBUG: dt_boxes num : 0, elapsed : 0.34282541275024414
+[2026/05/11 15:02:58] ppocr DEBUG: rec_res num  : 0, elapsed : 0.0
+[2026/05/11 15:02:58] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:02:58] ppocr DEBUG: dt_boxes num : 0, elapsed : 0.1973128318786621
+[2026/05/11 15:02:58] ppocr DEBUG: rec_res num  : 0, elapsed : 0.0
+[2026/05/11 15:02:58] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:02:58] ppocr DEBUG: dt_boxes num : 0, elapsed : 0.2246088981628418
+[2026/05/11 15:02:58] ppocr DEBUG: rec_res num  : 0, elapsed : 0.0
+[2026/05/11 15:02:58] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:02:59] ppocr DEBUG: dt_boxes num : 5, elapsed : 0.8694884777069092
+[2026/05/11 15:03:00] ppocr DEBUG: rec_res num  : 5, elapsed : 0.6833024024963379
+[2026/05/11 15:03:00] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:03:00] ppocr DEBUG: dt_boxes num : 9, elapsed : 0.5860292911529541
+[2026/05/11 15:03:01] ppocr DEBUG: rec_res num  : 9, elapsed : 0.8792018890380859
+[2026/05/11 15:03:01] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:03:02] ppocr DEBUG: dt_boxes num : 6, elapsed : 0.4538698196411133
+[2026/05/11 15:03:02] ppocr DEBUG: rec_res num  : 6, elapsed : 0.5339131355285645
+[2026/05/11 15:03:02] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:03:03] ppocr DEBUG: dt_boxes num : 1, elapsed : 0.3038041591644287
+[2026/05/11 15:03:03] ppocr DEBUG: rec_res num  : 1, elapsed : 0.16156959533691406
+[2026/05/11 15:03:03] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:03:04] ppocr DEBUG: dt_boxes num : 9, elapsed : 0.686046838760376
+[2026/05/11 15:03:04] ppocr DEBUG: rec_res num  : 9, elapsed : 0.8199186325073242
+[2026/05/11 15:03:04] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:03:05] ppocr DEBUG: dt_boxes num : 7, elapsed : 0.5803422927856445
+[2026/05/11 15:03:06] ppocr DEBUG: rec_res num  : 7, elapsed : 1.084906816482544
+[2026/05/11 15:03:06] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:03:06] ppocr DEBUG: dt_boxes num : 0, elapsed : 0.20198297500610352
+[2026/05/11 15:03:06] ppocr DEBUG: rec_res num  : 0, elapsed : 0.0
+[2026/05/11 15:03:06] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:03:07] ppocr DEBUG: dt_boxes num : 1, elapsed : 0.36752915382385254
+[2026/05/11 15:03:07] ppocr DEBUG: rec_res num  : 1, elapsed : 0.09325909614562988
+[2026/05/11 15:03:07] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:03:08] ppocr DEBUG: dt_boxes num : 8, elapsed : 0.5933325290679932
+[2026/05/11 15:03:08] ppocr DEBUG: rec_res num  : 8, elapsed : 0.8649826049804688
+[2026/05/11 15:03:08] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:03:09] ppocr DEBUG: dt_boxes num : 0, elapsed : 0.14213347434997559
+[2026/05/11 15:03:09] ppocr DEBUG: rec_res num  : 0, elapsed : 0.0
+[2026/05/11 15:03:09] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:03:09] ppocr DEBUG: dt_boxes num : 7, elapsed : 0.47838330268859863
+[2026/05/11 15:03:10] ppocr DEBUG: rec_res num  : 7, elapsed : 0.9158623218536377
+[2026/05/11 15:03:10] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:03:10] ppocr DEBUG: dt_boxes num : 0, elapsed : 0.1893024444580078
+[2026/05/11 15:03:10] ppocr DEBUG: rec_res num  : 0, elapsed : 0.0
+[2026/05/11 15:03:10] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:03:11] ppocr DEBUG: dt_boxes num : 7, elapsed : 0.7680454254150391
+[2026/05/11 15:03:12] ppocr DEBUG: rec_res num  : 7, elapsed : 0.8789212703704834
+[2026/05/11 15:03:12] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:03:12] ppocr DEBUG: dt_boxes num : 0, elapsed : 0.535742998123169
+[2026/05/11 15:03:12] ppocr DEBUG: rec_res num  : 0, elapsed : 0.0
+[2026/05/11 15:03:12] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:03:13] ppocr DEBUG: dt_boxes num : 0, elapsed : 0.42719006538391113
+[2026/05/11 15:03:13] ppocr DEBUG: rec_res num  : 0, elapsed : 0.0
+[2026/05/11 15:03:13] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:03:13] ppocr DEBUG: dt_boxes num : 6, elapsed : 0.196760892868042
+[2026/05/11 15:03:14] ppocr DEBUG: rec_res num  : 6, elapsed : 0.6371824741363525
+[2026/05/11 15:03:14] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:03:15] ppocr DEBUG: dt_boxes num : 10, elapsed : 0.8606610298156738
+[2026/05/11 15:03:16] ppocr DEBUG: rec_res num  : 10, elapsed : 0.9677865505218506
+[2026/05/11 15:03:16] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:03:16] ppocr DEBUG: dt_boxes num : 6, elapsed : 0.7017557621002197
+[2026/05/11 15:03:17] ppocr DEBUG: rec_res num  : 6, elapsed : 0.6642465591430664
+[2026/05/11 15:03:17] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:03:17] ppocr DEBUG: dt_boxes num : 8, elapsed : 0.15479755401611328
+[2026/05/11 15:03:18] ppocr DEBUG: rec_res num  : 8, elapsed : 0.7423405647277832
+[2026/05/11 15:03:18] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:03:18] ppocr DEBUG: dt_boxes num : 3, elapsed : 0.2280597686767578
+[2026/05/11 15:03:19] ppocr DEBUG: rec_res num  : 3, elapsed : 0.3670501708984375
+[2026/05/11 15:03:19] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:03:19] ppocr DEBUG: dt_boxes num : 6, elapsed : 0.44884228706359863
+[2026/05/11 15:03:20] ppocr DEBUG: rec_res num  : 6, elapsed : 0.8811533451080322
+[2026/05/11 15:03:20] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:03:20] ppocr DEBUG: dt_boxes num : 0, elapsed : 0.17852258682250977
+[2026/05/11 15:03:20] ppocr DEBUG: rec_res num  : 0, elapsed : 0.0
+[2026/05/11 15:03:20] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:03:21] ppocr DEBUG: dt_boxes num : 0, elapsed : 0.20494842529296875
+[2026/05/11 15:03:21] ppocr DEBUG: rec_res num  : 0, elapsed : 0.0
+[2026/05/11 15:03:21] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:03:21] ppocr DEBUG: dt_boxes num : 6, elapsed : 0.8502805233001709
+[2026/05/11 15:03:22] ppocr DEBUG: rec_res num  : 6, elapsed : 0.68300461769104
+[2026/05/11 15:03:22] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:03:23] ppocr DEBUG: dt_boxes num : 7, elapsed : 0.8181345462799072
+[2026/05/11 15:03:24] ppocr DEBUG: rec_res num  : 7, elapsed : 0.8332521915435791
+[2026/05/11 15:03:24] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:03:24] ppocr DEBUG: dt_boxes num : 0, elapsed : 0.3170039653778076
+[2026/05/11 15:03:24] ppocr DEBUG: rec_res num  : 0, elapsed : 0.0
+[2026/05/11 15:03:24] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:03:25] ppocr DEBUG: dt_boxes num : 4, elapsed : 0.5243074893951416
+[2026/05/11 15:03:25] ppocr DEBUG: rec_res num  : 4, elapsed : 0.39699459075927734
+[2026/05/11 15:03:25] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:03:26] ppocr DEBUG: dt_boxes num : 1, elapsed : 0.4517996311187744
+[2026/05/11 15:03:26] ppocr DEBUG: rec_res num  : 1, elapsed : 0.17054533958435059
+[2026/05/11 15:03:26] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:03:26] ppocr DEBUG: dt_boxes num : 4, elapsed : 0.18395733833312988
+[2026/05/11 15:03:27] ppocr DEBUG: rec_res num  : 4, elapsed : 0.48961353302001953
+[2026/05/11 15:03:27] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:03:27] ppocr DEBUG: dt_boxes num : 2, elapsed : 0.5139307975769043
+[2026/05/11 15:03:27] ppocr DEBUG: rec_res num  : 2, elapsed : 0.23939085006713867
+[2026/05/11 15:03:27] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:03:28] ppocr DEBUG: dt_boxes num : 0, elapsed : 0.20619726181030273
+[2026/05/11 15:03:28] ppocr DEBUG: rec_res num  : 0, elapsed : 0.0
+[2026/05/11 15:03:28] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:03:28] ppocr DEBUG: dt_boxes num : 1, elapsed : 0.15857672691345215
+[2026/05/11 15:03:28] ppocr DEBUG: rec_res num  : 1, elapsed : 0.09029912948608398
+[2026/05/11 15:03:28] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:03:28] ppocr DEBUG: dt_boxes num : 2, elapsed : 0.4304485321044922
+[2026/05/11 15:03:28] ppocr DEBUG: rec_res num  : 2, elapsed : 0.14400100708007812
+[2026/05/11 15:03:28] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:03:29] ppocr DEBUG: dt_boxes num : 0, elapsed : 0.22646474838256836
+[2026/05/11 15:03:29] ppocr DEBUG: rec_res num  : 0, elapsed : 0.0
+[2026/05/11 15:03:29] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:03:29] ppocr DEBUG: dt_boxes num : 0, elapsed : 0.5631582736968994
+[2026/05/11 15:03:29] ppocr DEBUG: rec_res num  : 0, elapsed : 0.0
+[2026/05/11 15:03:29] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:03:30] ppocr DEBUG: dt_boxes num : 1, elapsed : 0.8646795749664307
+[2026/05/11 15:03:30] ppocr DEBUG: rec_res num  : 1, elapsed : 0.21518516540527344
+[2026/05/11 15:03:31] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:03:31] ppocr DEBUG: dt_boxes num : 5, elapsed : 0.7710154056549072
+[2026/05/11 15:03:32] ppocr DEBUG: rec_res num  : 5, elapsed : 0.6763067245483398
+[2026/05/11 15:03:32] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:03:33] ppocr DEBUG: dt_boxes num : 1, elapsed : 0.9138264656066895
+[2026/05/11 15:03:33] ppocr DEBUG: rec_res num  : 1, elapsed : 0.12183380126953125
+[2026/05/11 15:03:33] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:03:34] ppocr DEBUG: dt_boxes num : 0, elapsed : 0.573645830154419
+[2026/05/11 15:03:34] ppocr DEBUG: rec_res num  : 0, elapsed : 0.0
+[2026/05/11 15:03:34] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:03:35] ppocr DEBUG: dt_boxes num : 1, elapsed : 1.0132648944854736
+[2026/05/11 15:03:35] ppocr DEBUG: rec_res num  : 1, elapsed : 0.10276961326599121
+[2026/05/11 15:03:35] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:03:36] ppocr DEBUG: dt_boxes num : 4, elapsed : 0.8504939079284668
+[2026/05/11 15:03:36] ppocr DEBUG: rec_res num  : 4, elapsed : 0.43512439727783203
+[2026/05/11 15:03:36] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:03:37] ppocr DEBUG: dt_boxes num : 0, elapsed : 0.35918164253234863
+[2026/05/11 15:03:37] ppocr DEBUG: rec_res num  : 0, elapsed : 0.0
+[2026/05/11 15:03:37] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:03:37] ppocr DEBUG: dt_boxes num : 9, elapsed : 0.24137496948242188
+[2026/05/11 15:03:38] ppocr DEBUG: rec_res num  : 9, elapsed : 0.9598517417907715
+INFO:     127.0.0.1:63319 - "POST /api/v1/products/recognize HTTP/1.1" 200 OK
+ INFO:     127.0.0.1:63355 - "GET /api/v1/health HTTP/1.1" 200 OK
+2026-05-11T15:04:38-0500 INFO app.services.pipeline trace_id=0f4974ca-9b3b-4b3d-8fb9-24ae3e19c13a inicio procesamiento producto
+2026-05-11T15:04:38-0500 INFO app.services.pipeline trace_id=0f4974ca-9b3b-4b3d-8fb9-24ae3e19c13a imagen decodificada
+2026-05-11T15:04:45-0500 INFO app.services.pipeline trace_id=0f4974ca-9b3b-4b3d-8fb9-24ae3e19c13a deteccion yolo completada bbox=(75, 10, 212, 322) confidence=0.010736525058746338 fallback=False
+[2026/05/11 15:04:50] ppocr DEBUG: Namespace(help='==SUPPRESS==', use_gpu=False, use_xpu=False, use_npu=False, use_mlu=False, use_gcu=False, ir_optim=True, use_tensorrt=False, min_subgraph_size=15, precision='fp32', gpu_mem=500, gpu_id=0, image_dir=None, page_num=0, det_algorithm='DB', det_model_dir='C:\\Users\\marcelo/.paddleocr/whl\\det\\en\\en_PP-OCRv3_det_infer', det_limit_side_len=960, det_limit_type='max', det_box_type='quad', det_db_thresh=0.3, det_db_box_thresh=0.6, det_db_unclip_ratio=1.5, max_batch_size=10, use_dilation=False, det_db_score_mode='fast', det_east_score_thresh=0.8, det_east_cover_thresh=0.1, det_east_nms_thresh=0.2, det_sast_score_thresh=0.5, det_sast_nms_thresh=0.2, det_pse_thresh=0, det_pse_box_thresh=0.85, det_pse_min_area=16, det_pse_scale=1, scales=[8, 16, 32], alpha=1.0, beta=1.0, fourier_degree=5, rec_algorithm='SVTR_LCNet', rec_model_dir='C:\\Users\\marcelo/.paddleocr/whl\\rec\\latin\\latin_PP-OCRv3_rec_infer', rec_image_inverse=True, rec_image_shape='3, 48, 320', rec_batch_num=6, max_text_length=25, rec_char_dict_path='C:\\Users\\marcelo\\AppData\\Roaming\\Python\\Python311\\site-packages\\paddleocr\\ppocr\\utils\\dict\\latin_dict.txt', use_space_char=True, vis_font_path='./doc/fonts/simfang.ttf', drop_score=0.5, e2e_algorithm='PGNet', e2e_model_dir=None, e2e_limit_side_len=768, e2e_limit_type='max', e2e_pgnet_score_thresh=0.5, e2e_char_dict_path='./ppocr/utils/ic15_dict.txt', e2e_pgnet_valid_set='totaltext', e2e_pgnet_mode='fast', use_angle_cls=False, cls_model_dir='C:\\Users\\marcelo/.paddleocr/whl\\cls\\ch_ppocr_mobile_v2.0_cls_infer', cls_image_shape='3, 48, 192', label_list=['0', '180'], cls_batch_num=6, cls_thresh=0.9, enable_mkldnn=False, cpu_threads=10, use_pdserving=False, warmup=False, sr_model_dir=None, sr_image_shape='3, 32, 128', sr_batch_num=1, draw_img_save_dir='./inference_results', save_crop_res=False, crop_res_save_dir='./output', use_mp=False, total_process_num=1, process_id=0, benchmark=False, save_log_path='./log_output/', show_log=True, use_onnx=False, onnx_providers=False, onnx_sess_options=False, return_word_box=False, output='./output', table_max_len=488, table_algorithm='TableAttn', table_model_dir=None, merge_no_span_structure=True, table_char_dict_path=None, formula_algorithm='LaTeXOCR', formula_model_dir=None, formula_char_dict_path=None, formula_batch_num=1, layout_model_dir=None, layout_dict_path=None, layout_score_threshold=0.5, layout_nms_threshold=0.5, kie_algorithm='LayoutXLM', ser_model_dir=None, re_model_dir=None, use_visual_backbone=True, ser_dict_path='../train_data/XFUND/class_list_xfun.txt', ocr_order_method=None, mode='structure', image_orientation=False, layout=True, table=True, formula=False, ocr=True, recovery=False, recovery_to_markdown=False, use_pdf2docx_api=False, invert=False, binarize=False, alphacolor=(255, 255, 255), lang='es', det=True, rec=True, type='ocr', savefile=False, ocr_version='PP-OCRv4', structure_version='PP-StructureV2', use_textline_orientation=True)
+[2026/05/11 15:04:51] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:04:52] ppocr DEBUG: dt_boxes num : 1, elapsed : 0.7123582363128662
+[2026/05/11 15:04:52] ppocr DEBUG: rec_res num  : 1, elapsed : 0.20083999633789062
+[2026/05/11 15:04:52] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:04:52] ppocr DEBUG: dt_boxes num : 6, elapsed : 0.5091757774353027
+[2026/05/11 15:04:53] ppocr DEBUG: rec_res num  : 6, elapsed : 0.6487746238708496
+[2026/05/11 15:04:53] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:04:54] ppocr DEBUG: dt_boxes num : 1, elapsed : 0.7844662666320801
+[2026/05/11 15:04:54] ppocr DEBUG: rec_res num  : 1, elapsed : 0.08528447151184082
+[2026/05/11 15:04:54] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:04:54] ppocr DEBUG: dt_boxes num : 5, elapsed : 0.572012186050415
+[2026/05/11 15:04:55] ppocr DEBUG: rec_res num  : 5, elapsed : 0.592212438583374
+[2026/05/11 15:04:55] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:04:56] ppocr DEBUG: dt_boxes num : 4, elapsed : 0.605675458908081
+[2026/05/11 15:04:56] ppocr DEBUG: rec_res num  : 4, elapsed : 0.46681928634643555
+[2026/05/11 15:04:56] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:04:57] ppocr DEBUG: dt_boxes num : 6, elapsed : 0.49158215522766113
+[2026/05/11 15:04:57] ppocr DEBUG: rec_res num  : 6, elapsed : 0.7167625427246094
+INFO:     127.0.0.1:63364 - "POST /api/v1/products/recognize HTTP/1.1" 200 OK
+[2026/05/11 15:05:07] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:05:07] ppocr DEBUG: dt_boxes num : 1, elapsed : 0.12865662574768066
+[2026/05/11 15:05:07] ppocr DEBUG: rec_res num  : 1, elapsed : 0.0912930965423584
+[2026/05/11 15:05:07] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:05:07] ppocr DEBUG: dt_boxes num : 6, elapsed : 0.15065765380859375
+[2026/05/11 15:05:08] ppocr DEBUG: rec_res num  : 6, elapsed : 0.5773227214813232
+[2026/05/11 15:05:08] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:05:08] ppocr DEBUG: dt_boxes num : 1, elapsed : 0.15541505813598633
+[2026/05/11 15:05:08] ppocr DEBUG: rec_res num  : 1, elapsed : 0.0828104019165039
+[2026/05/11 15:05:08] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:05:09] ppocr DEBUG: dt_boxes num : 5, elapsed : 0.2234513759613037
+[2026/05/11 15:05:09] ppocr DEBUG: rec_res num  : 5, elapsed : 0.5266525745391846
+[2026/05/11 15:05:09] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:05:09] ppocr DEBUG: dt_boxes num : 4, elapsed : 0.17560052871704102
+[2026/05/11 15:05:10] ppocr DEBUG: rec_res num  : 4, elapsed : 0.41150641441345215
+[2026/05/11 15:05:10] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:05:10] ppocr DEBUG: dt_boxes num : 6, elapsed : 0.13862943649291992
+[2026/05/11 15:05:11] ppocr DEBUG: rec_res num  : 6, elapsed : 0.6193900108337402
+INFO:     127.0.0.1:63369 - "POST /api/v1/products/recognize HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63375 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63375 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63375 - "GET / HTTP/1.1" 200 OK
+[2026/05/11 15:05:43] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:05:44] ppocr DEBUG: dt_boxes num : 1, elapsed : 0.7210960388183594
+[2026/05/11 15:05:44] ppocr DEBUG: rec_res num  : 1, elapsed : 0.08428239822387695
+[2026/05/11 15:05:44] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:05:44] ppocr DEBUG: dt_boxes num : 1, elapsed : 0.12051796913146973
+[2026/05/11 15:05:44] ppocr DEBUG: rec_res num  : 1, elapsed : 0.0722815990447998
+[2026/05/11 15:05:44] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:05:45] ppocr DEBUG: dt_boxes num : 1, elapsed : 0.9082815647125244
+[2026/05/11 15:05:45] ppocr DEBUG: rec_res num  : 1, elapsed : 0.08084750175476074
+[2026/05/11 15:05:45] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:05:46] ppocr DEBUG: dt_boxes num : 3, elapsed : 0.7801604270935059
+[2026/05/11 15:05:47] ppocr DEBUG: rec_res num  : 3, elapsed : 0.3818645477294922
+[2026/05/11 15:05:47] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:05:47] ppocr DEBUG: dt_boxes num : 1, elapsed : 0.20049738883972168
+[2026/05/11 15:05:47] ppocr DEBUG: rec_res num  : 1, elapsed : 0.0828092098236084
+[2026/05/11 15:05:47] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:05:47] ppocr DEBUG: dt_boxes num : 4, elapsed : 0.2562875747680664
+[2026/05/11 15:05:48] ppocr DEBUG: rec_res num  : 4, elapsed : 0.41844987869262695
+INFO:     127.0.0.1:63374 - "POST /api/v1/products/recognize HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63374 - "GET /api/v1/productos/suggestions?q=Jab%C3%B3n+Dove&limit=3&context=jabon+en+barra%0AbabyDove%0Ajabon+en+bar%0Alpoalergenico%0A1ADON%0Aipoalergenico&source_name=dove-ba_png.rf.6e9d837efbc5e6fe1f01639315727276.jpg HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63374 - "GET /api/v1/productos/suggestions?q=Jab%C3%B3n+Dove&limit=3&context=jabon+en+barra%0AbabyDove%0Ajabon+en+bar%0Alpoalergenico%0A1ADON%0Aipoalergenico&source_name=dove-ba_png.rf.6e9d837efbc5e6fe1f01639315727276.jpg HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63386 - "GET /api/v1/productos/suggestions?q=Jab%C3%B3n+Dove&limit=3&context=jabon+en+barra%0AbabyDove%0Ajabon+en+bar%0Alpoalergenico%0A1ADON%0Aipoalergenico&source_name=dove-ba_png.rf.6e9d837efbc5e6fe1f01639315727276.jpg HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63689 - "GET /api/v1/productos/suggestions?q=Jab%C3%B3n+Dove&limit=3&context=jabon+en+barra%0AbabyDove%0Ajabon+en+bar%0Alpoalergenico%0A1ADON%0Aipoalergenico&source_name=dove-ba_png.rf.6e9d837efbc5e6fe1f01639315727276.jpg HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63689 - "GET /api/v1/productos/suggestions?q=Jab%C3%B3n+Dove&limit=3&context=jabon+en+barra%0AbabyDove%0Ajabon+en+bar%0Alpoalergenico%0A1ADON%0Aipoalergenico&source_name=dove-ba_png.rf.6e9d837efbc5e6fe1f01639315727276.jpg HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64986 - "GET /api/v1/productos/suggestions?q=Jab%C3%B3n+Dove&limit=3&context=jabon+en+barra%0AbabyDove%0Ajabon+en+bar%0Alpoalergenico%0A1ADON%0Aipoalergenico&source_name=dove-ba_png.rf.6e9d837efbc5e6fe1f01639315727276.jpg HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64986 - "GET /api/v1/productos/suggestions?q=Jab%C3%B3n+Dove&limit=3&context=jabon+en+barra%0AbabyDove%0Ajabon+en+bar%0Alpoalergenico%0A1ADON%0Aipoalergenico&source_name=dove-ba_png.rf.6e9d837efbc5e6fe1f01639315727276.jpg HTTP/1.1" 200 OK

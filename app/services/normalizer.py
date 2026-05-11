@@ -40,6 +40,10 @@ class ProductTextNormalizer:
     loose_pack_count_regex = re.compile(r"(?m)^\s*(?P<count>[2-9]|[1-9]\d)\s*$")
     ocr_g_content_regex = re.compile(r"(?<!\d)(?P<amount>\d{1,3})[9q](?!\d)", flags=re.IGNORECASE)
     pack_regex = re.compile(r"\b(?:pack|paq|caja)?\s*x\s*(?P<count>\d{1,3})\b", flags=re.IGNORECASE)
+    diaper_count_regex = re.compile(
+        r"(?P<count>\d{1,3})\s*(?:panales|pañales|panal|pañal)\b",
+        flags=re.IGNORECASE,
+    )
 
     def normalize(self, text: str, source_name: str | None = None) -> NormalizedProduct:
         clean_text = self._clean_text(text)
@@ -168,6 +172,10 @@ class ProductTextNormalizer:
         return None, None
 
     def _detect_content(self, clean_text: str) -> tuple[str | None, str | None]:
+        diaper_count_match = self.diaper_count_regex.search(clean_text)
+        if diaper_count_match:
+            return diaper_count_match.group("count"), "unid"
+
         multipack_match = self.multipack_content_regex.search(clean_text)
         if multipack_match:
             count = multipack_match.group("count")
@@ -270,6 +278,9 @@ class ProductTextNormalizer:
         loose_pack_match = self.loose_pack_count_regex.search(clean_text)
         if loose_pack_match and self._looks_like_pack_offer(clean_text):
             return f"pack x {loose_pack_match.group('count')}"
+        diaper_count_match = self.diaper_count_regex.search(clean_text)
+        if diaper_count_match:
+            return f"{diaper_count_match.group('count')} pañales"
 
         for word in ("sachet", "botella", "frasco", "sobre", "caja", "pack"):
             if re.search(rf"\b{word}s?\b", lowered):
@@ -435,6 +446,8 @@ class ProductTextNormalizer:
 
     def _is_pack_label_line(self, folded_line: str) -> bool:
         if re.search(r"\b(pack|paq|caja)\b", folded_line) and re.search(r"\bx\s*\d{1,3}\b", folded_line):
+            return True
+        if re.fullmatch(r"\d{1,3}\s*(panales|panal|panales|panal)", folded_line):
             return True
         return folded_line in {"cremas", "dentales", "oferta", "especial", "empaque", "familiar"}
 

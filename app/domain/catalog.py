@@ -424,6 +424,7 @@ VARIANT_ALIASES: dict[str, tuple[str, ...]] = {
     "Sin Azúcar": ("sin azucar", "sin azúcar", "zero"),
     "Light": ("light", "lite"),
     "Blanca": ("blanca", "blanco"),
+    "Dermacare": ("dermacare", "derma care"),
 }
 
 

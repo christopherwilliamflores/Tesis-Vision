@@ -12,10 +12,10 @@ from app.schemas.product import (
     ProductRecognitionResponse,
     ProductSuggestion,
 )
-from app.services.detector import ProductRegionDetector, YoloRegionDetector
+from app.services.detector import FieldDetection, ProductRegionDetector, RegionDetection, YoloRegionDetector
 from app.services.image_utils import crop_image, decode_image, prepare_for_ocr, save_debug_image
 from app.services.normalizer import ProductTextNormalizer
-from app.services.ocr import PaddleOcrTextExtractor, TextExtractor
+from app.services.ocr import OcrResult, OcrTextLine, PaddleOcrTextExtractor, TextExtractor
 
 
 @dataclass
@@ -46,12 +46,7 @@ class ProductRecognitionPipeline:
             detection.used_full_image_fallback,
         )
 
-        cropped = crop_image(image, detection.bbox)
-        ocr_image = prepare_for_ocr(cropped)
-        if self.settings.persist_debug_images:
-            save_debug_image(ocr_image, self.settings.debug_image_dir, f"{trace_id}_roi.jpg")
-
-        ocr_result = self.ocr.extract(ocr_image)
+        ocr_result = self._extract_ocr(image, detection, trace_id)
         logger.info("ocr completado lineas=%s", len(ocr_result.lines))
 
         normalized = self.normalizer.normalize(ocr_result.text, source_name=source_name)
@@ -101,6 +96,108 @@ class ProductRecognitionPipeline:
             warnings=warnings,
             processing_ms=elapsed_ms,
         )
+
+    def _extract_ocr(
+        self,
+        image,
+        detection: RegionDetection,
+        trace_id: str,
+    ) -> OcrResult:
+        if detection.fields:
+            return self._extract_field_aware_ocr(image, detection, trace_id)
+
+        cropped = crop_image(image, detection.bbox)
+        ocr_image = prepare_for_ocr(cropped)
+        if self.settings.persist_debug_images:
+            save_debug_image(ocr_image, self.settings.debug_image_dir, f"{trace_id}_roi.jpg")
+        return self.ocr.extract(ocr_image)
+
+    def _extract_field_aware_ocr(
+        self,
+        image,
+        detection: RegionDetection,
+        trace_id: str,
+    ) -> OcrResult:
+        all_lines: list[OcrTextLine] = []
+        engines: list[str] = []
+        seen_text: set[str] = set()
+
+        for index, field in enumerate(detection.fields):
+            field_result = self._extract_field_ocr(image, field, trace_id, index)
+            engines.append(field_result.engine)
+            for line in field_result.lines:
+                self._append_unique_line(all_lines, seen_text, line)
+
+        roi_result = self._extract_roi_ocr(image, detection, trace_id)
+        engines.append(roi_result.engine)
+        for line in roi_result.lines:
+            self._append_unique_line(all_lines, seen_text, line)
+
+        confidences = [line.confidence for line in all_lines if line.confidence is not None]
+        average = sum(confidences) / len(confidences) if confidences else None
+        engine = engines[0] if engines else "unknown"
+        return OcrResult(
+            engine=engine,
+            text="\n".join(line.text for line in all_lines),
+            average_confidence=average,
+            lines=all_lines,
+        )
+
+    def _extract_field_ocr(
+        self,
+        image,
+        field: FieldDetection,
+        trace_id: str,
+        index: int,
+    ) -> OcrResult:
+        cropped = crop_image(image, self._expand_bbox(image, field.bbox))
+        ocr_image = prepare_for_ocr(cropped)
+        if self.settings.persist_debug_images:
+            class_name = field.class_name or "field"
+            save_debug_image(ocr_image, self.settings.debug_image_dir, f"{trace_id}_{index}_{class_name}.jpg")
+        return self.ocr.extract(ocr_image)
+
+    def _extract_roi_ocr(
+        self,
+        image,
+        detection: RegionDetection,
+        trace_id: str,
+    ) -> OcrResult:
+        cropped = crop_image(image, self._expand_bbox(image, detection.bbox, margin_ratio=0.04))
+        ocr_image = prepare_for_ocr(cropped)
+        if self.settings.persist_debug_images:
+            save_debug_image(ocr_image, self.settings.debug_image_dir, f"{trace_id}_roi.jpg")
+        return self.ocr.extract(ocr_image)
+
+    def _expand_bbox(
+        self,
+        image,
+        bbox: tuple[int, int, int, int],
+        margin_ratio: float = 0.08,
+    ) -> tuple[int, int, int, int]:
+        height, width = image.shape[:2]
+        x_min, y_min, x_max, y_max = bbox
+        box_width = max(1, x_max - x_min)
+        box_height = max(1, y_max - y_min)
+        margin = max(4, int(max(box_width, box_height) * margin_ratio))
+        return (
+            max(0, x_min - margin),
+            max(0, y_min - margin),
+            min(width, x_max + margin),
+            min(height, y_max + margin),
+        )
+
+    def _append_unique_line(
+        self,
+        lines: list[OcrTextLine],
+        seen_text: set[str],
+        line: OcrTextLine,
+    ) -> None:
+        normalized = " ".join(line.text.lower().split())
+        if not normalized or normalized in seen_text:
+            return
+        seen_text.add(normalized)
+        lines.append(line)
 
 
 def build_pipeline(settings: Settings) -> ProductRecognitionPipeline:
