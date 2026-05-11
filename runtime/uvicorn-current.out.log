@@ -990,3 +990,314 @@ INFO:     127.0.0.1:63689 - "GET /api/v1/productos/suggestions?q=Jab%C3%B3n+Dove
 INFO:     127.0.0.1:63689 - "GET /api/v1/productos/suggestions?q=Jab%C3%B3n+Dove&limit=3&context=jabon+en+barra%0AbabyDove%0Ajabon+en+bar%0Alpoalergenico%0A1ADON%0Aipoalergenico&source_name=dove-ba_png.rf.6e9d837efbc5e6fe1f01639315727276.jpg HTTP/1.1" 200 OK
 INFO:     127.0.0.1:64986 - "GET /api/v1/productos/suggestions?q=Jab%C3%B3n+Dove&limit=3&context=jabon+en+barra%0AbabyDove%0Ajabon+en+bar%0Alpoalergenico%0A1ADON%0Aipoalergenico&source_name=dove-ba_png.rf.6e9d837efbc5e6fe1f01639315727276.jpg HTTP/1.1" 200 OK
 INFO:     127.0.0.1:64986 - "GET /api/v1/productos/suggestions?q=Jab%C3%B3n+Dove&limit=3&context=jabon+en+barra%0AbabyDove%0Ajabon+en+bar%0Alpoalergenico%0A1ADON%0Aipoalergenico&source_name=dove-ba_png.rf.6e9d837efbc5e6fe1f01639315727276.jpg HTTP/1.1" 200 OK
+ INFO:     127.0.0.1:51108 - "GET /api/v1/health HTTP/1.1" 200 OK
+[2026/05/11 15:17:21] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:17:22] ppocr DEBUG: dt_boxes num : 1, elapsed : 1.3449749946594238
+[2026/05/11 15:17:23] ppocr DEBUG: rec_res num  : 1, elapsed : 0.1719050407409668
+[2026/05/11 15:17:23] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:17:23] ppocr DEBUG: dt_boxes num : 1, elapsed : 0.13913941383361816
+[2026/05/11 15:17:23] ppocr DEBUG: rec_res num  : 1, elapsed : 0.126173734664917
+[2026/05/11 15:17:23] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:17:23] ppocr DEBUG: dt_boxes num : 1, elapsed : 0.22894668579101562
+[2026/05/11 15:17:23] ppocr DEBUG: rec_res num  : 1, elapsed : 0.09623241424560547
+[2026/05/11 15:17:23] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:17:24] ppocr DEBUG: dt_boxes num : 1, elapsed : 0.8019299507141113
+[2026/05/11 15:17:24] ppocr DEBUG: rec_res num  : 1, elapsed : 0.08876466751098633
+[2026/05/11 15:17:24] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:17:24] ppocr DEBUG: dt_boxes num : 1, elapsed : 0.1570892333984375
+[2026/05/11 15:17:25] ppocr DEBUG: rec_res num  : 1, elapsed : 0.08328604698181152
+[2026/05/11 15:17:25] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:17:25] ppocr DEBUG: dt_boxes num : 4, elapsed : 0.9071924686431885
+[2026/05/11 15:17:26] ppocr DEBUG: rec_res num  : 4, elapsed : 0.5141706466674805
+INFO:     127.0.0.1:51240 - "POST /api/v1/products/recognize HTTP/1.1" 200 OK
+[2026/05/11 15:17:26] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:17:26] ppocr DEBUG: dt_boxes num : 1, elapsed : 0.24086976051330566
+[2026/05/11 15:17:27] ppocr DEBUG: rec_res num  : 1, elapsed : 0.10822010040283203
+[2026/05/11 15:17:27] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:17:27] ppocr DEBUG: dt_boxes num : 6, elapsed : 0.6658082008361816
+[2026/05/11 15:17:28] ppocr DEBUG: rec_res num  : 6, elapsed : 0.738095760345459
+[2026/05/11 15:17:28] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:17:29] ppocr DEBUG: dt_boxes num : 1, elapsed : 0.8343110084533691
+[2026/05/11 15:17:29] ppocr DEBUG: rec_res num  : 1, elapsed : 0.09676265716552734
+[2026/05/11 15:17:29] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:17:30] ppocr DEBUG: dt_boxes num : 5, elapsed : 0.6398348808288574
+[2026/05/11 15:17:30] ppocr DEBUG: rec_res num  : 5, elapsed : 0.6707320213317871
+[2026/05/11 15:17:31] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:17:31] ppocr DEBUG: dt_boxes num : 4, elapsed : 0.7176520824432373
+[2026/05/11 15:17:32] ppocr DEBUG: rec_res num  : 4, elapsed : 0.5361664295196533
+[2026/05/11 15:17:32] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:17:32] ppocr DEBUG: dt_boxes num : 6, elapsed : 0.538560152053833
+[2026/05/11 15:17:33] ppocr DEBUG: rec_res num  : 6, elapsed : 0.7624826431274414
+INFO:     127.0.0.1:51242 - "POST /api/v1/products/recognize HTTP/1.1" 200 OK
+ 2026-05-11T15:17:50-0500 INFO app.services.pipeline trace_id=c2fdbb91-c089-4b4d-9d1e-c464da1bd113 inicio procesamiento producto
+2026-05-11T15:17:50-0500 INFO app.services.pipeline trace_id=c2fdbb91-c089-4b4d-9d1e-c464da1bd113 imagen decodificada
+2026-05-11T15:17:57-0500 INFO app.services.pipeline trace_id=c2fdbb91-c089-4b4d-9d1e-c464da1bd113 deteccion yolo completada bbox=(49, 55, 243, 175) confidence=0.006922603119164705 fallback=False
+[2026/05/11 15:18:02] ppocr DEBUG: Namespace(help='==SUPPRESS==', use_gpu=False, use_xpu=False, use_npu=False, use_mlu=False, use_gcu=False, ir_optim=True, use_tensorrt=False, min_subgraph_size=15, precision='fp32', gpu_mem=500, gpu_id=0, image_dir=None, page_num=0, det_algorithm='DB', det_model_dir='C:\\Users\\marcelo/.paddleocr/whl\\det\\en\\en_PP-OCRv3_det_infer', det_limit_side_len=960, det_limit_type='max', det_box_type='quad', det_db_thresh=0.3, det_db_box_thresh=0.6, det_db_unclip_ratio=1.5, max_batch_size=10, use_dilation=False, det_db_score_mode='fast', det_east_score_thresh=0.8, det_east_cover_thresh=0.1, det_east_nms_thresh=0.2, det_sast_score_thresh=0.5, det_sast_nms_thresh=0.2, det_pse_thresh=0, det_pse_box_thresh=0.85, det_pse_min_area=16, det_pse_scale=1, scales=[8, 16, 32], alpha=1.0, beta=1.0, fourier_degree=5, rec_algorithm='SVTR_LCNet', rec_model_dir='C:\\Users\\marcelo/.paddleocr/whl\\rec\\latin\\latin_PP-OCRv3_rec_infer', rec_image_inverse=True, rec_image_shape='3, 48, 320', rec_batch_num=6, max_text_length=25, rec_char_dict_path='C:\\Users\\marcelo\\AppData\\Roaming\\Python\\Python311\\site-packages\\paddleocr\\ppocr\\utils\\dict\\latin_dict.txt', use_space_char=True, vis_font_path='./doc/fonts/simfang.ttf', drop_score=0.5, e2e_algorithm='PGNet', e2e_model_dir=None, e2e_limit_side_len=768, e2e_limit_type='max', e2e_pgnet_score_thresh=0.5, e2e_char_dict_path='./ppocr/utils/ic15_dict.txt', e2e_pgnet_valid_set='totaltext', e2e_pgnet_mode='fast', use_angle_cls=False, cls_model_dir='C:\\Users\\marcelo/.paddleocr/whl\\cls\\ch_ppocr_mobile_v2.0_cls_infer', cls_image_shape='3, 48, 192', label_list=['0', '180'], cls_batch_num=6, cls_thresh=0.9, enable_mkldnn=False, cpu_threads=10, use_pdserving=False, warmup=False, sr_model_dir=None, sr_image_shape='3, 32, 128', sr_batch_num=1, draw_img_save_dir='./inference_results', save_crop_res=False, crop_res_save_dir='./output', use_mp=False, total_process_num=1, process_id=0, benchmark=False, save_log_path='./log_output/', show_log=True, use_onnx=False, onnx_providers=False, onnx_sess_options=False, return_word_box=False, output='./output', table_max_len=488, table_algorithm='TableAttn', table_model_dir=None, merge_no_span_structure=True, table_char_dict_path=None, formula_algorithm='LaTeXOCR', formula_model_dir=None, formula_char_dict_path=None, formula_batch_num=1, layout_model_dir=None, layout_dict_path=None, layout_score_threshold=0.5, layout_nms_threshold=0.5, kie_algorithm='LayoutXLM', ser_model_dir=None, re_model_dir=None, use_visual_backbone=True, ser_dict_path='../train_data/XFUND/class_list_xfun.txt', ocr_order_method=None, mode='structure', image_orientation=False, layout=True, table=True, formula=False, ocr=True, recovery=False, recovery_to_markdown=False, use_pdf2docx_api=False, invert=False, binarize=False, alphacolor=(255, 255, 255), lang='es', det=True, rec=True, type='ocr', savefile=False, ocr_version='PP-OCRv4', structure_version='PP-StructureV2', use_textline_orientation=True)
+[2026/05/11 15:18:04] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:18:05] ppocr DEBUG: dt_boxes num : 1, elapsed : 0.7500579357147217
+[2026/05/11 15:18:05] ppocr DEBUG: rec_res num  : 1, elapsed : 0.22140789031982422
+[2026/05/11 15:18:05] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:18:06] ppocr DEBUG: dt_boxes num : 1, elapsed : 0.7824714183807373
+[2026/05/11 15:18:06] ppocr DEBUG: rec_res num  : 1, elapsed : 0.11569023132324219
+[2026/05/11 15:18:06] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:18:07] ppocr DEBUG: dt_boxes num : 1, elapsed : 0.8915767669677734
+[2026/05/11 15:18:07] ppocr DEBUG: rec_res num  : 1, elapsed : 0.15213513374328613
+[2026/05/11 15:18:07] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:18:08] ppocr DEBUG: dt_boxes num : 1, elapsed : 0.8260300159454346
+[2026/05/11 15:18:08] ppocr DEBUG: rec_res num  : 1, elapsed : 0.08976054191589355
+[2026/05/11 15:18:08] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:18:09] ppocr DEBUG: dt_boxes num : 1, elapsed : 0.8059897422790527
+[2026/05/11 15:18:09] ppocr DEBUG: rec_res num  : 1, elapsed : 0.0827791690826416
+[2026/05/11 15:18:09] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:18:10] ppocr DEBUG: dt_boxes num : 4, elapsed : 0.9161291122436523
+[2026/05/11 15:18:10] ppocr DEBUG: rec_res num  : 4, elapsed : 0.4971959590911865
+[2026/05/11 15:18:10] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:18:11] ppocr DEBUG: dt_boxes num : 10, elapsed : 1.0858323574066162
+[2026/05/11 15:18:13] ppocr DEBUG: rec_res num  : 10, elapsed : 1.9159996509552002
+INFO:     127.0.0.1:51476 - "POST /api/v1/products/recognize HTTP/1.1" 200 OK
+ [2026/05/11 15:19:24] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:19:24] ppocr DEBUG: dt_boxes num : 1, elapsed : 0.763465166091919
+[2026/05/11 15:19:25] ppocr DEBUG: rec_res num  : 1, elapsed : 0.1266613006591797
+[2026/05/11 15:19:25] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:19:26] ppocr DEBUG: dt_boxes num : 1, elapsed : 0.9205272197723389
+[2026/05/11 15:19:26] ppocr DEBUG: rec_res num  : 1, elapsed : 0.1366581916809082
+[2026/05/11 15:19:26] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:19:27] ppocr DEBUG: dt_boxes num : 1, elapsed : 0.9170808792114258
+[2026/05/11 15:19:27] ppocr DEBUG: rec_res num  : 1, elapsed : 0.1456136703491211
+[2026/05/11 15:19:27] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:19:28] ppocr DEBUG: dt_boxes num : 1, elapsed : 0.8194637298583984
+[2026/05/11 15:19:28] ppocr DEBUG: rec_res num  : 1, elapsed : 0.09425735473632812
+[2026/05/11 15:19:28] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:19:29] ppocr DEBUG: dt_boxes num : 1, elapsed : 0.8412587642669678
+[2026/05/11 15:19:29] ppocr DEBUG: rec_res num  : 1, elapsed : 0.08678221702575684
+[2026/05/11 15:19:29] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:19:30] ppocr DEBUG: dt_boxes num : 4, elapsed : 0.9256744384765625
+[2026/05/11 15:19:30] ppocr DEBUG: rec_res num  : 4, elapsed : 0.4835638999938965
+[2026/05/11 15:19:30] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:19:31] ppocr DEBUG: dt_boxes num : 10, elapsed : 0.9671082496643066
+[2026/05/11 15:19:33] ppocr DEBUG: rec_res num  : 10, elapsed : 1.8539152145385742
+INFO:     127.0.0.1:51874 - "POST /api/v1/products/recognize HTTP/1.1" 200 OK
+ 2026-05-11T15:19:46-0500 INFO app.services.pipeline trace_id=46f5ed6f-4ae2-438d-b37a-83f48324c160 inicio procesamiento producto
+2026-05-11T15:19:46-0500 INFO app.services.pipeline trace_id=46f5ed6f-4ae2-438d-b37a-83f48324c160 imagen decodificada
+2026-05-11T15:19:53-0500 INFO app.services.pipeline trace_id=46f5ed6f-4ae2-438d-b37a-83f48324c160 deteccion yolo completada bbox=(49, 55, 243, 175) confidence=0.006922603119164705 fallback=False
+[2026/05/11 15:19:57] ppocr DEBUG: Namespace(help='==SUPPRESS==', use_gpu=False, use_xpu=False, use_npu=False, use_mlu=False, use_gcu=False, ir_optim=True, use_tensorrt=False, min_subgraph_size=15, precision='fp32', gpu_mem=500, gpu_id=0, image_dir=None, page_num=0, det_algorithm='DB', det_model_dir='C:\\Users\\marcelo/.paddleocr/whl\\det\\en\\en_PP-OCRv3_det_infer', det_limit_side_len=960, det_limit_type='max', det_box_type='quad', det_db_thresh=0.3, det_db_box_thresh=0.6, det_db_unclip_ratio=1.5, max_batch_size=10, use_dilation=False, det_db_score_mode='fast', det_east_score_thresh=0.8, det_east_cover_thresh=0.1, det_east_nms_thresh=0.2, det_sast_score_thresh=0.5, det_sast_nms_thresh=0.2, det_pse_thresh=0, det_pse_box_thresh=0.85, det_pse_min_area=16, det_pse_scale=1, scales=[8, 16, 32], alpha=1.0, beta=1.0, fourier_degree=5, rec_algorithm='SVTR_LCNet', rec_model_dir='C:\\Users\\marcelo/.paddleocr/whl\\rec\\latin\\latin_PP-OCRv3_rec_infer', rec_image_inverse=True, rec_image_shape='3, 48, 320', rec_batch_num=6, max_text_length=25, rec_char_dict_path='C:\\Users\\marcelo\\AppData\\Roaming\\Python\\Python311\\site-packages\\paddleocr\\ppocr\\utils\\dict\\latin_dict.txt', use_space_char=True, vis_font_path='./doc/fonts/simfang.ttf', drop_score=0.5, e2e_algorithm='PGNet', e2e_model_dir=None, e2e_limit_side_len=768, e2e_limit_type='max', e2e_pgnet_score_thresh=0.5, e2e_char_dict_path='./ppocr/utils/ic15_dict.txt', e2e_pgnet_valid_set='totaltext', e2e_pgnet_mode='fast', use_angle_cls=False, cls_model_dir='C:\\Users\\marcelo/.paddleocr/whl\\cls\\ch_ppocr_mobile_v2.0_cls_infer', cls_image_shape='3, 48, 192', label_list=['0', '180'], cls_batch_num=6, cls_thresh=0.9, enable_mkldnn=False, cpu_threads=10, use_pdserving=False, warmup=False, sr_model_dir=None, sr_image_shape='3, 32, 128', sr_batch_num=1, draw_img_save_dir='./inference_results', save_crop_res=False, crop_res_save_dir='./output', use_mp=False, total_process_num=1, process_id=0, benchmark=False, save_log_path='./log_output/', show_log=True, use_onnx=False, onnx_providers=False, onnx_sess_options=False, return_word_box=False, output='./output', table_max_len=488, table_algorithm='TableAttn', table_model_dir=None, merge_no_span_structure=True, table_char_dict_path=None, formula_algorithm='LaTeXOCR', formula_model_dir=None, formula_char_dict_path=None, formula_batch_num=1, layout_model_dir=None, layout_dict_path=None, layout_score_threshold=0.5, layout_nms_threshold=0.5, kie_algorithm='LayoutXLM', ser_model_dir=None, re_model_dir=None, use_visual_backbone=True, ser_dict_path='../train_data/XFUND/class_list_xfun.txt', ocr_order_method=None, mode='structure', image_orientation=False, layout=True, table=True, formula=False, ocr=True, recovery=False, recovery_to_markdown=False, use_pdf2docx_api=False, invert=False, binarize=False, alphacolor=(255, 255, 255), lang='es', det=True, rec=True, type='ocr', savefile=False, ocr_version='PP-OCRv4', structure_version='PP-StructureV2', use_textline_orientation=True)
+[2026/05/11 15:19:58] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:19:59] ppocr DEBUG: dt_boxes num : 1, elapsed : 0.7996656894683838
+[2026/05/11 15:19:59] ppocr DEBUG: rec_res num  : 1, elapsed : 0.2282402515411377
+[2026/05/11 15:19:59] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:20:00] ppocr DEBUG: dt_boxes num : 1, elapsed : 0.8755693435668945
+[2026/05/11 15:20:00] ppocr DEBUG: rec_res num  : 1, elapsed : 0.1156911849975586
+[2026/05/11 15:20:00] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:20:01] ppocr DEBUG: dt_boxes num : 1, elapsed : 1.0109100341796875
+[2026/05/11 15:20:01] ppocr DEBUG: rec_res num  : 1, elapsed : 0.14960002899169922
+[2026/05/11 15:20:01] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:20:02] ppocr DEBUG: dt_boxes num : 1, elapsed : 0.777916669845581
+[2026/05/11 15:20:02] ppocr DEBUG: rec_res num  : 1, elapsed : 0.08776426315307617
+[2026/05/11 15:20:02] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:20:03] ppocr DEBUG: dt_boxes num : 1, elapsed : 0.8146843910217285
+[2026/05/11 15:20:03] ppocr DEBUG: rec_res num  : 1, elapsed : 0.08627653121948242
+[2026/05/11 15:20:03] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:20:04] ppocr DEBUG: dt_boxes num : 4, elapsed : 0.9705860614776611
+[2026/05/11 15:20:05] ppocr DEBUG: rec_res num  : 4, elapsed : 0.4983830451965332
+[2026/05/11 15:20:05] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:20:06] ppocr DEBUG: dt_boxes num : 10, elapsed : 1.098045825958252
+[2026/05/11 15:20:08] ppocr DEBUG: rec_res num  : 10, elapsed : 1.997427225112915
+INFO:     127.0.0.1:52011 - "POST /api/v1/products/recognize HTTP/1.1" 200 OK
+[2026/05/11 15:20:15] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:20:16] ppocr DEBUG: dt_boxes num : 1, elapsed : 0.728611946105957
+[2026/05/11 15:20:16] ppocr DEBUG: rec_res num  : 1, elapsed : 0.11271190643310547
+[2026/05/11 15:20:16] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:20:17] ppocr DEBUG: dt_boxes num : 1, elapsed : 0.739567756652832
+[2026/05/11 15:20:17] ppocr DEBUG: rec_res num  : 1, elapsed : 0.11870145797729492
+[2026/05/11 15:20:17] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:20:18] ppocr DEBUG: dt_boxes num : 1, elapsed : 0.8498451709747314
+[2026/05/11 15:20:18] ppocr DEBUG: rec_res num  : 1, elapsed : 0.1296525001525879
+[2026/05/11 15:20:18] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:20:19] ppocr DEBUG: dt_boxes num : 1, elapsed : 0.7171685695648193
+[2026/05/11 15:20:19] ppocr DEBUG: rec_res num  : 1, elapsed : 0.08776497840881348
+[2026/05/11 15:20:19] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:20:20] ppocr DEBUG: dt_boxes num : 1, elapsed : 0.7635576725006104
+[2026/05/11 15:20:20] ppocr DEBUG: rec_res num  : 1, elapsed : 0.07874655723571777
+[2026/05/11 15:20:20] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:20:21] ppocr DEBUG: dt_boxes num : 4, elapsed : 0.797459602355957
+[2026/05/11 15:20:21] ppocr DEBUG: rec_res num  : 4, elapsed : 0.4732978343963623
+[2026/05/11 15:20:21] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:20:22] ppocr DEBUG: dt_boxes num : 10, elapsed : 0.9131155014038086
+[2026/05/11 15:20:24] ppocr DEBUG: rec_res num  : 10, elapsed : 1.7074875831604004
+INFO:     127.0.0.1:52053 - "POST /api/v1/products/recognize HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52331 - "GET /api/v1/productos/suggestions?q=Jab%C3%B3n+Dove&limit=3&context=jabon+en+barra%0AbabyDove%0Ajabon+en+bar%0Alpoalergenico%0A1ADON%0Aipoalergenico&source_name=dove-ba_png.rf.6e9d837efbc5e6fe1f01639315727276.jpg HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52331 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52331 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52331 - "GET / HTTP/1.1" 200 OK
+[2026/05/11 15:21:41] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:21:42] ppocr DEBUG: dt_boxes num : 1, elapsed : 0.756026029586792
+[2026/05/11 15:21:42] ppocr DEBUG: rec_res num  : 1, elapsed : 0.07879018783569336
+[2026/05/11 15:21:42] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:21:42] ppocr DEBUG: dt_boxes num : 1, elapsed : 0.14563632011413574
+[2026/05/11 15:21:42] ppocr DEBUG: rec_res num  : 1, elapsed : 0.08080315589904785
+[2026/05/11 15:21:42] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:21:43] ppocr DEBUG: dt_boxes num : 1, elapsed : 0.21768736839294434
+[2026/05/11 15:21:43] ppocr DEBUG: rec_res num  : 1, elapsed : 0.09775853157043457
+[2026/05/11 15:21:43] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:21:43] ppocr DEBUG: dt_boxes num : 3, elapsed : 0.14463305473327637
+[2026/05/11 15:21:43] ppocr DEBUG: rec_res num  : 3, elapsed : 0.38650965690612793
+[2026/05/11 15:21:43] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:21:44] ppocr DEBUG: dt_boxes num : 1, elapsed : 0.21692967414855957
+[2026/05/11 15:21:44] ppocr DEBUG: rec_res num  : 1, elapsed : 0.09377479553222656
+[2026/05/11 15:21:44] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:21:44] ppocr DEBUG: dt_boxes num : 4, elapsed : 0.21544671058654785
+[2026/05/11 15:21:44] ppocr DEBUG: rec_res num  : 4, elapsed : 0.44495582580566406
+[2026/05/11 15:21:45] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:21:45] ppocr DEBUG: dt_boxes num : 9, elapsed : 0.2633364200592041
+[2026/05/11 15:21:46] ppocr DEBUG: rec_res num  : 9, elapsed : 1.3643858432769775
+INFO:     127.0.0.1:52339 - "POST /api/v1/products/recognize HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52339 - "GET /api/v1/productos/suggestions?q=Jabon+En+Barra+Dove+Beb%C3%A9&limit=3&context=jabon+en+barra%0AbabyDove%0Ajabon+en+bar%0Alpoalergenico%0A1ADON%0Aipoalergenico%0ACADONED%0Ahipoalergenico%0Ahumectacion+sensible%0ApH+nauRrO+para+p+clcs+Osllccsb%0A3x75.g%0Acioadolln.coc.&source_name=dove-ba_png.rf.6e9d837efbc5e6fe1f01639315727276.jpg HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52354 - "GET /api/v1/productos/suggestions?q=Jabon+En+Barra+Dove+Beb%C3%A9&limit=3&context=jabon+en+barra%0AbabyDove%0Ajabon+en+bar%0Alpoalergenico%0A1ADON%0Aipoalergenico%0ACADONED%0Ahipoalergenico%0Ahumectacion+sensible%0ApH+nauRrO+para+p+clcs+Osllccsb%0A3x75.g%0Acioadolln.coc.&source_name=dove-ba_png.rf.6e9d837efbc5e6fe1f01639315727276.jpg HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52369 - "GET / HTTP/1.1" 200 OK
+[2026/05/11 15:23:02] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:23:02] ppocr DEBUG: dt_boxes num : 2, elapsed : 0.23140621185302734
+[2026/05/11 15:23:02] ppocr DEBUG: rec_res num  : 2, elapsed : 0.22442102432250977
+[2026/05/11 15:23:02] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:23:03] ppocr DEBUG: dt_boxes num : 2, elapsed : 0.801943302154541
+[2026/05/11 15:23:04] ppocr DEBUG: rec_res num  : 2, elapsed : 0.22739315032958984
+[2026/05/11 15:23:04] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:23:04] ppocr DEBUG: dt_boxes num : 3, elapsed : 0.803478479385376
+[2026/05/11 15:23:05] ppocr DEBUG: rec_res num  : 3, elapsed : 0.3203275203704834
+[2026/05/11 15:23:05] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:23:06] ppocr DEBUG: dt_boxes num : 4, elapsed : 0.8326296806335449
+[2026/05/11 15:23:06] ppocr DEBUG: rec_res num  : 4, elapsed : 0.5979659557342529
+[2026/05/11 15:23:06] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:23:06] ppocr DEBUG: dt_boxes num : 4, elapsed : 0.17359209060668945
+[2026/05/11 15:23:07] ppocr DEBUG: rec_res num  : 4, elapsed : 0.6009540557861328
+[2026/05/11 15:23:07] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:23:07] ppocr DEBUG: dt_boxes num : 4, elapsed : 0.18051767349243164
+[2026/05/11 15:23:08] ppocr DEBUG: rec_res num  : 4, elapsed : 0.590470552444458
+[2026/05/11 15:23:08] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:23:09] ppocr DEBUG: dt_boxes num : 8, elapsed : 0.6108906269073486
+[2026/05/11 15:23:10] ppocr DEBUG: rec_res num  : 8, elapsed : 1.033477783203125
+INFO:     127.0.0.1:52370 - "POST /api/v1/products/recognize HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52395 - "GET /api/v1/productos/suggestions?q=F*CKSWEET&limit=3&context=F*CKSWEET%0ASTAYSALTY%0AF*CK+SWEET%0ASTAY+SALTY%0APAPASKETT%0APAPASKETTLROON%0ASALDEMARAS%0APAPASKETTLEOON%0ASNACKS%0AVORAZ%0APAPASKETTLRCON%0A1359%0ASALDBMARAS%0ACCYOAHRCU&source_name=voraz+azul.png HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52396 - "GET /api/v1/productos/suggestions?q=F*CKSWEET&limit=3&context=F*CKSWEET%0ASTAYSALTY%0AF*CK+SWEET%0ASTAY+SALTY%0APAPASKETT%0APAPASKETTLROON%0ASALDEMARAS%0APAPASKETTLEOON%0ASNACKS%0AVORAZ%0APAPASKETTLRCON%0A1359%0ASALDBMARAS%0ACCYOAHRCU&source_name=voraz+azul.png HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52398 - "GET /api/v1/productos/suggestions?q=F*CKSWEET&limit=3&context=F*CKSWEET%0ASTAYSALTY%0AF*CK+SWEET%0ASTAY+SALTY%0APAPASKETT%0APAPASKETTLROON%0ASALDEMARAS%0APAPASKETTLEOON%0ASNACKS%0AVORAZ%0APAPASKETTLRCON%0A1359%0ASALDBMARAS%0ACCYOAHRCU&source_name=voraz+azul.png HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52402 - "GET /api/v1/productos/suggestions?q=F*CKSWEET&limit=3&context=F*CKSWEET%0ASTAYSALTY%0AF*CK+SWEET%0ASTAY+SALTY%0APAPASKETT%0APAPASKETTLROON%0ASALDEMARAS%0APAPASKETTLEOON%0ASNACKS%0AVORAZ%0APAPASKETTLRCON%0A1359%0ASALDBMARAS%0ACCYOAHRCU&source_name=voraz+azul.png HTTP/1.1" 200 OK
+ INFO:     127.0.0.1:52513 - "GET /api/v1/health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52516 - "GET /api/v1/health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52529 - "GET / HTTP/1.1" 200 OK
+[2026/05/11 15:29:22] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:29:23] ppocr DEBUG: dt_boxes num : 2, elapsed : 0.16455936431884766
+[2026/05/11 15:29:23] ppocr DEBUG: rec_res num  : 2, elapsed : 0.18601012229919434
+[2026/05/11 15:29:23] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:29:23] ppocr DEBUG: dt_boxes num : 2, elapsed : 0.16954565048217773
+[2026/05/11 15:29:23] ppocr DEBUG: rec_res num  : 2, elapsed : 0.16456031799316406
+[2026/05/11 15:29:23] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:29:23] ppocr DEBUG: dt_boxes num : 3, elapsed : 0.1760416030883789
+[2026/05/11 15:29:24] ppocr DEBUG: rec_res num  : 3, elapsed : 0.2593061923980713
+[2026/05/11 15:29:24] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:29:24] ppocr DEBUG: dt_boxes num : 4, elapsed : 0.1870582103729248
+[2026/05/11 15:29:24] ppocr DEBUG: rec_res num  : 4, elapsed : 0.5218408107757568
+[2026/05/11 15:29:25] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:29:25] ppocr DEBUG: dt_boxes num : 4, elapsed : 0.17389154434204102
+[2026/05/11 15:29:25] ppocr DEBUG: rec_res num  : 4, elapsed : 0.5337564945220947
+[2026/05/11 15:29:25] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:29:25] ppocr DEBUG: dt_boxes num : 4, elapsed : 0.1689925193786621
+[2026/05/11 15:29:26] ppocr DEBUG: rec_res num  : 4, elapsed : 0.5198588371276855
+[2026/05/11 15:29:26] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:29:26] ppocr DEBUG: dt_boxes num : 8, elapsed : 0.256911039352417
+[2026/05/11 15:29:27] ppocr DEBUG: rec_res num  : 8, elapsed : 0.8648128509521484
+INFO:     127.0.0.1:52530 - "POST /api/v1/products/recognize HTTP/1.1" 200 OK
+ INFO:     127.0.0.1:52539 - "GET /api/v1/productos/suggestions?q=F*CKSWEET&limit=3&context=F*CKSWEET%0ASTAYSALTY%0AF*CK+SWEET%0ASTAY+SALTY%0APAPASKETT%0APAPASKETTLROON%0ASALDEMARAS%0APAPASKETTLEOON%0ASNACKS%0AVORAZ%0APAPASKETTLRCON%0A1359%0ASALDBMARAS%0ACCYOAHRCU&source_name=voraz+azul.png HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52543 - "GET /api/v1/productos/suggestions?q=Snack+Voraz+135+g&limit=3&context=F*CKSWEET%0ASTAYSALTY%0AF*CK+SWEET%0ASTAY+SALTY%0APAPASKETT%0APAPASKETTLROON%0ASALDEMARAS%0APAPASKETTLEOON%0ASNACKS%0AVORAZ%0APAPASKETTLRCON%0A1359%0ASALDBMARAS%0ACCYOAHRCU&source_name=voraz+azul.png HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52564 - "GET /api/v1/productos/suggestions?q=Snack+Voraz+135+g&limit=3&context=F*CKSWEET%0ASTAYSALTY%0AF*CK+SWEET%0ASTAY+SALTY%0APAPASKETT%0APAPASKETTLROON%0ASALDEMARAS%0APAPASKETTLEOON%0ASNACKS%0AVORAZ%0APAPASKETTLRCON%0A1359%0ASALDBMARAS%0ACCYOAHRCU&source_name=voraz+azul.png HTTP/1.1" 200 OK
+2026-05-11T15:32:12-0500 INFO app.services.pipeline trace_id=ui-1778531532131 inicio procesamiento producto
+2026-05-11T15:32:12-0500 INFO app.services.pipeline trace_id=ui-1778531532131 imagen decodificada
+2026-05-11T15:32:21-0500 INFO app.services.pipeline trace_id=ui-1778531532131 deteccion yolo completada bbox=(52, 19, 350, 331) confidence=0.008579687215387821 fallback=False
+[2026/05/11 15:32:31] ppocr DEBUG: Namespace(help='==SUPPRESS==', use_gpu=False, use_xpu=False, use_npu=False, use_mlu=False, use_gcu=False, ir_optim=True, use_tensorrt=False, min_subgraph_size=15, precision='fp32', gpu_mem=500, gpu_id=0, image_dir=None, page_num=0, det_algorithm='DB', det_model_dir='C:\\Users\\marcelo/.paddleocr/whl\\det\\en\\en_PP-OCRv3_det_infer', det_limit_side_len=960, det_limit_type='max', det_box_type='quad', det_db_thresh=0.3, det_db_box_thresh=0.6, det_db_unclip_ratio=1.5, max_batch_size=10, use_dilation=False, det_db_score_mode='fast', det_east_score_thresh=0.8, det_east_cover_thresh=0.1, det_east_nms_thresh=0.2, det_sast_score_thresh=0.5, det_sast_nms_thresh=0.2, det_pse_thresh=0, det_pse_box_thresh=0.85, det_pse_min_area=16, det_pse_scale=1, scales=[8, 16, 32], alpha=1.0, beta=1.0, fourier_degree=5, rec_algorithm='SVTR_LCNet', rec_model_dir='C:\\Users\\marcelo/.paddleocr/whl\\rec\\latin\\latin_PP-OCRv3_rec_infer', rec_image_inverse=True, rec_image_shape='3, 48, 320', rec_batch_num=6, max_text_length=25, rec_char_dict_path='C:\\Users\\marcelo\\AppData\\Roaming\\Python\\Python311\\site-packages\\paddleocr\\ppocr\\utils\\dict\\latin_dict.txt', use_space_char=True, vis_font_path='./doc/fonts/simfang.ttf', drop_score=0.5, e2e_algorithm='PGNet', e2e_model_dir=None, e2e_limit_side_len=768, e2e_limit_type='max', e2e_pgnet_score_thresh=0.5, e2e_char_dict_path='./ppocr/utils/ic15_dict.txt', e2e_pgnet_valid_set='totaltext', e2e_pgnet_mode='fast', use_angle_cls=False, cls_model_dir='C:\\Users\\marcelo/.paddleocr/whl\\cls\\ch_ppocr_mobile_v2.0_cls_infer', cls_image_shape='3, 48, 192', label_list=['0', '180'], cls_batch_num=6, cls_thresh=0.9, enable_mkldnn=False, cpu_threads=10, use_pdserving=False, warmup=False, sr_model_dir=None, sr_image_shape='3, 32, 128', sr_batch_num=1, draw_img_save_dir='./inference_results', save_crop_res=False, crop_res_save_dir='./output', use_mp=False, total_process_num=1, process_id=0, benchmark=False, save_log_path='./log_output/', show_log=True, use_onnx=False, onnx_providers=False, onnx_sess_options=False, return_word_box=False, output='./output', table_max_len=488, table_algorithm='TableAttn', table_model_dir=None, merge_no_span_structure=True, table_char_dict_path=None, formula_algorithm='LaTeXOCR', formula_model_dir=None, formula_char_dict_path=None, formula_batch_num=1, layout_model_dir=None, layout_dict_path=None, layout_score_threshold=0.5, layout_nms_threshold=0.5, kie_algorithm='LayoutXLM', ser_model_dir=None, re_model_dir=None, use_visual_backbone=True, ser_dict_path='../train_data/XFUND/class_list_xfun.txt', ocr_order_method=None, mode='structure', image_orientation=False, layout=True, table=True, formula=False, ocr=True, recovery=False, recovery_to_markdown=False, use_pdf2docx_api=False, invert=False, binarize=False, alphacolor=(255, 255, 255), lang='es', det=True, rec=True, type='ocr', savefile=False, ocr_version='PP-OCRv4', structure_version='PP-StructureV2', use_textline_orientation=True)
+[2026/05/11 15:32:32] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:32:33] ppocr DEBUG: dt_boxes num : 1, elapsed : 0.7307085990905762
+[2026/05/11 15:32:33] ppocr DEBUG: rec_res num  : 1, elapsed : 0.2792668342590332
+[2026/05/11 15:32:33] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:32:34] ppocr DEBUG: dt_boxes num : 1, elapsed : 0.7499897480010986
+[2026/05/11 15:32:34] ppocr DEBUG: rec_res num  : 1, elapsed : 0.20845842361450195
+[2026/05/11 15:32:34] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:32:35] ppocr DEBUG: dt_boxes num : 1, elapsed : 0.7329742908477783
+[2026/05/11 15:32:35] ppocr DEBUG: rec_res num  : 1, elapsed : 0.21286988258361816
+[2026/05/11 15:32:35] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:32:36] ppocr DEBUG: dt_boxes num : 6, elapsed : 0.9233303070068359
+[2026/05/11 15:32:37] ppocr DEBUG: rec_res num  : 6, elapsed : 1.3318142890930176
+[2026/05/11 15:32:38] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:32:38] ppocr DEBUG: dt_boxes num : 9, elapsed : 0.9261369705200195
+[2026/05/11 15:32:40] ppocr DEBUG: rec_res num  : 9, elapsed : 1.14631986618042
+[2026/05/11 15:32:40] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:32:41] ppocr DEBUG: dt_boxes num : 12, elapsed : 0.9929296970367432
+[2026/05/11 15:32:42] ppocr DEBUG: rec_res num  : 12, elapsed : 1.640089988708496
+INFO:     127.0.0.1:52566 - "POST /api/v1/products/recognize HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52566 - "GET /api/v1/productos/suggestions?q=Jab%C3%B3n+Beb%C3%A9&limit=3&context=PACK+x3+JABONES%0APACKx3%27JABONES%0Ababy%0Ajab%C3%B3n.cremoso%0Aconingredienteshidratantes%0Apieldelicada%0Aconingredicnteshidratantes%0Alibrede+parabenos%0Ayftalatos%0A3x1%0APuedeperd%0APACK+x3%27JABONES%0Alibredeparabenos%0ARIE%0A3+x+125g+c%2Fu%0Ahpoeleigenics%0APACEADO%0APuedeperderhasta12.5gclu&source_name=jhonsons+baby.png HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52569 - "GET /api/v1/productos/suggestions?q=Jab%C3%B3n+Beb%C3%A9&limit=3&context=PACK+x3+JABONES%0APACKx3%27JABONES%0Ababy%0Ajab%C3%B3n.cremoso%0Aconingredienteshidratantes%0Apieldelicada%0Aconingredicnteshidratantes%0Alibrede+parabenos%0Ayftalatos%0A3x1%0APuedeperd%0APACK+x3%27JABONES%0Alibredeparabenos%0ARIE%0A3+x+125g+c%2Fu%0Ahpoeleigenics%0APACEADO%0APuedeperderhasta12.5gclu&source_name=jhonsons+baby.png HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52599 - "GET /api/v1/productos/suggestions?q=Jab%C3%B3n+Beb%C3%A9&limit=3&context=PACK+x3+JABONES%0APACKx3%27JABONES%0Ababy%0Ajab%C3%B3n.cremoso%0Aconingredienteshidratantes%0Apieldelicada%0Aconingredicnteshidratantes%0Alibrede+parabenos%0Ayftalatos%0A3x1%0APuedeperd%0APACK+x3%27JABONES%0Alibredeparabenos%0ARIE%0A3+x+125g+c%2Fu%0Ahpoeleigenics%0APACEADO%0APuedeperderhasta12.5gclu&source_name=jhonsons+baby.png HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52653 - "GET /api/v1/productos/suggestions?q=Jab%C3%B3n+Beb%C3%A9&limit=3&context=PACK+x3+JABONES%0APACKx3%27JABONES%0Ababy%0Ajab%C3%B3n.cremoso%0Aconingredienteshidratantes%0Apieldelicada%0Aconingredicnteshidratantes%0Alibrede+parabenos%0Ayftalatos%0A3x1%0APuedeperd%0APACK+x3%27JABONES%0Alibredeparabenos%0ARIE%0A3+x+125g+c%2Fu%0Ahpoeleigenics%0APACEADO%0APuedeperderhasta12.5gclu&source_name=jhonsons+baby.png HTTP/1.1" 200 OK
+   INFO:     127.0.0.1:52720 - "GET /api/v1/health HTTP/1.1" 200 OK
+ INFO:     127.0.0.1:52800 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52800 - "GET / HTTP/1.1" 200 OK
+2026-05-11T15:41:55-0500 INFO app.services.pipeline trace_id=ui-1778532115540 inicio procesamiento producto
+2026-05-11T15:41:55-0500 INFO app.services.pipeline trace_id=ui-1778532115540 imagen decodificada
+2026-05-11T15:42:01-0500 INFO app.services.pipeline trace_id=ui-1778532115540 deteccion yolo completada bbox=(52, 19, 350, 331) confidence=0.008579687215387821 fallback=False
+[2026/05/11 15:42:05] ppocr DEBUG: Namespace(help='==SUPPRESS==', use_gpu=False, use_xpu=False, use_npu=False, use_mlu=False, use_gcu=False, ir_optim=True, use_tensorrt=False, min_subgraph_size=15, precision='fp32', gpu_mem=500, gpu_id=0, image_dir=None, page_num=0, det_algorithm='DB', det_model_dir='C:\\Users\\marcelo/.paddleocr/whl\\det\\en\\en_PP-OCRv3_det_infer', det_limit_side_len=960, det_limit_type='max', det_box_type='quad', det_db_thresh=0.3, det_db_box_thresh=0.6, det_db_unclip_ratio=1.5, max_batch_size=10, use_dilation=False, det_db_score_mode='fast', det_east_score_thresh=0.8, det_east_cover_thresh=0.1, det_east_nms_thresh=0.2, det_sast_score_thresh=0.5, det_sast_nms_thresh=0.2, det_pse_thresh=0, det_pse_box_thresh=0.85, det_pse_min_area=16, det_pse_scale=1, scales=[8, 16, 32], alpha=1.0, beta=1.0, fourier_degree=5, rec_algorithm='SVTR_LCNet', rec_model_dir='C:\\Users\\marcelo/.paddleocr/whl\\rec\\latin\\latin_PP-OCRv3_rec_infer', rec_image_inverse=True, rec_image_shape='3, 48, 320', rec_batch_num=6, max_text_length=25, rec_char_dict_path='C:\\Users\\marcelo\\AppData\\Roaming\\Python\\Python311\\site-packages\\paddleocr\\ppocr\\utils\\dict\\latin_dict.txt', use_space_char=True, vis_font_path='./doc/fonts/simfang.ttf', drop_score=0.5, e2e_algorithm='PGNet', e2e_model_dir=None, e2e_limit_side_len=768, e2e_limit_type='max', e2e_pgnet_score_thresh=0.5, e2e_char_dict_path='./ppocr/utils/ic15_dict.txt', e2e_pgnet_valid_set='totaltext', e2e_pgnet_mode='fast', use_angle_cls=False, cls_model_dir='C:\\Users\\marcelo/.paddleocr/whl\\cls\\ch_ppocr_mobile_v2.0_cls_infer', cls_image_shape='3, 48, 192', label_list=['0', '180'], cls_batch_num=6, cls_thresh=0.9, enable_mkldnn=False, cpu_threads=10, use_pdserving=False, warmup=False, sr_model_dir=None, sr_image_shape='3, 32, 128', sr_batch_num=1, draw_img_save_dir='./inference_results', save_crop_res=False, crop_res_save_dir='./output', use_mp=False, total_process_num=1, process_id=0, benchmark=False, save_log_path='./log_output/', show_log=True, use_onnx=False, onnx_providers=False, onnx_sess_options=False, return_word_box=False, output='./output', table_max_len=488, table_algorithm='TableAttn', table_model_dir=None, merge_no_span_structure=True, table_char_dict_path=None, formula_algorithm='LaTeXOCR', formula_model_dir=None, formula_char_dict_path=None, formula_batch_num=1, layout_model_dir=None, layout_dict_path=None, layout_score_threshold=0.5, layout_nms_threshold=0.5, kie_algorithm='LayoutXLM', ser_model_dir=None, re_model_dir=None, use_visual_backbone=True, ser_dict_path='../train_data/XFUND/class_list_xfun.txt', ocr_order_method=None, mode='structure', image_orientation=False, layout=True, table=True, formula=False, ocr=True, recovery=False, recovery_to_markdown=False, use_pdf2docx_api=False, invert=False, binarize=False, alphacolor=(255, 255, 255), lang='es', det=True, rec=True, type='ocr', savefile=False, ocr_version='PP-OCRv4', structure_version='PP-StructureV2', use_textline_orientation=True)
+[2026/05/11 15:42:06] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:42:06] ppocr DEBUG: dt_boxes num : 1, elapsed : 0.7370941638946533
+[2026/05/11 15:42:07] ppocr DEBUG: rec_res num  : 1, elapsed : 0.2832624912261963
+[2026/05/11 15:42:07] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:42:07] ppocr DEBUG: dt_boxes num : 1, elapsed : 0.7749593257904053
+[2026/05/11 15:42:08] ppocr DEBUG: rec_res num  : 1, elapsed : 0.2124495506286621
+[2026/05/11 15:42:08] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:42:08] ppocr DEBUG: dt_boxes num : 1, elapsed : 0.7346236705780029
+[2026/05/11 15:42:09] ppocr DEBUG: rec_res num  : 1, elapsed : 0.2214350700378418
+[2026/05/11 15:42:09] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:42:10] ppocr DEBUG: dt_boxes num : 6, elapsed : 0.9380888938903809
+[2026/05/11 15:42:11] ppocr DEBUG: rec_res num  : 6, elapsed : 1.356492280960083
+[2026/05/11 15:42:11] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:42:12] ppocr DEBUG: dt_boxes num : 9, elapsed : 0.9939234256744385
+[2026/05/11 15:42:13] ppocr DEBUG: rec_res num  : 9, elapsed : 1.199369192123413
+[2026/05/11 15:42:13] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:42:14] ppocr DEBUG: dt_boxes num : 12, elapsed : 1.0497448444366455
+[2026/05/11 15:42:16] ppocr DEBUG: rec_res num  : 12, elapsed : 1.6488730907440186
+INFO:     127.0.0.1:52799 - "POST /api/v1/products/recognize HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52822 - "GET /api/v1/productos/suggestions?q=Jab%C3%B3n+Cremoso+Johnson%27s+Beb%C3%A9&limit=3&context=PACK+x3+JABONES%0APACKx3%27JABONES%0Ababy%0Ajab%C3%B3n.cremoso%0Aconingredienteshidratantes%0Apieldelicada%0Aconingredicnteshidratantes%0Alibrede+parabenos%0Ayftalatos%0A3x1%0APuedeperd%0APACK+x3%27JABONES%0Alibredeparabenos%0ARIE%0A3+x+125g+c%2Fu%0Ahpoeleigenics%0APACEADO%0APuedeperderhasta12.5gclu&source_name=jhonsons+baby.png HTTP/1.1" 200 OK
+[2026/05/11 15:43:31] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:43:32] ppocr DEBUG: dt_boxes num : 1, elapsed : 0.826737642288208
+[2026/05/11 15:43:32] ppocr DEBUG: rec_res num  : 1, elapsed : 0.1485743522644043
+[2026/05/11 15:43:32] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:43:33] ppocr DEBUG: dt_boxes num : 7, elapsed : 0.6189641952514648
+[2026/05/11 15:43:34] ppocr DEBUG: rec_res num  : 7, elapsed : 0.6893596649169922
+[2026/05/11 15:43:34] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:43:34] ppocr DEBUG: dt_boxes num : 2, elapsed : 0.7998738288879395
+[2026/05/11 15:43:35] ppocr DEBUG: rec_res num  : 2, elapsed : 0.23190641403198242
+[2026/05/11 15:43:35] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:43:35] ppocr DEBUG: dt_boxes num : 3, elapsed : 0.28229475021362305
+[2026/05/11 15:43:35] ppocr DEBUG: rec_res num  : 3, elapsed : 0.3032212257385254
+[2026/05/11 15:43:35] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:43:36] ppocr DEBUG: dt_boxes num : 2, elapsed : 0.8184053897857666
+[2026/05/11 15:43:36] ppocr DEBUG: rec_res num  : 2, elapsed : 0.2009110450744629
+[2026/05/11 15:43:36] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:43:37] ppocr DEBUG: dt_boxes num : 7, elapsed : 0.76025390625
+[2026/05/11 15:43:38] ppocr DEBUG: rec_res num  : 7, elapsed : 0.7222485542297363
+INFO:     127.0.0.1:52843 - "POST /api/v1/products/recognize HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52843 - "GET /api/v1/productos/suggestions?q=Az%C3%BAcar+Bell%27s+Blanca&limit=3&context=Bell%27s%0AAZUCAR%0ABLANCA%0APESO%0A5Kg%0ANETO%0AAZUCARBLANCODRECTO%0Aell%27s%0AAZUCAR+CIANCOOIRECTO&source_name=azucar+bells.png HTTP/1.1" 200 OK
+[2026/05/11 15:45:26] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:45:26] ppocr DEBUG: dt_boxes num : 5, elapsed : 0.5230607986450195
+[2026/05/11 15:45:27] ppocr DEBUG: rec_res num  : 5, elapsed : 0.6343555450439453
+[2026/05/11 15:45:27] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:45:28] ppocr DEBUG: dt_boxes num : 7, elapsed : 0.8703103065490723
+[2026/05/11 15:45:29] ppocr DEBUG: rec_res num  : 7, elapsed : 1.4012999534606934
+[2026/05/11 15:45:29] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:45:30] ppocr DEBUG: dt_boxes num : 9, elapsed : 0.4742743968963623
+[2026/05/11 15:45:31] ppocr DEBUG: rec_res num  : 9, elapsed : 0.8758463859558105
+[2026/05/11 15:45:31] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:45:31] ppocr DEBUG: dt_boxes num : 12, elapsed : 0.3461434841156006
+[2026/05/11 15:45:33] ppocr DEBUG: rec_res num  : 12, elapsed : 1.5923640727996826
+[2026/05/11 15:45:33] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/11 15:45:33] ppocr DEBUG: dt_boxes num : 9, elapsed : 0.13663363456726074
+[2026/05/11 15:45:34] ppocr DEBUG: rec_res num  : 9, elapsed : 0.8223319053649902
+INFO:     127.0.0.1:52855 - "POST /api/v1/products/recognize HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52864 - "GET /api/v1/productos/suggestions?q=Crema+Corporal+Nivea+Milk+Nutritiva&limit=3&context=NIVEA%0ACrema+Corporal%0AMilk%0ANutritiva%0AMtn+cny+I+mkko%0ACudodo%0A5en1%0Acomplcto%0Atr+ctny.Hamectocko%0A685%0ALprotundo%0AendrosMtonnoE%0ACrema+Corpora%0Autr+cdn+y+lmectocke%0AMeCoMmendroAMtonnoE%0ACOLIAXO&source_name=nivea.png HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52867 - "GET /api/v1/productos/suggestions?q=Crema+Corporal+Nivea+Milk+Nutritiva&limit=3&context=NIVEA%0ACrema+Corporal%0AMilk%0ANutritiva%0AMtn+cny+I+mkko%0ACudodo%0A5en1%0Acomplcto%0Atr+ctny.Hamectocko%0A685%0ALprotundo%0AendrosMtonnoE%0ACrema+Corpora%0Autr+cdn+y+lmectocke%0AMeCoMmendroAMtonnoE%0ACOLIAXO&source_name=nivea.png HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52868 - "GET /api/v1/productos/suggestions?q=Crema+Corporal+Nivea+Milk+Nutritiva&limit=3&context=NIVEA%0ACrema+Corporal%0AMilk%0ANutritiva%0AMtn+cny+I+mkko%0ACudodo%0A5en1%0Acomplcto%0Atr+ctny.Hamectocko%0A685%0ALprotundo%0AendrosMtonnoE%0ACrema+Corpora%0Autr+cdn+y+lmectocke%0AMeCoMmendroAMtonnoE%0ACOLIAXO&source_name=nivea.png HTTP/1.1" 200 OK

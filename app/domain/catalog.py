@@ -106,6 +106,7 @@ BRAND_ALIASES: tuple[BrandAlias, ...] = (
     BrandAlias("Ritz", ("ritz", "galleta ritz", "ritz crackers"), "snacks y golosinas"),
     BrandAlias("Princesa", ("princesa chocolate", "chocolate princesa"), "snacks y golosinas"),
     BrandAlias("Doña Pepa Nik", ("nik chocolate",), "snacks y golosinas"),
+    BrandAlias("Voraz", ("voraz",), "snacks y golosinas"),
 
     # Limpieza
     BrandAlias("Bolívar", ("bolivar", "bolívar"), "limpieza"),
@@ -159,7 +160,22 @@ BRAND_ALIASES: tuple[BrandAlias, ...] = (
     BrandAlias("Dolce Vita", ("dolce vita",), "cuidado personal"),
     BrandAlias("Bonté", ("bonte", "bonté"), "cuidado personal"),
     BrandAlias("Heno de Pravia", ("heno de pravia", "heno pravia"), "cuidado personal"),
-    BrandAlias("Johnson's", ("johnsons", "johnson's", "johnson", "jhonson", "jhon baby"), "bebés y mamá"),
+    BrandAlias(
+        "Johnson's",
+        (
+            "johnsons",
+            "johnson's",
+            "johnson",
+            "jhonson",
+            "jhonsons",
+            "jhonsos",
+            "jhon baby",
+            "johnsons baby",
+            "jhonsons baby",
+            "jhonsos baby",
+        ),
+        "bebés y mamá",
+    ),
     BrandAlias("Mustela", ("mustela",), "bebés y mamá"),
     BrandAlias("Babysec", ("babysec", "baby sec"), "bebés y mamá"),
     BrandAlias("Huggies", ("huggies", "huggees"), "bebés y mamá"),
@@ -425,6 +441,12 @@ VARIANT_ALIASES: dict[str, tuple[str, ...]] = {
     "Light": ("light", "lite"),
     "Blanca": ("blanca", "blanco"),
     "Dermacare": ("dermacare", "derma care"),
+    "Bebé": ("baby", "bebe", "bebé"),
+    "Hipoalergénico": ("hipoalergenico", "hipoalergénico", "hipo alergénico"),
+    "Humectación Sensible": ("humectacion sensible", "humectación sensible"),
+    "Frutos Rojos": ("frutos rojos", "frutosrojos"),
+    "Griego": ("griego", "grizgo"),
+    "Sal de Maras": ("sal de maras", "saldemaras", "saldbmaras"),
 }
 
 
@@ -437,7 +459,7 @@ PRODUCT_TYPE_ALIASES: dict[str, tuple[str, ...]] = {
     "Pisco": ("pisco",),
     "Cerveza": ("cerveza", "lager", "pilsner"),
     "Leche": ("leche evaporada", "leche entera", "leche descremada", "leche uht"),
-    "Yogurt": ("yogurt", "yogur"),
+    "Yogurt": ("yogurt", "yogur", "yogurt griego", "griego"),
     "Mantequilla": ("mantequilla",),
     "Margarina": ("margarina",),
     "Queso": ("queso",),
@@ -459,11 +481,11 @@ PRODUCT_TYPE_ALIASES: dict[str, tuple[str, ...]] = {
     "Galleta": ("galleta", "galletas"),
     "Chocolate": ("chocolate",),
     "Caramelo": ("caramelo", "caramelos"),
-    "Snack": ("snack", "papas", "chizito", "maiz", "maíz", "chips"),
+    "Snack": ("snack", "snacks", "papas", "papas kettle", "chizito", "maiz", "maíz", "chips"),
     "Detergente": ("detergente",),
     "Lejía": ("lejia", "lejía"),
     "Lavavajilla": ("lavavajilla",),
-    "Jabón": ("jabon", "jabón"),
+    "Jabón": ("jabon", "jabón", "jabones", "jabon cremoso", "jabón cremoso"),
     "Cera": ("cera para piso", "cera multiusos", "abrillantador"),
     "Ambientador": ("ambientador",),
     "Shampoo": ("shampoo", "champu", "champú"),
@@ -660,6 +682,7 @@ BRAND_DEFAULT_PRODUCT_TYPES: dict[str, str] = {
     "Lay's": "Snack",
     "Cuates": "Caramelo",
     "Ritz": "Galleta",
+    "Voraz": "Snack",
 }
 
 

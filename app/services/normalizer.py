@@ -96,6 +96,23 @@ class ProductTextNormalizer:
     def _repair_common_ocr_tokens(self, text: str) -> str:
         # OCR often reads small "g" units as 9/q on retail packs, e.g. "42g" -> "429".
         text = self.ocr_g_content_regex.sub(r"\g<amount> g", text)
+        text = re.sub(r"\bbaby\s*dove\b", "Baby Dove", text, flags=re.IGNORECASE)
+        text = re.sub(r"\bbabydove\b", "Baby Dove", text, flags=re.IGNORECASE)
+        text = re.sub(r"\bfrutos\s*rojos\b", "Frutos Rojos", text, flags=re.IGNORECASE)
+        text = re.sub(r"\bGRIZGO\b", "GRIEGO", text, flags=re.IGNORECASE)
+        text = re.sub(r"\bJADON\b", "JABON", text, flags=re.IGNORECASE)
+        text = re.sub(r"\bJADONES\b", "JABONES", text, flags=re.IGNORECASE)
+        text = re.sub(r"\bPACK\s*x\s*(\d+)\s*['’]\s*JABONES\b", r"PACK x\1 JABONES", text, flags=re.IGNORECASE)
+        text = re.sub(r"\bPACKx\s*(\d+)\s*['’]?\s*JABONES\b", r"PACK x\1 JABONES", text, flags=re.IGNORECASE)
+        text = re.sub(r"\bjabon\s*en\s*barra\b", "jabon en barra", text, flags=re.IGNORECASE)
+        text = re.sub(r"\bjabonen\s*barra\b", "jabon en barra", text, flags=re.IGNORECASE)
+        text = re.sub(r"\bjab[oó]n[.\s]*cremoso\b", "jabón cremoso", text, flags=re.IGNORECASE)
+        text = re.sub(r"\bcon\s*ingredic?ntes\s*hidratantes\b", "con ingredientes hidratantes", text, flags=re.IGNORECASE)
+        text = re.sub(r"\blibre\s*de\s*parabenos\b", "libre de parabenos", text, flags=re.IGNORECASE)
+        text = re.sub(r"\bpiel\s*delicada\b", "piel delicada", text, flags=re.IGNORECASE)
+        text = re.sub(r"\bPAPASKETT(?:LE)?(?:LR|L)?(?:OON|CON)?\b", "PAPAS KETTLE CON", text, flags=re.IGNORECASE)
+        text = re.sub(r"\bSALD[BE]?MARAS\b", "SAL DE MARAS", text, flags=re.IGNORECASE)
+        text = re.sub(r"(?<=\d)\.\s*(?=g\b|kg\b|ml\b|l\b)", " ", text, flags=re.IGNORECASE)
         text = re.sub(r"\bALTOEN\b", "ALTO EN", text, flags=re.IGNORECASE)
         text = re.sub(r"\bCREMACORPORAL\b", "CREMA CORPORAL", text, flags=re.IGNORECASE)
         text = re.sub(r"\bCREMA\s+CORPORA\b", "CREMA CORPORAL", text, flags=re.IGNORECASE)
@@ -255,9 +272,13 @@ class ProductTextNormalizer:
         folded_text: str,
     ) -> str | None:
         if product_type == "Jabón" and (
-            brand == "Johnson's" or re.search(r"(?<!\w)(baby|bebe|bebe|piel delicada)(?!\w)", folded_text)
+            brand == "Johnson's"
+            or re.search(r"(?<!\w)(baby|bebe|bebe|piel delicada)(?!\w)", folded_text)
+            or re.search(r"(?<!\w)baby\s*dove(?!\w)", folded_text)
         ):
             return "bebés y mamá"
+        if product_type == "Jabón" and re.search(r"(?<!\w)(piel|humectacion|hipoalergenico)(?!\w)", folded_text):
+            return "cuidado personal"
         return None
 
     def _detect_variant(self, folded_text: str, category: str | None) -> str | None:
@@ -363,8 +384,9 @@ class ProductTextNormalizer:
         brand_name: str,
         variant: str | None,
     ) -> str:
-        parts = [self._title_product_phrase(product_line)]
         folded_line = self._fold(product_line)
+        descriptor = product_type if product_type and folded_line in {"snack", "snacks"} else self._title_product_phrase(product_line)
+        parts = [descriptor]
         if product_type and self._fold(product_type) not in folded_line:
             parts.append(product_type)
         if self._fold(brand_name) not in folded_line:
@@ -456,6 +478,8 @@ class ProductTextNormalizer:
         if len(folded_line) < 3:
             return False
         if any(phrase in folded_line for phrase in (self._fold(item) for item in NOISE_PHRASES)):
+            return False
+        if re.search(r"f\s*ck\s*sweet|stay\s*salty", folded_line):
             return False
         tokens = set(re.findall(r"[a-z0-9]+", folded_line))
         if tokens and tokens.issubset({self._fold(stopword) for stopword in PRODUCT_STOPWORDS}):

@@ -50,6 +50,12 @@ class ProductRecognitionPipeline:
         logger.info("ocr completado lineas=%s", len(ocr_result.lines))
 
         normalized = self.normalizer.normalize(ocr_result.text, source_name=source_name)
+        if detection.fields and self._needs_full_image_ocr(normalized):
+            full_ocr_result = self._extract_full_image_ocr(image, trace_id)
+            ocr_result = self._merge_ocr_results(ocr_result, full_ocr_result)
+            normalized = self.normalizer.normalize(ocr_result.text, source_name=source_name)
+            logger.info("ocr imagen completa fusionado lineas=%s", len(ocr_result.lines))
+
         warnings = list(normalized.warnings)
         if detection.used_full_image_fallback:
             warnings.append("YOLO no detectó una región; se procesó la imagen completa como respaldo técnico.")
@@ -168,6 +174,35 @@ class ProductRecognitionPipeline:
         if self.settings.persist_debug_images:
             save_debug_image(ocr_image, self.settings.debug_image_dir, f"{trace_id}_roi.jpg")
         return self.ocr.extract(ocr_image)
+
+    def _extract_full_image_ocr(self, image, trace_id: str) -> OcrResult:
+        ocr_image = prepare_for_ocr(image)
+        if self.settings.persist_debug_images:
+            save_debug_image(ocr_image, self.settings.debug_image_dir, f"{trace_id}_full.jpg")
+        return self.ocr.extract(ocr_image)
+
+    def _needs_full_image_ocr(self, normalized) -> bool:
+        return (
+            normalized.contenido_neto is None
+            or normalized.unidad_medida is None
+            or normalized.tipo_producto is None
+        )
+
+    def _merge_ocr_results(self, primary: OcrResult, secondary: OcrResult) -> OcrResult:
+        lines: list[OcrTextLine] = []
+        seen_text: set[str] = set()
+        for result in (primary, secondary):
+            for line in result.lines:
+                self._append_unique_line(lines, seen_text, line)
+
+        confidences = [line.confidence for line in lines if line.confidence is not None]
+        average = sum(confidences) / len(confidences) if confidences else None
+        return OcrResult(
+            engine=primary.engine,
+            text="\n".join(line.text for line in lines),
+            average_confidence=average,
+            lines=lines,
+        )
 
     def _expand_bbox(
         self,

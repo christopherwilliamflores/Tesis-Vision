@@ -90,6 +90,48 @@ def test_normalizer_identifies_yogurt_as_product_type_not_only_brand() -> None:
     assert result.categoria_sugerida == "lacteos"
 
 
+def test_normalizer_uses_full_label_text_for_baby_dove_pack() -> None:
+    text = "jabon en barra\nbabyDove\nhipoalergenico\nhumectacion sensible\n3x75.g"
+
+    result = ProductTextNormalizer().normalize(text)
+
+    assert result.marca == "Dove"
+    assert result.tipo_producto == "Jabón"
+    assert result.contenido_neto == "3 x 75 g"
+    assert result.presentacion == "3 x 75 g"
+    assert result.categoria_sugerida == "bebés y mamá"
+    assert "Dove" in (result.nombre_producto or "")
+
+
+def test_normalizer_repairs_gloria_griego_ocr_text() -> None:
+    text = "GLORIA\nGRIZGO\nsabor a\nFRUTOSROJOS\nCremosidad unica\n800 g"
+
+    result = ProductTextNormalizer().normalize(text)
+
+    assert result.nombre_producto == "Yogurt Gloria Frutos Rojos"
+    assert result.marca == "Gloria"
+    assert result.tipo_producto == "Yogurt"
+    assert result.contenido_neto == "800 g"
+    assert result.categoria_sugerida == "lacteos"
+
+
+def test_normalizer_prioritizes_prominent_voraz_brand_over_slogan() -> None:
+    text = (
+        "F*CKSWEET\nSTAYSALTY\nF*CK SWEET\nSTAY SALTY\nPAPASKETT\n"
+        "PAPASKETTLROON\nSALDEMARAS\nPAPASKETTLEOON\nSNACKS\nVORAZ\n"
+        "PAPASKETTLRCON\n1359\nSALDBMARAS\nCCYOAHRCU"
+    )
+
+    result = ProductTextNormalizer().normalize(text, source_name="voraz azul.png")
+
+    assert result.nombre_producto == "Snack Voraz Sal de Maras"
+    assert result.marca == "Voraz"
+    assert result.tipo_producto == "Snack"
+    assert result.contenido_neto == "135 g"
+    assert result.unidad_medida == "g"
+    assert result.categoria_sugerida == "snacks y golosinas"
+
+
 def test_normalizer_identifies_mantequilla_as_product_type() -> None:
     text = "Mantequilla Gloria con sal 200 g"
 
@@ -153,6 +195,26 @@ def test_normalizer_detects_johnsons_soap_multipack() -> None:
     )
 
     result = ProductTextNormalizer().normalize(text, source_name="johnsons pack jabones.png")
+
+    assert result.nombre_producto == "Jabón Cremoso Johnson's Bebé"
+    assert result.marca == "Johnson's"
+    assert result.tipo_producto == "Jabón"
+    assert result.presentacion == "pack x 3"
+    assert result.contenido_neto == "3 x 125 g"
+    assert result.unidad_medida == "g"
+    assert result.categoria_sugerida == "bebés y mamá"
+
+
+def test_normalizer_detects_johnsons_brand_from_noisy_filename_and_ocr() -> None:
+    text = (
+        "PACK x3 JABONES\nPACKx3'JABONES\nbaby\njabón.cremoso\n"
+        "coningredienteshidratantes\npieldelicada\nconingredicnteshidratantes\n"
+        "librede parabenos\nyftalatos\n3x1\nPuedeperd\nPACK x3'JABONES\n"
+        "libredeparabenos\nRIE\n3 x 125g c/u\nhpoeleigenics\nPACEADO\n"
+        "Puedeperderhasta12.5gclu"
+    )
+
+    result = ProductTextNormalizer().normalize(text, source_name="jhonsos baby.png")
 
     assert result.nombre_producto == "Jabón Cremoso Johnson's Bebé"
     assert result.marca == "Johnson's"
