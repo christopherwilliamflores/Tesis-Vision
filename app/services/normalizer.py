@@ -37,6 +37,10 @@ class ProductTextNormalizer:
         rf"(?P<count>\d{{1,3}})\s*x\s*(?P<amount>\d+(?:[.,]\d+)?)\s*(?P<unit>{unit_pattern})\b(?:\s*c\s*/?\s*u)?",
         flags=re.IGNORECASE,
     )
+    soap_multipack_missing_unit_regex = re.compile(
+        r"(?P<count>\d{1,3})\s*x\s*(?P<amount>75|90|100|110|125|150)(?=\D|$)",
+        flags=re.IGNORECASE,
+    )
     loose_pack_count_regex = re.compile(r"(?m)^\s*(?P<count>[2-9]|[1-9]\d)\s*$")
     ocr_g_content_regex = re.compile(r"(?<!\d)(?P<amount>\d{1,3})[9q](?!\d)", flags=re.IGNORECASE)
     pack_regex = re.compile(r"\b(?:pack|paq|caja)?\s*x\s*(?P<count>\d{1,3})\b", flags=re.IGNORECASE)
@@ -100,7 +104,7 @@ class ProductTextNormalizer:
         text = re.sub(r"\bbabydove\b", "Baby Dove", text, flags=re.IGNORECASE)
         text = re.sub(r"\bfrutos\s*rojos\b", "Frutos Rojos", text, flags=re.IGNORECASE)
         text = re.sub(r"\bGRIZGO\b", "GRIEGO", text, flags=re.IGNORECASE)
-        text = re.sub(r"\bJADON\b", "JABON", text, flags=re.IGNORECASE)
+        text = re.sub(r"\bJADON\b", "JABÓN", text, flags=re.IGNORECASE)
         text = re.sub(r"\bJADONES\b", "JABONES", text, flags=re.IGNORECASE)
         text = re.sub(r"\bPACK\s*x\s*(\d+)\s*['’]\s*JABONES\b", r"PACK x\1 JABONES", text, flags=re.IGNORECASE)
         text = re.sub(r"\bPACKx\s*(\d+)\s*['’]?\s*JABONES\b", r"PACK x\1 JABONES", text, flags=re.IGNORECASE)
@@ -199,6 +203,12 @@ class ProductTextNormalizer:
             amount = multipack_match.group("amount").replace(",", ".")
             unit_key = multipack_match.group("unit").lower().replace(".", "")
             return f"{count} x {amount}", UNIT_ALIASES.get(unit_key, unit_key)
+
+        soap_multipack_match = self.soap_multipack_missing_unit_regex.search(clean_text)
+        if soap_multipack_match and self._looks_like_soap_pack(clean_text):
+            count = soap_multipack_match.group("count")
+            amount = soap_multipack_match.group("amount")
+            return f"{count} x {amount}", "g"
 
         loose_pack = self._detect_loose_multipack_content(clean_text)
         if loose_pack:
@@ -319,6 +329,10 @@ class ProductTextNormalizer:
             marker in folded_text
             for marker in ("cremas dentales", "jabones", "oferta especial", "pack")
         )
+
+    def _looks_like_soap_pack(self, clean_text: str) -> bool:
+        folded_text = self._fold(clean_text)
+        return "jabon" in folded_text or "jabones" in folded_text
 
     def _build_product_name(
         self,

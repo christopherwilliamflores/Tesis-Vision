@@ -225,6 +225,16 @@ def test_normalizer_detects_johnsons_brand_from_noisy_filename_and_ocr() -> None
     assert result.categoria_sugerida == "bebés y mamá"
 
 
+def test_normalizer_infers_soap_multipack_unit_when_ocr_drops_g() -> None:
+    text = "JADON\nbabyDove\njabon en barra\nhumectacion sensible\n3x75"
+
+    result = ProductTextNormalizer().normalize(text, source_name="dove-ba.png")
+
+    assert result.tipo_producto == "Jabón"
+    assert result.contenido_neto == "3 x 75 g"
+    assert result.unidad_medida == "g"
+
+
 def test_normalizer_detects_kolynos_loose_offer_pack() -> None:
     text = (
         "3\nCREMAS\nOFERTA\nESPECIAL\nDENTALES\n60mL\n"

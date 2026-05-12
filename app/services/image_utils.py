@@ -29,14 +29,14 @@ def crop_image(image: np.ndarray, bbox: tuple[int, int, int, int]) -> np.ndarray
     return image[y_min:y_max, x_min:x_max]
 
 
-def prepare_for_ocr(image: np.ndarray) -> np.ndarray:
+def prepare_for_ocr(image: np.ndarray, target_max_side: int = 800) -> np.ndarray:
     """Preprocess package crops for OCR while preserving text color cues."""
 
     image = trim_plain_background(image)
     height, width = image.shape[:2]
     max_side = max(height, width)
-    if max_side < 1400:
-        scale = 1400 / max_side
+    if max_side < target_max_side:
+        scale = target_max_side / max_side
         image = cv2.resize(image, None, fx=scale, fy=scale, interpolation=cv2.INTER_CUBIC)
 
     lab = cv2.cvtColor(image, cv2.COLOR_BGR2LAB)

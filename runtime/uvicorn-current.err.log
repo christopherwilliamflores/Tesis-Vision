@@ -97,3 +97,113 @@ RuntimeWarning: Enable tracemalloc to get the object allocation traceback
 INFO:     Started server process [18456]
 INFO:     Waiting for application startup.
 INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'app\domain\catalog.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [18456]
+WARNING:  WatchFiles detected changes in 'app\services\normalizer.py'. Reloading...
+Exception ignored in: <function BaseEventLoop.__del__ at 0x0000021BE9E2A7A0>
+Traceback (most recent call last):
+  File "C:\Program Files\Python311\Lib\asyncio\base_events.py", line 695, in __del__
+    self.close()
+  File "C:\Program Files\Python311\Lib\asyncio\selector_events.py", line 91, in close
+    self._close_self_pipe()
+  File "C:\Program Files\Python311\Lib\asyncio\selector_events.py", line 98, in _close_self_pipe
+    self._remove_reader(self._ssock.fileno())
+                        ^^^^^^^^^^^
+AttributeError: '_WindowsSelectorEventLoop' object has no attribute '_ssock'
+C:\Users\marcelo\AppData\Roaming\Python\Python311\site-packages\uvicorn\_subprocess.py:84: RuntimeWarning: coroutine 'Server.serve' was never awaited
+  pass
+RuntimeWarning: Enable tracemalloc to get the object allocation traceback
+INFO:     Started server process [20116]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'tests\test_normalizer.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [20116]
+WARNING:  WatchFiles detected changes in 'tests\test_normalizer.py', 'app\services\normalizer.py'. Reloading...
+Exception ignored in: <function BaseEventLoop.__del__ at 0x000001ADA80FA7A0>
+Traceback (most recent call last):
+  File "C:\Program Files\Python311\Lib\asyncio\base_events.py", line 695, in __del__
+    self.close()
+  File "C:\Program Files\Python311\Lib\asyncio\selector_events.py", line 91, in close
+    self._close_self_pipe()
+  File "C:\Program Files\Python311\Lib\asyncio\selector_events.py", line 98, in _close_self_pipe
+    self._remove_reader(self._ssock.fileno())
+                        ^^^^^^^^^^^
+AttributeError: '_WindowsSelectorEventLoop' object has no attribute '_ssock'
+C:\Users\marcelo\AppData\Roaming\Python\Python311\site-packages\uvicorn\_subprocess.py:84: RuntimeWarning: coroutine 'Server.serve' was never awaited
+  pass
+RuntimeWarning: Enable tracemalloc to get the object allocation traceback
+INFO:     Started server process [3420]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'app\services\pipeline.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [3420]
+WARNING:  WatchFiles detected changes in 'app\services\image_utils.py'. Reloading...
+Exception ignored in: <function BaseEventLoop.__del__ at 0x000001695F47A7A0>
+Traceback (most recent call last):
+  File "C:\Program Files\Python311\Lib\asyncio\base_events.py", line 695, in __del__
+    self.close()
+  File "C:\Program Files\Python311\Lib\asyncio\selector_events.py", line 91, in close
+    self._close_self_pipe()
+  File "C:\Program Files\Python311\Lib\asyncio\selector_events.py", line 98, in _close_self_pipe
+    self._remove_reader(self._ssock.fileno())
+                        ^^^^^^^^^^^
+AttributeError: '_WindowsSelectorEventLoop' object has no attribute '_ssock'
+C:\Users\marcelo\AppData\Roaming\Python\Python311\site-packages\uvicorn\_subprocess.py:84: RuntimeWarning: coroutine 'Server.serve' was never awaited
+  pass
+RuntimeWarning: Enable tracemalloc to get the object allocation traceback
+INFO:     Started server process [9128]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'app\core\config.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [9128]
+WARNING:  WatchFiles detected changes in 'app\services\pipeline.py', 'app\services\detector.py', 'app\services\image_utils.py'. Reloading...
+Exception ignored in: <function BaseEventLoop.__del__ at 0x0000021D772FA7A0>
+Traceback (most recent call last):
+  File "C:\Program Files\Python311\Lib\asyncio\base_events.py", line 695, in __del__
+    self.close()
+  File "C:\Program Files\Python311\Lib\asyncio\selector_events.py", line 91, in close
+    self._close_self_pipe()
+  File "C:\Program Files\Python311\Lib\asyncio\selector_events.py", line 98, in _close_self_pipe
+    self._remove_reader(self._ssock.fileno())
+                        ^^^^^^^^^^^
+AttributeError: '_WindowsSelectorEventLoop' object has no attribute '_ssock'
+C:\Users\marcelo\AppData\Roaming\Python\Python311\site-packages\uvicorn\_subprocess.py:84: RuntimeWarning: coroutine 'Server.serve' was never awaited
+  pass
+RuntimeWarning: Enable tracemalloc to get the object allocation traceback
+INFO:     Started server process [4872]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+WARNING:  WatchFiles detected changes in 'app\services\normalizer.py'. Reloading...
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [4872]
+WARNING:  WatchFiles detected changes in 'tests\test_normalizer.py', 'app\services\normalizer.py'. Reloading...
+Exception ignored in: <function BaseEventLoop.__del__ at 0x000001BD7C59A7A0>
+Traceback (most recent call last):
+  File "C:\Program Files\Python311\Lib\asyncio\base_events.py", line 695, in __del__
+    self.close()
+  File "C:\Program Files\Python311\Lib\asyncio\selector_events.py", line 91, in close
+    self._close_self_pipe()
+  File "C:\Program Files\Python311\Lib\asyncio\selector_events.py", line 98, in _close_self_pipe
+    self._remove_reader(self._ssock.fileno())
+                        ^^^^^^^^^^^
+AttributeError: '_WindowsSelectorEventLoop' object has no attribute '_ssock'
+C:\Users\marcelo\AppData\Roaming\Python\Python311\site-packages\uvicorn\_subprocess.py:84: RuntimeWarning: coroutine 'Server.serve' was never awaited
+  pass
+RuntimeWarning: Enable tracemalloc to get the object allocation traceback
+INFO:     Started server process [3060]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.

@@ -110,7 +110,7 @@ class ProductRecognitionPipeline:
         trace_id: str,
     ) -> OcrResult:
         if detection.fields:
-            return self._extract_field_aware_ocr(image, detection, trace_id)
+            return self._extract_roi_ocr(image, detection, trace_id)
 
         cropped = crop_image(image, detection.bbox)
         ocr_image = prepare_for_ocr(cropped)
@@ -183,9 +183,10 @@ class ProductRecognitionPipeline:
 
     def _needs_full_image_ocr(self, normalized) -> bool:
         return (
-            normalized.contenido_neto is None
-            or normalized.unidad_medida is None
+            normalized.nombre_producto is None
+            or normalized.marca is None
             or normalized.tipo_producto is None
+            or normalized.categoria_sugerida is None
         )
 
     def _merge_ocr_results(self, primary: OcrResult, secondary: OcrResult) -> OcrResult:

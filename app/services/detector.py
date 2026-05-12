@@ -68,6 +68,7 @@ class YoloRegionDetector:
                 source=image,
                 conf=self.settings.yolo_confidence_threshold,
                 device=self.settings.yolo_device,
+                imgsz=self.settings.yolo_imgsz,
                 verbose=False,
             )
         except ModelUnavailableError:

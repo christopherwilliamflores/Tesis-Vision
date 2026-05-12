@@ -19,6 +19,7 @@ class Settings(BaseSettings):
     yolo_model_path: str = "yolov8n.pt"
     yolo_confidence_threshold: float = Field(default=0.25, ge=0.0, le=1.0)
     yolo_device: str = "cpu"
+    yolo_imgsz: int = Field(default=416, ge=160, le=1280)
     allow_full_image_fallback: bool = True
 
     ocr_engine: str = "paddle"
