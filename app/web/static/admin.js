@@ -1,0 +1,284 @@
+const apiBaseUrl = window.location.protocol === "file:" ? "http://127.0.0.1:8000" : "";
+
+const tableBody = document.querySelector("#review-table-body");
+const emptyState = document.querySelector("#review-empty");
+const listCount = document.querySelector("#list-count");
+const detailEmpty = document.querySelector("#detail-empty");
+const detailContent = document.querySelector("#detail-content");
+const searchInput = document.querySelector("#admin-search-input");
+const statusFilter = document.querySelector("#status-filter");
+const categoryFilter = document.querySelector("#category-filter");
+const confidenceFilter = document.querySelector("#confidence-filter");
+const confidenceLabel = document.querySelector("#confidence-label");
+const applyFilters = document.querySelector("#apply-filters");
+const reviewStatus = document.querySelector("#review-status");
+
+const metrics = {
+  pending: document.querySelector("#metric-pending"),
+  validated: document.querySelector("#metric-validated"),
+  corrected: document.querySelector("#metric-corrected"),
+  rejected: document.querySelector("#metric-rejected"),
+  training: document.querySelector("#metric-training"),
+  precision: document.querySelector("#metric-precision"),
+};
+
+const detail = {
+  original: document.querySelector("#detail-original-image"),
+  crop: document.querySelector("#detail-crop-image"),
+  classBadge: document.querySelector("#detail-class-badge"),
+  ocrConfidence: document.querySelector("#detail-ocr-confidence"),
+  ocrText: document.querySelector("#detail-ocr-text"),
+  suggestion: document.querySelector("#detail-ai-suggestion"),
+};
+
+const fields = {
+  final_nombre_producto: document.querySelector("#review-name"),
+  final_marca: document.querySelector("#review-brand"),
+  final_tipo_producto: document.querySelector("#review-type"),
+  final_presentacion: document.querySelector("#review-presentation"),
+  final_contenido_neto: document.querySelector("#review-content"),
+  final_unidad_medida: document.querySelector("#review-unit"),
+  final_categoria_sugerida: document.querySelector("#review-category"),
+  final_codigo_barras: document.querySelector("#review-barcode"),
+  failure_reason: document.querySelector("#review-reason"),
+  review_notes: document.querySelector("#review-notes"),
+  use_for_training: document.querySelector("#review-training"),
+};
+
+let records = [];
+let selectedId = null;
+let searchDebounce = null;
+
+function escapeHtml(value) {
+  if (value === null || value === undefined) return "";
+  return String(value).replace(/[&<>"']/g, (char) => {
+    return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[char];
+  });
+}
+
+function percent(value) {
+  if (value === null || value === undefined) return "--";
+  return `${Math.round(Number(value) * 100)}%`;
+}
+
+function statusLabel(status) {
+  return {
+    pending_review: "Pendiente",
+    validated: "Validado",
+    corrected: "Corregido",
+    rejected: "Rechazado",
+    duplicate: "Duplicado",
+    ignored: "Ignorado",
+    training_candidate: "Candidato",
+    used_for_training: "Entrenado",
+  }[status] || status;
+}
+
+function productName(item) {
+  return item.final_nombre_producto || item.predicted_nombre_producto || "Producto sin nombre";
+}
+
+function brandName(item) {
+  return item.final_marca || item.predicted_marca || "Sin marca";
+}
+
+function categoryName(item) {
+  return item.final_categoria_sugerida || item.predicted_categoria_sugerida || "";
+}
+
+async function fetchJson(url, options) {
+  const response = await fetch(url, options);
+  const data = await response.json().catch(() => ({}));
+  if (!response.ok) throw new Error(data.message || "No se pudo completar la operación.");
+  return data;
+}
+
+async function loadStats() {
+  const data = await fetchJson(`${apiBaseUrl}/api/v1/admin/reconocimientos/stats`);
+  metrics.pending.textContent = data.pending_review;
+  metrics.validated.textContent = data.validated;
+  metrics.corrected.textContent = data.corrected;
+  metrics.rejected.textContent = data.rejected;
+  metrics.training.textContent = data.training_candidates;
+  metrics.precision.textContent = `${Number(data.precision).toFixed(1)}%`;
+}
+
+function buildListUrl() {
+  const params = new URLSearchParams({ limit: "200" });
+  const status = statusFilter.value;
+  const category = categoryFilter.value;
+  const minConfidence = Number(confidenceFilter.value) / 100;
+  const query = searchInput.value.trim();
+  if (status !== "all") params.set("status", status);
+  if (category !== "all") params.set("category", category);
+  if (minConfidence > 0) params.set("min_confidence", String(minConfidence));
+  if (query) params.set("q", query);
+  return `${apiBaseUrl}/api/v1/admin/reconocimientos?${params}`;
+}
+
+async function loadRecords() {
+  tableBody.innerHTML = `<tr><td colspan="6" class="table-loading">Cargando reconocimientos...</td></tr>`;
+  try {
+    const data = await fetchJson(buildListUrl());
+    records = data.items || [];
+    renderCategoryOptions(records);
+    renderTable(records);
+    if (records.length && !selectedId) selectRecord(records[0].id);
+    if (selectedId && !records.some((item) => item.id === selectedId)) {
+      selectedId = null;
+      if (records.length) selectRecord(records[0].id);
+      else clearDetail();
+    }
+  } catch (error) {
+    tableBody.innerHTML = `<tr><td colspan="6" class="table-loading is-error">${escapeHtml(error.message)}</td></tr>`;
+  }
+}
+
+function renderCategoryOptions(items) {
+  const current = categoryFilter.value;
+  const categories = Array.from(new Set(items.map(categoryName).filter(Boolean))).sort();
+  categoryFilter.innerHTML =
+    `<option value="all">Todas las categorías</option>` +
+    categories
+      .map((category) => `<option value="${escapeHtml(category)}">${escapeHtml(category)}</option>`)
+      .join("");
+  if (categories.includes(current)) categoryFilter.value = current;
+}
+
+function renderTable(items) {
+  listCount.textContent = `${items.length} registros`;
+  emptyState.hidden = items.length > 0;
+  if (!items.length) {
+    tableBody.innerHTML = "";
+    return;
+  }
+  tableBody.innerHTML = items
+    .map((item) => {
+      const selected = item.id === selectedId ? " is-selected" : "";
+      return `<tr class="${selected}" data-id="${item.id}">
+        <td>#${item.id}</td>
+        <td><img class="review-thumb" src="${item.image_url}" alt=""></td>
+        <td>
+          <strong>${escapeHtml(productName(item))}</strong>
+          <span>${escapeHtml(categoryName(item) || "Sin categoría")} / ${escapeHtml(brandName(item))}</span>
+        </td>
+        <td>
+          <b class="${(item.yolo_confidence || 0) < 0.5 ? "low-score" : "good-score"}">${percent(item.yolo_confidence)}</b>
+          <b class="${(item.ocr_confidence || 0) < 0.5 ? "low-score" : "good-score"}">${percent(item.ocr_confidence)}</b>
+        </td>
+        <td><span class="status-pill status-${item.status}">${statusLabel(item.status)}</span></td>
+        <td><button class="table-action" type="button">Revisar</button></td>
+      </tr>`;
+    })
+    .join("");
+  tableBody.querySelectorAll("tr").forEach((row) => {
+    row.addEventListener("click", () => selectRecord(Number(row.dataset.id)));
+  });
+}
+
+function clearDetail() {
+  detailContent.hidden = true;
+  detailEmpty.hidden = false;
+  selectedId = null;
+}
+
+function fillField(name, value) {
+  const node = fields[name];
+  if (!node) return;
+  if (node.type === "checkbox") node.checked = Boolean(value);
+  else node.value = value || "";
+}
+
+function selectRecord(id) {
+  const item = records.find((record) => record.id === id);
+  if (!item) return;
+  selectedId = id;
+  renderTable(records);
+  detailEmpty.hidden = true;
+  detailContent.hidden = false;
+
+  detail.original.src = item.image_url;
+  detail.crop.src = item.image_url;
+  detail.classBadge.textContent = item.yolo_class_name || "label";
+  detail.ocrConfidence.textContent = `Confianza: ${percent(item.ocr_confidence)}`;
+  detail.ocrText.textContent = item.ocr_text || "Sin texto OCR.";
+  detail.suggestion.textContent = productName(item);
+
+  fillField("final_nombre_producto", item.final_nombre_producto || item.predicted_nombre_producto);
+  fillField("final_marca", item.final_marca || item.predicted_marca);
+  fillField("final_tipo_producto", item.final_tipo_producto || item.predicted_tipo_producto);
+  fillField("final_presentacion", item.final_presentacion || item.predicted_presentacion);
+  fillField("final_contenido_neto", item.final_contenido_neto || item.predicted_contenido_neto);
+  fillField("final_unidad_medida", item.final_unidad_medida || item.predicted_unidad_medida);
+  fillField("final_categoria_sugerida", item.final_categoria_sugerida || item.predicted_categoria_sugerida);
+  fillField("final_codigo_barras", item.final_codigo_barras);
+  fillField("failure_reason", item.failure_reason);
+  fillField("review_notes", item.review_notes);
+  fillField("use_for_training", item.use_for_training);
+  reviewStatus.textContent = "";
+  reviewStatus.classList.remove("is-error");
+}
+
+function readReviewPayload(status) {
+  return {
+    status,
+    final_nombre_producto: fields.final_nombre_producto.value.trim() || null,
+    final_marca: fields.final_marca.value.trim() || null,
+    final_tipo_producto: fields.final_tipo_producto.value.trim() || null,
+    final_presentacion: fields.final_presentacion.value.trim() || null,
+    final_contenido_neto: fields.final_contenido_neto.value.trim() || null,
+    final_unidad_medida: fields.final_unidad_medida.value.trim() || null,
+    final_categoria_sugerida: fields.final_categoria_sugerida.value.trim() || null,
+    final_codigo_barras: fields.final_codigo_barras.value.trim() || null,
+    failure_reason: fields.failure_reason.value || null,
+    review_notes: fields.review_notes.value.trim() || null,
+    use_for_training: fields.use_for_training.checked,
+    linked_product_id: null,
+  };
+}
+
+async function submitReview(status) {
+  if (!selectedId) return;
+  reviewStatus.textContent = "Guardando revisión...";
+  reviewStatus.classList.remove("is-error");
+  try {
+    const data = await fetchJson(`${apiBaseUrl}/api/v1/admin/reconocimientos/${selectedId}/review`, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(readReviewPayload(status)),
+    });
+    const index = records.findIndex((item) => item.id === selectedId);
+    if (index >= 0) records[index] = data;
+    reviewStatus.textContent = `Revisión guardada como ${statusLabel(data.status)}.`;
+    await loadStats();
+    renderTable(records);
+    selectRecord(data.id);
+  } catch (error) {
+    reviewStatus.classList.add("is-error");
+    reviewStatus.textContent = error.message;
+  }
+}
+
+document.querySelectorAll("[data-action]").forEach((button) => {
+  button.addEventListener("click", () => submitReview(button.dataset.action));
+});
+
+confidenceFilter.addEventListener("input", () => {
+  confidenceLabel.textContent = `${confidenceFilter.value}%`;
+});
+
+applyFilters.addEventListener("click", loadRecords);
+statusFilter.addEventListener("change", loadRecords);
+categoryFilter.addEventListener("change", loadRecords);
+
+searchInput.addEventListener("input", () => {
+  clearTimeout(searchDebounce);
+  searchDebounce = setTimeout(loadRecords, 250);
+});
+
+async function boot() {
+  await loadStats().catch(() => {});
+  await loadRecords();
+}
+
+boot();

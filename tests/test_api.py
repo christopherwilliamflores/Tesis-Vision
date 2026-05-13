@@ -95,6 +95,42 @@ def test_productos_screen_is_served() -> None:
     assert "static/productos.js" in response.text
 
 
+def test_admin_screen_is_served() -> None:
+    app = create_app()
+    client = TestClient(app)
+
+    response = client.get("/admin")
+
+    assert response.status_code == 200
+    assert "VisionAI Admin" in response.text
+    assert "static/admin.js" in response.text
+
+
+def test_recognize_product_creates_pending_review_event() -> None:
+    app = create_app()
+    fake_pipeline = ProductRecognitionPipeline(
+        settings=Settings(),
+        detector=FakeDetector(),
+        ocr=FakeOcr(),
+        normalizer=ProductTextNormalizer(),
+    )
+    app.dependency_overrides[get_product_pipeline] = lambda: fake_pipeline
+    client = TestClient(app)
+
+    response = client.post(
+        "/api/v1/products/recognize",
+        files={"image": ("inca-kola.jpg", _jpeg_bytes(), "image/jpeg")},
+        headers={"X-Trace-ID": "test-review-1"},
+    )
+    assert response.status_code == 200
+
+    events = client.get("/api/v1/admin/reconocimientos").json()["items"]
+    assert len(events) == 1
+    assert events[0]["trace_id"] == "test-review-1"
+    assert events[0]["status"] == "pending_review"
+    assert events[0]["predicted_marca"] == "Inca Kola"
+
+
 def test_recognize_product_rejects_non_image_upload() -> None:
     app = create_app()
     client = TestClient(app)

@@ -25,6 +25,48 @@ CREATE TABLE IF NOT EXISTS productos (
 );
 
 CREATE INDEX IF NOT EXISTS idx_productos_nombre ON productos(nombre_producto);
+
+CREATE TABLE IF NOT EXISTS recognition_events (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    trace_id TEXT NOT NULL,
+    source_name TEXT,
+    image_content_type TEXT,
+    image_blob BLOB,
+    status TEXT NOT NULL DEFAULT 'pending_review',
+    predicted_nombre_producto TEXT,
+    predicted_marca TEXT,
+    predicted_tipo_producto TEXT,
+    predicted_presentacion TEXT,
+    predicted_contenido_neto TEXT,
+    predicted_unidad_medida TEXT,
+    predicted_categoria_sugerida TEXT,
+    final_nombre_producto TEXT,
+    final_marca TEXT,
+    final_tipo_producto TEXT,
+    final_presentacion TEXT,
+    final_contenido_neto TEXT,
+    final_unidad_medida TEXT,
+    final_categoria_sugerida TEXT,
+    final_codigo_barras TEXT,
+    yolo_confidence REAL,
+    yolo_class_name TEXT,
+    ocr_confidence REAL,
+    ocr_text TEXT,
+    warnings_json TEXT NOT NULL DEFAULT '[]',
+    bbox_json TEXT,
+    failure_reason TEXT,
+    review_notes TEXT,
+    use_for_training INTEGER NOT NULL DEFAULT 0,
+    linked_product_id INTEGER,
+    recognition_json TEXT NOT NULL,
+    reviewed_at TEXT,
+    created_at TEXT NOT NULL DEFAULT (datetime('now')),
+    updated_at TEXT NOT NULL DEFAULT (datetime('now')),
+    FOREIGN KEY(linked_product_id) REFERENCES productos(id)
+);
+
+CREATE INDEX IF NOT EXISTS idx_recognition_events_status ON recognition_events(status);
+CREATE INDEX IF NOT EXISTS idx_recognition_events_created_at ON recognition_events(created_at);
 """
 
 

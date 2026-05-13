@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>VisionAI Admin</title>
+    <link rel="stylesheet" href="static/styles.css?v=4" />
+  </head>
+  <body class="admin-body">
+    <aside class="admin-sidebar">
+      <div class="admin-brand">
+        <strong>VisionAI Admin</strong>
+        <span>Enterprise Retail</span>
+      </div>
+      <nav class="admin-nav" aria-label="Administración">
+        <a href="/admin" class="is-active"><span>▦</span> Reconocimientos</a>
+        <a href="/"><span>▣</span> Registro</a>
+        <a href="/productos"><span>☰</span> Productos</a>
+        <a href="/docs"><span>◇</span> API docs</a>
+      </nav>
+      <div class="admin-user">
+        <div class="admin-avatar">AU</div>
+        <div>
+          <strong>Admin User</strong>
+          <span>Lead Auditor</span>
+        </div>
+      </div>
+    </aside>
+
+    <main class="admin-main">
+      <header class="admin-topbar">
+        <h1>Revisión de reconocimientos</h1>
+        <div class="admin-search">
+          <span aria-hidden="true">⌕</span>
+          <input id="admin-search-input" type="search" placeholder="Buscar por ID o producto..." />
+        </div>
+      </header>
+
+      <section class="admin-metrics" aria-label="Métricas de revisión">
+        <article class="metric-card">
+          <span>Pendientes</span>
+          <strong id="metric-pending">0</strong>
+        </article>
+        <article class="metric-card">
+          <span>Validados</span>
+          <strong id="metric-validated">0</strong>
+        </article>
+        <article class="metric-card">
+          <span>Corregidos</span>
+          <strong id="metric-corrected">0</strong>
+        </article>
+        <article class="metric-card">
+          <span>Rechazados</span>
+          <strong id="metric-rejected">0</strong>
+        </article>
+        <article class="metric-card">
+          <span>Candidatos</span>
+          <strong id="metric-training">0</strong>
+        </article>
+        <article class="metric-card metric-card--primary">
+          <span>Precisión global</span>
+          <strong id="metric-precision">0%</strong>
+        </article>
+      </section>
+
+      <section class="admin-filters" aria-label="Filtros">
+        <label>
+          <span>Estado</span>
+          <select id="status-filter">
+            <option value="all">Todos los estados</option>
+            <option value="pending_review">Pendientes</option>
+            <option value="validated">Validados</option>
+            <option value="corrected">Corregidos</option>
+            <option value="rejected">Rechazados</option>
+            <option value="duplicate">Duplicados</option>
+            <option value="ignored">Ignorados</option>
+          </select>
+        </label>
+        <label>
+          <span>Categoría</span>
+          <select id="category-filter">
+            <option value="all">Todas las categorías</option>
+          </select>
+        </label>
+        <label class="confidence-filter">
+          <span>Confianza IA <b id="confidence-label">0%</b></span>
+          <input id="confidence-filter" type="range" min="0" max="100" step="5" value="0" />
+        </label>
+        <button id="apply-filters" class="admin-button admin-button--muted" type="button">Aplicar filtros</button>
+      </section>
+
+      <section class="admin-workspace">
+        <section class="review-list" aria-label="Listado de reconocimientos">
+          <div class="admin-panel-heading">
+            <h2>Listado de reconocimientos</h2>
+            <span id="list-count">0 registros</span>
+          </div>
+          <div class="review-table-wrap">
+            <table class="review-table">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Miniatura</th>
+                  <th>Producto / Marca</th>
+                  <th>IA (Y/O)</th>
+                  <th>Estado</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody id="review-table-body"></tbody>
+            </table>
+            <div id="review-empty" class="review-empty" hidden>
+              Aún no hay reconocimientos. Analiza productos desde la pantalla de Registro.
+            </div>
+          </div>
+        </section>
+
+        <section class="review-detail" aria-label="Detalle del reconocimiento">
+          <div class="admin-panel-heading">
+            <h2>Detalle del reconocimiento</h2>
+            <span id="detail-mode">Modo edición</span>
+          </div>
+
+          <div id="detail-empty" class="detail-empty">
+            Selecciona un reconocimiento para revisarlo.
+          </div>
+
+          <div id="detail-content" hidden>
+            <div class="image-review-grid">
+              <div>
+                <span class="detail-label">Escena original</span>
+                <img id="detail-original-image" alt="Imagen original del producto" />
+              </div>
+              <div>
+                <span class="detail-label">Recorte YOLO</span>
+                <div class="crop-box">
+                  <img id="detail-crop-image" alt="Vista del recorte detectado" />
+                  <span id="detail-class-badge" class="class-badge">label</span>
+                </div>
+              </div>
+            </div>
+
+            <section class="ocr-review-box">
+              <div>
+                <span class="detail-label">OCR detectado</span>
+                <strong id="detail-ocr-confidence">-</strong>
+              </div>
+              <p id="detail-ocr-text">-</p>
+            </section>
+
+            <section class="ai-suggestion-box">
+              <span>Producto sugerido por IA</span>
+              <strong id="detail-ai-suggestion">-</strong>
+            </section>
+
+            <form id="review-form" class="review-form">
+              <div class="review-form-grid">
+                <label>
+                  Nombre del producto
+                  <input id="review-name" name="final_nombre_producto" type="text" maxlength="200" />
+                </label>
+                <label>
+                  Marca
+                  <input id="review-brand" name="final_marca" type="text" maxlength="120" />
+                </label>
+                <label>
+                  Tipo
+                  <input id="review-type" name="final_tipo_producto" type="text" maxlength="120" />
+                </label>
+                <label>
+                  Presentación
+                  <input id="review-presentation" name="final_presentacion" type="text" maxlength="120" />
+                </label>
+                <label>
+                  Contenido neto
+                  <input id="review-content" name="final_contenido_neto" type="text" maxlength="60" />
+                </label>
+                <label>
+                  Unidad
+                  <input id="review-unit" name="final_unidad_medida" type="text" maxlength="20" />
+                </label>
+                <label>
+                  Categoría
+                  <input id="review-category" name="final_categoria_sugerida" type="text" maxlength="120" />
+                </label>
+                <label>
+                  Código de barras
+                  <input id="review-barcode" name="final_codigo_barras" type="text" maxlength="64" />
+                </label>
+              </div>
+
+              <label class="review-reason">
+                Motivo de corrección
+                <select id="review-reason" name="failure_reason">
+                  <option value="">Sin motivo</option>
+                  <option value="ocr_failed">OCR falló</option>
+                  <option value="yolo_bad_crop">YOLO recortó mal</option>
+                  <option value="wrong_brand">Marca incorrecta</option>
+                  <option value="wrong_content">Contenido neto incorrecto</option>
+                  <option value="wrong_category">Categoría incorrecta</option>
+                  <option value="blurry_image">Imagen borrosa</option>
+                  <option value="duplicate_product">Producto duplicado</option>
+                </select>
+              </label>
+
+              <label class="review-notes">
+                Notas
+                <textarea id="review-notes" name="review_notes" maxlength="500"></textarea>
+              </label>
+
+              <label class="training-toggle">
+                <input id="review-training" name="use_for_training" type="checkbox" />
+                Usar esta imagen para entrenamiento
+              </label>
+
+              <div class="review-actions">
+                <button class="admin-button admin-button--success" type="button" data-action="validated">Validar</button>
+                <button class="admin-button admin-button--primary" type="button" data-action="corrected">Guardar corrección</button>
+                <button class="admin-button admin-button--danger" type="button" data-action="rejected">Rechazar</button>
+                <button class="admin-button admin-button--muted" type="button" data-action="ignored">Ignorar</button>
+              </div>
+              <p id="review-status" class="status-text" role="status"></p>
+            </form>
+          </div>
+        </section>
+      </section>
+    </main>
+
+    <script src="static/admin.js?v=4" defer></script>
+  </body>
+</html>

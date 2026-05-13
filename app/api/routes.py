@@ -1,15 +1,17 @@
 from uuid import uuid4
 
-from fastapi import APIRouter, Depends, File, Header, Query, UploadFile
+from fastapi import APIRouter, Depends, File, Header, Query, Response, UploadFile
 
 from app.api.dependencies import (
     get_product_pipeline,
     get_product_repository,
+    get_recognition_repository,
     get_suggestion_service,
 )
 from app.core.config import Settings, get_settings
 from app.core.exceptions import InvalidImageError
 from app.repositories.products import ProductRecord, ProductRepository
+from app.repositories.recognitions import RecognitionEventRecord, RecognitionRepository
 from app.schemas.product import (
     ErrorResponse,
     ProductCreateRequest,
@@ -19,6 +21,10 @@ from app.schemas.product import (
     ProductSuggestionItemSchema,
     ProductSuggestionsResponse,
     ProductUpdateRequest,
+    RecognitionEventResponse,
+    RecognitionEventsResponse,
+    RecognitionReviewRequest,
+    RecognitionStatsResponse,
 )
 from app.services.pipeline import ProductRecognitionPipeline
 from app.services.suggestions import ProductSuggestionService
@@ -38,6 +44,45 @@ def _to_response(record: ProductRecord) -> ProductResponse:
         categoria_sugerida=record.categoria_sugerida,
         codigo_barras=record.codigo_barras,
         precio_venta=record.precio_venta,
+        created_at=record.created_at,
+        updated_at=record.updated_at,
+    )
+
+
+def _recognition_to_response(record: RecognitionEventRecord) -> RecognitionEventResponse:
+    return RecognitionEventResponse(
+        id=record.id,
+        trace_id=record.trace_id,
+        source_name=record.source_name,
+        image_url=f"/api/v1/admin/reconocimientos/{record.id}/image",
+        status=record.status,
+        predicted_nombre_producto=record.predicted_nombre_producto,
+        predicted_marca=record.predicted_marca,
+        predicted_tipo_producto=record.predicted_tipo_producto,
+        predicted_presentacion=record.predicted_presentacion,
+        predicted_contenido_neto=record.predicted_contenido_neto,
+        predicted_unidad_medida=record.predicted_unidad_medida,
+        predicted_categoria_sugerida=record.predicted_categoria_sugerida,
+        final_nombre_producto=record.final_nombre_producto,
+        final_marca=record.final_marca,
+        final_tipo_producto=record.final_tipo_producto,
+        final_presentacion=record.final_presentacion,
+        final_contenido_neto=record.final_contenido_neto,
+        final_unidad_medida=record.final_unidad_medida,
+        final_categoria_sugerida=record.final_categoria_sugerida,
+        final_codigo_barras=record.final_codigo_barras,
+        yolo_confidence=record.yolo_confidence,
+        yolo_class_name=record.yolo_class_name,
+        ocr_confidence=record.ocr_confidence,
+        ocr_text=record.ocr_text,
+        warnings=record.warnings,
+        bbox=record.bbox,
+        failure_reason=record.failure_reason,
+        review_notes=record.review_notes,
+        use_for_training=record.use_for_training,
+        linked_product_id=record.linked_product_id,
+        recognition=record.recognition,
+        reviewed_at=record.reviewed_at,
         created_at=record.created_at,
         updated_at=record.updated_at,
     )
@@ -68,6 +113,7 @@ async def recognize_product(
     x_trace_id: str | None = Header(default=None, alias="X-Trace-ID"),
     settings: Settings = Depends(get_settings),
     pipeline: ProductRecognitionPipeline = Depends(get_product_pipeline),
+    recognitions: RecognitionRepository = Depends(get_recognition_repository),
 ) -> ProductRecognitionResponse:
     trace_id = x_trace_id or str(uuid4())
     content_type = (image.content_type or "").lower()
@@ -79,7 +125,93 @@ async def recognize_product(
     if len(image_bytes) > max_bytes:
         raise InvalidImageError(f"La imagen supera el límite de {settings.max_image_mb} MB.")
 
-    return pipeline.process(image_bytes=image_bytes, trace_id=trace_id, source_name=image.filename)
+    result = pipeline.process(image_bytes=image_bytes, trace_id=trace_id, source_name=image.filename)
+    recognitions.create_from_response(
+        image_bytes=image_bytes,
+        content_type=image.content_type,
+        source_name=image.filename,
+        response=result,
+    )
+    return result
+
+
+@router.get(
+    "/admin/reconocimientos/stats",
+    response_model=RecognitionStatsResponse,
+    tags=["admin"],
+    summary="Métricas de revisión de reconocimientos.",
+)
+def recognition_stats(
+    repository: RecognitionRepository = Depends(get_recognition_repository),
+) -> RecognitionStatsResponse:
+    return RecognitionStatsResponse(**repository.stats())
+
+
+@router.get(
+    "/admin/reconocimientos",
+    response_model=RecognitionEventsResponse,
+    tags=["admin"],
+    summary="Lista reconocimientos capturados para revisión asistida.",
+)
+def list_recognitions(
+    status: str | None = Query(default=None, max_length=40),
+    q: str | None = Query(default=None, max_length=120),
+    category: str | None = Query(default=None, max_length=120),
+    min_confidence: float | None = Query(default=None, ge=0.0, le=1.0),
+    limit: int = Query(default=100, ge=1, le=500),
+    offset: int = Query(default=0, ge=0),
+    repository: RecognitionRepository = Depends(get_recognition_repository),
+) -> RecognitionEventsResponse:
+    records = repository.list(
+        status=status,
+        q=q,
+        category=category,
+        min_confidence=min_confidence,
+        limit=limit,
+        offset=offset,
+    )
+    return RecognitionEventsResponse(items=[_recognition_to_response(record) for record in records])
+
+
+@router.get(
+    "/admin/reconocimientos/{event_id}",
+    response_model=RecognitionEventResponse,
+    tags=["admin"],
+)
+def get_recognition(
+    event_id: int,
+    repository: RecognitionRepository = Depends(get_recognition_repository),
+) -> RecognitionEventResponse:
+    return _recognition_to_response(repository.get(event_id))
+
+
+@router.get(
+    "/admin/reconocimientos/{event_id}/image",
+    tags=["admin"],
+    include_in_schema=False,
+)
+def get_recognition_image(
+    event_id: int,
+    repository: RecognitionRepository = Depends(get_recognition_repository),
+) -> Response:
+    image, content_type = repository.get_image(event_id)
+    return Response(content=image, media_type=content_type or "image/jpeg")
+
+
+@router.put(
+    "/admin/reconocimientos/{event_id}/review",
+    response_model=RecognitionEventResponse,
+    tags=["admin"],
+    summary="Guarda validación, corrección o rechazo de un reconocimiento.",
+)
+def review_recognition(
+    event_id: int,
+    payload: RecognitionReviewRequest,
+    repository: RecognitionRepository = Depends(get_recognition_repository),
+) -> RecognitionEventResponse:
+    data = payload.model_dump()
+    data["use_for_training"] = 1 if payload.use_for_training else 0
+    return _recognition_to_response(repository.review(event_id, data))
 
 
 @router.get(

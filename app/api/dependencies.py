@@ -2,6 +2,7 @@ from functools import lru_cache
 
 from app.core.config import get_settings
 from app.repositories.products import ProductRepository
+from app.repositories.recognitions import RecognitionRepository
 from app.services.pipeline import ProductRecognitionPipeline, build_pipeline
 from app.services.suggestions import ProductSuggestionService, build_suggestion_service
 
@@ -17,6 +18,11 @@ def _cached_repository() -> ProductRepository:
 
 
 @lru_cache
+def _cached_recognition_repository() -> RecognitionRepository:
+    return RecognitionRepository(get_settings())
+
+
+@lru_cache
 def _cached_suggestion_service() -> ProductSuggestionService:
     return build_suggestion_service(_cached_repository())
 
@@ -27,6 +33,10 @@ def get_product_pipeline() -> ProductRecognitionPipeline:
 
 def get_product_repository() -> ProductRepository:
     return _cached_repository()
+
+
+def get_recognition_repository() -> RecognitionRepository:
+    return _cached_recognition_repository()
 
 
 def get_suggestion_service() -> ProductSuggestionService:

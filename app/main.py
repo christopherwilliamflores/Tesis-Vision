@@ -48,6 +48,10 @@ def create_app() -> FastAPI:
     async def products_screen() -> FileResponse:
         return FileResponse(WEB_DIR / "productos.html")
 
+    @app.get("/admin", include_in_schema=False)
+    async def admin_screen() -> FileResponse:
+        return FileResponse(WEB_DIR / "admin.html")
+
     register_exception_handlers(app)
     return app
 
