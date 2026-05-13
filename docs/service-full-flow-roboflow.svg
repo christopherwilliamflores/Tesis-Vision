@@ -1,0 +1,201 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1180" viewBox="0 0 1600 1180" role="img" aria-labelledby="title desc">
+  <title id="title">Flujo completo del servicio VisionAI</title>
+  <desc id="desc">Diagrama del servicio: registro de imagen, detección del producto, lectura de texto, generación de datos, revisión administrativa y mejora del modelo con Roboflow.</desc>
+
+  <defs>
+    <style>
+      .bg { fill: #f5f7fb; }
+      .title { font: 800 34px Arial, sans-serif; fill: #0f172a; }
+      .subtitle { font: 400 17px Arial, sans-serif; fill: #475569; }
+      .section { fill: #ffffff; stroke: #cbd5e1; stroke-width: 2; }
+      .card { fill: #f8fafc; stroke: #94a3b8; stroke-width: 2; }
+      .blue { fill: #eef6ff; stroke: #2563eb; }
+      .green { fill: #f0fdf4; stroke: #16a34a; }
+      .purple { fill: #faf5ff; stroke: #9333ea; }
+      .orange { fill: #fff7ed; stroke: #ea580c; }
+      .yellow { fill: #fefce8; stroke: #ca8a04; }
+      .pink { fill: #fdf2f8; stroke: #db2777; }
+      .teal { fill: #f0fdfa; stroke: #0f766e; }
+      .indigo { fill: #eef2ff; stroke: #4f46e5; }
+      .h { font: 800 19px Arial, sans-serif; fill: #0f172a; }
+      .txt { font: 400 14.5px Arial, sans-serif; fill: #334155; }
+      .small { font: 400 12.5px Arial, sans-serif; fill: #475569; }
+      .code { font: 700 12px Consolas, monospace; fill: #0f172a; }
+      .label { font: 800 13px Arial, sans-serif; fill: #0f172a; letter-spacing: .7px; }
+      .num { font: 800 15px Arial, sans-serif; fill: #ffffff; }
+      .arrowLabel { font: 800 12px Arial, sans-serif; fill: #334155; }
+      .trainLabel { font: 800 12px Arial, sans-serif; fill: #0f766e; }
+      .arrow { stroke: #334155; stroke-width: 2.8; fill: none; marker-end: url(#arrow); }
+      .arrow-soft { stroke: #64748b; stroke-width: 2.4; fill: none; marker-end: url(#arrowSoft); stroke-dasharray: 8 6; }
+      .arrow-train { stroke: #0f766e; stroke-width: 3; fill: none; marker-end: url(#arrowTrain); }
+      .badge { fill: #0f172a; }
+      .iconFill { fill: #ffffff; }
+    </style>
+
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+      <path d="M2,2 L10,6 L2,10 Z" fill="#334155" />
+    </marker>
+    <marker id="arrowSoft" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+      <path d="M2,2 L10,6 L2,10 Z" fill="#64748b" />
+    </marker>
+    <marker id="arrowTrain" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+      <path d="M2,2 L10,6 L2,10 Z" fill="#0f766e" />
+    </marker>
+
+    <symbol id="camera" viewBox="0 0 32 32">
+      <rect x="5" y="10" width="22" height="16" rx="3" class="iconFill"/>
+      <path d="M11 10l2-4h6l2 4" class="iconFill"/>
+      <circle cx="16" cy="18" r="5" fill="#0f172a"/>
+      <circle cx="16" cy="18" r="2.5" class="iconFill"/>
+    </symbol>
+    <symbol id="target" viewBox="0 0 32 32">
+      <circle cx="16" cy="16" r="11" fill="none" stroke="#fff" stroke-width="3"/>
+      <circle cx="16" cy="16" r="5" fill="none" stroke="#fff" stroke-width="3"/>
+      <path d="M16 2v6M16 24v6M2 16h6M24 16h6" stroke="#fff" stroke-width="3" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="text" viewBox="0 0 32 32">
+      <rect x="6" y="5" width="20" height="22" rx="3" class="iconFill"/>
+      <path d="M11 12h10M11 17h10M11 22h7" stroke="#0f172a" stroke-width="2.5" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="rules" viewBox="0 0 32 32">
+      <rect x="6" y="5" width="20" height="22" rx="3" class="iconFill"/>
+      <path d="M10 13h8M10 18h6M10 23h5" stroke="#0f172a" stroke-width="2.2" stroke-linecap="round"/>
+      <path d="M19 21l2 2 4-5" fill="none" stroke="#0f172a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="db" viewBox="0 0 32 32">
+      <ellipse cx="16" cy="8" rx="10" ry="4" class="iconFill"/>
+      <path d="M6 8v16c0 2 4.5 4 10 4s10-2 10-4V8" class="iconFill"/>
+      <path d="M6 16c0 2 4.5 4 10 4s10-2 10-4M6 24c0 2 4.5 4 10 4s10-2 10-4" fill="none" stroke="#0f172a" stroke-width="1.8"/>
+    </symbol>
+    <symbol id="admin" viewBox="0 0 32 32">
+      <circle cx="16" cy="10" r="6" class="iconFill"/>
+      <path d="M6 29c1.8-8 6-12 10-12s8.2 4 10 12" class="iconFill"/>
+    </symbol>
+    <symbol id="robo" viewBox="0 0 32 32">
+      <path d="M16 3l11 6v14l-11 6-11-6V9z" class="iconFill"/>
+      <path d="M16 3v13l11-7M16 16L5 9M16 16v13" fill="none" stroke="#0f172a" stroke-width="2"/>
+    </symbol>
+    <symbol id="refresh" viewBox="0 0 32 32">
+      <path d="M24 11A10 10 0 1 0 25 21" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"/>
+      <path d="M24 5v7h-7" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+  </defs>
+
+  <rect class="bg" x="0" y="0" width="1600" height="1180"/>
+  <text class="title" x="60" y="60">Cómo funciona el servicio VisionAI</text>
+  <text class="subtitle" x="60" y="92">El sistema toma una foto, extrae datos del producto, los guarda para revisión y aprende con los casos corregidos.</text>
+
+  <rect class="section" x="50" y="130" width="1500" height="385" rx="16"/>
+  <text class="label" x="80" y="162">FLUJO PRINCIPAL DE RECONOCIMIENTO</text>
+
+  <rect class="card blue" x="80" y="200" width="240" height="220" rx="14"/>
+  <circle class="badge" cx="116" cy="236" r="22"/><text class="num" x="111" y="242">1</text>
+  <use href="#camera" x="258" y="224" width="34" height="34"/>
+  <text class="h" x="80" y="286">Captura de imagen</text>
+  <text class="txt" x="80" y="318">El usuario toma una foto o</text>
+  <text class="txt" x="80" y="339">elige una imagen del producto.</text>
+  <text class="txt" x="80" y="360">El sistema revisa que sea una</text>
+  <text class="txt" x="80" y="381">imagen válida y no muy borrosa.</text>
+
+  <rect class="card green" x="370" y="200" width="240" height="220" rx="14"/>
+  <circle class="badge" cx="406" cy="236" r="22"/><text class="num" x="401" y="242">2</text>
+  <use href="#target" x="548" y="224" width="34" height="34"/>
+  <text class="h" x="370" y="286">Ubicación del producto</text>
+  <text class="txt" x="370" y="318">YOLO busca dónde está la</text>
+  <text class="txt" x="370" y="339">etiqueta o empaque dentro</text>
+  <text class="txt" x="370" y="360">de la foto y entrega un recorte.</text>
+  <text class="small" x="370" y="390">Confianza YOLO: seguridad del recorte.</text>
+
+  <rect class="card purple" x="660" y="200" width="240" height="220" rx="14"/>
+  <circle class="badge" cx="696" cy="236" r="22"/><text class="num" x="691" y="242">3</text>
+  <use href="#text" x="838" y="224" width="34" height="34"/>
+  <text class="h" x="660" y="286">Lectura de texto</text>
+  <text class="txt" x="660" y="318">PaddleOCR lee las palabras</text>
+  <text class="txt" x="660" y="339">visibles: nombre, marca,</text>
+  <text class="txt" x="660" y="360">contenido, dosis o categoría.</text>
+  <text class="small" x="660" y="390">Confianza OCR: seguridad de la lectura.</text>
+
+  <rect class="card orange" x="950" y="200" width="240" height="220" rx="14"/>
+  <circle class="badge" cx="986" cy="236" r="22"/><text class="num" x="981" y="242">4</text>
+  <use href="#rules" x="1128" y="224" width="34" height="34"/>
+  <text class="h" x="950" y="286">Orden de datos</text>
+  <text class="txt" x="950" y="318">El normalizador convierte el</text>
+  <text class="txt" x="950" y="339">texto leído en campos claros:</text>
+  <text class="txt" x="950" y="360">producto, marca, tipo, unidad</text>
+  <text class="txt" x="950" y="381">y categoría sugerida.</text>
+
+  <rect class="card yellow" x="1240" y="200" width="240" height="220" rx="14"/>
+  <circle class="badge" cx="1276" cy="236" r="22"/><text class="num" x="1271" y="242">5</text>
+  <use href="#db" x="1418" y="224" width="34" height="34"/>
+  <text class="h" x="1240" y="286">Guardado</text>
+  <text class="txt" x="1240" y="318">SQLite guarda la imagen,</text>
+  <text class="txt" x="1240" y="339">el texto OCR, la predicción,</text>
+  <text class="txt" x="1240" y="360">las confianzas y el estado</text>
+  <text class="txt" x="1240" y="381">inicial: pendiente de revisión.</text>
+
+  <path class="arrow" d="M320 310 H360"/>
+  <path class="arrow" d="M610 310 H650"/>
+  <path class="arrow" d="M900 310 H940"/>
+  <path class="arrow" d="M1190 310 H1230"/>
+
+  <rect class="section" x="50" y="565" width="715" height="430" rx="16"/>
+  <text class="label" x="80" y="597">PANEL ADMINISTRADOR</text>
+
+  <rect class="card pink" x="80" y="635" width="300" height="255" rx="14"/>
+  <circle class="badge" cx="116" cy="671" r="22"/><text class="num" x="111" y="677">6</text>
+  <use href="#admin" x="318" y="660" width="34" height="34"/>
+  <text class="h" x="80" y="720">Revisión humana</text>
+  <text class="txt" x="80" y="752">El administrador ve cada caso</text>
+  <text class="txt" x="80" y="773">con imagen, recorte, OCR y</text>
+  <text class="txt" x="80" y="794">producto sugerido.</text>
+  <text class="txt" x="80" y="826">Puede validar, corregir,</text>
+  <text class="txt" x="80" y="847">rechazar, ignorar o eliminar.</text>
+
+  <rect class="card indigo" x="430" y="635" width="300" height="255" rx="14"/>
+  <circle class="badge" cx="466" cy="671" r="22"/><text class="num" x="461" y="677">7</text>
+  <use href="#rules" x="668" y="660" width="34" height="34"/>
+  <text class="h" x="430" y="720">Estados del caso</text>
+  <text class="txt" x="430" y="752">Pendiente: aún no revisado.</text>
+  <text class="txt" x="430" y="773">Validado: la IA acertó.</text>
+  <text class="txt" x="430" y="794">Corregido: hubo ajuste manual.</text>
+  <text class="txt" x="430" y="815">Rechazado o ignorado: no se usa.</text>
+  <text class="small" x="430" y="850">Estos estados alimentan métricas de calidad.</text>
+
+  <path class="arrow-soft" d="M1360 420 V538 H230 V629"/>
+  <rect x="1038" y="522" width="210" height="26" rx="13" fill="#f8fafc" stroke="#cbd5e1"/>
+  <text class="arrowLabel" x="1056" y="540">se crea caso pendiente</text>
+  <path class="arrow" d="M380 762 H420"/>
+
+  <rect class="section" x="835" y="565" width="715" height="430" rx="16"/>
+  <text class="label" x="865" y="597">MEJORA DEL MODELO CON ROBOFLOW</text>
+
+  <rect class="card teal" x="865" y="635" width="300" height="255" rx="14"/>
+  <circle class="badge" cx="901" cy="671" r="22"/><text class="num" x="896" y="677">8</text>
+  <use href="#robo" x="1103" y="660" width="34" height="34"/>
+  <text class="h" x="865" y="720">Selección y anotación</text>
+  <text class="txt" x="865" y="752">Los casos útiles se suben a</text>
+  <text class="txt" x="865" y="773">Roboflow. Allí se dibujan</text>
+  <text class="txt" x="865" y="794">cajas sobre el producto o</text>
+  <text class="txt" x="865" y="815">la etiqueta para enseñar al</text>
+  <text class="txt" x="865" y="836">modelo qué debe detectar.</text>
+
+  <rect class="card green" x="1215" y="635" width="300" height="255" rx="14"/>
+  <circle class="badge" cx="1251" cy="671" r="22"/><text class="num" x="1246" y="677">9</text>
+  <use href="#refresh" x="1453" y="660" width="34" height="34"/>
+  <text class="h" x="1215" y="720">Nuevo YOLO</text>
+  <text class="txt" x="1215" y="752">Con más fotos reales, se</text>
+  <text class="txt" x="1215" y="773">entrena un detector mejor.</text>
+  <text class="txt" x="1215" y="794">Luego se reemplaza el archivo</text>
+  <text class="txt" x="1215" y="815">del modelo usado por la API.</text>
+  <text class="code" x="1215" y="850">YOLO_MODEL_PATH</text>
+
+  <path class="arrow-train" d="M730 762 H855"/>
+  <path class="arrow-train" d="M1165 762 H1205"/>
+  <path class="arrow-train" d="M1515 762 H1532 V176 H490 V194"/>
+  <rect x="855" y="160" width="255" height="28" rx="14" fill="#f0fdfa" stroke="#0f766e"/>
+  <text class="trainLabel" x="878" y="179">modelo mejorado actualiza YOLO</text>
+
+  <rect class="section" x="50" y="1030" width="1500" height="90" rx="16"/>
+  <text class="h" x="80" y="1063">Resumen simple</text>
+  <text class="txt" x="80" y="1090">YOLO ayuda a encontrar dónde está el producto en la foto. PaddleOCR lee el texto. El normalizador ordena ese texto en campos útiles. El panel admin permite corregir errores. Roboflow ayuda a entrenar un YOLO más preciso con fotos reales revisadas.</text>
+</svg>

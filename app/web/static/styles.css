@@ -1064,6 +1064,12 @@ dd {
   color: #41516a;
 }
 
+.table-actions {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
 .table-action {
   min-height: 28px;
   border: 0;
@@ -1072,6 +1078,11 @@ dd {
   cursor: pointer;
   font-size: 12px;
   font-weight: 850;
+}
+
+.table-action--danger {
+  background: #b4232d;
+  color: #fff;
 }
 
 .review-empty,

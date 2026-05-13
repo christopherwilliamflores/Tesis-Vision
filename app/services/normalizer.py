@@ -33,6 +33,10 @@ class ProductTextNormalizer:
         rf"(?P<amount>\d+(?:[.,]\d+)?)\s*(?P<unit>{unit_pattern})\b",
         flags=re.IGNORECASE,
     )
+    concentration_regex = re.compile(
+        r"(?P<amount>\d+(?:[.,]\d+)?)\s*(?P<unit>%)",
+        flags=re.IGNORECASE,
+    )
     multipack_content_regex = re.compile(
         rf"(?P<count>\d{{1,3}})\s*x\s*(?P<amount>\d+(?:[.,]\d+)?)\s*(?P<unit>{unit_pattern})\b(?:\s*c\s*/?\s*u)?",
         flags=re.IGNORECASE,
@@ -78,6 +82,13 @@ class ProductTextNormalizer:
         "vent",
         "ventas",
         "via",
+    }
+    active_ingredient_words = {
+        "betametasona",
+        "clotrimazol",
+        "dexametasona",
+        "hidrocortisona",
+        "mupirocina",
     }
 
     def normalize(self, text: str, source_name: str | None = None) -> NormalizedProduct:
@@ -247,6 +258,9 @@ class ProductTextNormalizer:
 
         matches = list(self.content_regex.finditer(clean_text))
         if not matches:
+            concentration_match = self.concentration_regex.search(clean_text)
+            if concentration_match and self._looks_like_pharmacy_context(self._fold(clean_text)):
+                return concentration_match.group("amount").replace(",", "."), "%"
             return None, None
 
         def score(match: re.Match) -> tuple[int, int, int]:
@@ -341,7 +355,17 @@ class ProductTextNormalizer:
             return "bebés y mamá"
         if product_type == "Jabón" and re.search(r"(?<!\w)(piel|humectacion|hipoalergenico)(?!\w)", folded_text):
             return "cuidado personal"
+        if product_type == "Crema" and self._looks_like_pharmacy_context(folded_text):
+            return "farmacia/otc"
         return None
+
+    def _looks_like_pharmacy_context(self, folded_text: str) -> bool:
+        tokens = set(re.findall(r"[a-z0-9]+", folded_text))
+        return bool(
+            tokens & self.active_ingredient_words
+            or re.search(r"\b(laboratorio|laboratorios|farma|dci|via oral|registro sanitario)\b", folded_text)
+            or re.search(r"\b\d+(?:[.,]\d+)?\s*%", folded_text)
+        )
 
     def _detect_variant(self, folded_text: str, category: str | None) -> str | None:
         for canonical, aliases in VARIANT_ALIASES.items():
@@ -365,7 +389,7 @@ class ProductTextNormalizer:
         if diaper_count_match:
             return f"{diaper_count_match.group('count')} pañales"
 
-        for word in ("sachet", "botella", "frasco", "sobre", "caja", "pack"):
+        for word in ("sachet", "botella", "frasco", "sobre", "caja", "pack", "tubo", "crema", "pomada"):
             if re.search(rf"\b{word}s?\b", lowered):
                 if amount and unit:
                     return f"{word} {amount} {unit}"

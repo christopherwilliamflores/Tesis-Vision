@@ -167,12 +167,23 @@ function renderTable(items) {
           <b class="${(item.ocr_confidence || 0) < 0.5 ? "low-score" : "good-score"}">${percent(item.ocr_confidence)}</b>
         </td>
         <td><span class="status-pill status-${item.status}">${statusLabel(item.status)}</span></td>
-        <td><button class="table-action" type="button">Revisar</button></td>
+        <td>
+          <div class="table-actions">
+            <button class="table-action" type="button">Revisar</button>
+            <button class="table-action table-action--danger" type="button" data-delete-id="${item.id}">Eliminar</button>
+          </div>
+        </td>
       </tr>`;
     })
     .join("");
   tableBody.querySelectorAll("tr").forEach((row) => {
     row.addEventListener("click", () => selectRecord(Number(row.dataset.id)));
+  });
+  tableBody.querySelectorAll("[data-delete-id]").forEach((button) => {
+    button.addEventListener("click", (event) => {
+      event.stopPropagation();
+      deleteRecord(Number(button.dataset.deleteId));
+    });
   });
 }
 
@@ -253,6 +264,34 @@ async function submitReview(status) {
     await loadStats();
     renderTable(records);
     selectRecord(data.id);
+  } catch (error) {
+    reviewStatus.classList.add("is-error");
+    reviewStatus.textContent = error.message;
+  }
+}
+
+async function deleteRecord(id) {
+  const item = records.find((record) => record.id === id);
+  const name = item ? productName(item) : `#${id}`;
+  const confirmed = window.confirm(`Eliminar reconocimiento ${name}? Esta accion no se puede deshacer.`);
+  if (!confirmed) return;
+
+  reviewStatus.classList.remove("is-error");
+  reviewStatus.textContent = "Eliminando reconocimiento...";
+  try {
+    const response = await fetch(`${apiBaseUrl}/api/v1/admin/reconocimientos/${id}`, {
+      method: "DELETE",
+    });
+    if (!response.ok) {
+      const data = await response.json().catch(() => ({}));
+      throw new Error(data.message || "No se pudo eliminar el reconocimiento.");
+    }
+    if (selectedId === id) clearDetail();
+    records = records.filter((record) => record.id !== id);
+    await loadStats();
+    renderTable(records);
+    if (!selectedId && records.length) selectRecord(records[0].id);
+    reviewStatus.textContent = "Reconocimiento eliminado.";
   } catch (error) {
     reviewStatus.classList.add("is-error");
     reviewStatus.textContent = error.message;

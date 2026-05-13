@@ -351,3 +351,25 @@ def test_normalizer_ignores_side_panel_fragments_for_pharmacy_name() -> None:
 
     assert result.nombre_producto == "Dextrometorfano Jarabe Medifarma"
     assert result.contenido_neto == "120 ml"
+
+
+def test_normalizer_detects_pharmacy_cream_with_percentage_concentration() -> None:
+    text = (
+        "AC\n"
+        "BETAMETASONA\n"
+        "0,05%\n"
+        "Linea(DCI\n"
+        "CREMA\n"
+        "LABORATORIOSACFARMA S.A.\n"
+        "LABORATORIOSAC FARMA S.A"
+    )
+
+    result = ProductTextNormalizer().normalize(text, source_name="betametasona.jpeg")
+
+    assert result.nombre_producto == "Betametasona Crema AC Farma"
+    assert result.marca == "AC Farma"
+    assert result.tipo_producto == "Crema"
+    assert result.presentacion == "crema 0.05 %"
+    assert result.contenido_neto == "0.05 %"
+    assert result.unidad_medida == "%"
+    assert result.categoria_sugerida == "farmacia/otc"

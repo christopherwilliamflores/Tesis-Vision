@@ -144,6 +144,32 @@ def test_recognize_product_creates_pending_review_event() -> None:
     assert events[0]["predicted_marca"] == "Inca Kola"
 
 
+def test_delete_recognition_removes_admin_event() -> None:
+    app = create_app()
+    fake_pipeline = ProductRecognitionPipeline(
+        settings=Settings(),
+        detector=FakeDetector(),
+        ocr=FakeOcr(),
+        normalizer=ProductTextNormalizer(),
+    )
+    app.dependency_overrides[get_product_pipeline] = lambda: fake_pipeline
+    client = TestClient(app)
+
+    response = client.post(
+        "/api/v1/products/recognize",
+        files={"image": ("inca-kola.jpg", _jpeg_bytes(), "image/jpeg")},
+        headers={"X-Trace-ID": "test-delete-1"},
+    )
+    assert response.status_code == 200
+    event = client.get("/api/v1/admin/reconocimientos").json()["items"][0]
+
+    delete_response = client.delete(f"/api/v1/admin/reconocimientos/{event['id']}")
+
+    assert delete_response.status_code == 204
+    assert client.get("/api/v1/admin/reconocimientos").json()["items"] == []
+    assert client.get(f"/api/v1/admin/reconocimientos/{event['id']}").status_code == 404
+
+
 def test_recognize_product_rejects_non_image_upload() -> None:
     app = create_app()
     client = TestClient(app)

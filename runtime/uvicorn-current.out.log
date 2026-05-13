@@ -77,3 +77,165 @@ INFO:     127.0.0.1:53561 - "GET /openapi.json HTTP/1.1" 200 OK
 INFO:     127.0.0.1:53599 - "POST /api/v1/products/recognize HTTP/1.1" 200 OK
 INFO:     127.0.0.1:53599 - "GET /api/v1/productos/suggestions?q=BETAMETASONA&limit=3&context=AC%0ABETAMETASONA%0A0%2C05%25%0ALinea%28DCI%0ACREMA%0ALABORATORIOSACFARMA+S.A.%0ALABORATORIOSAC+FARMA+S.A&source_name=betametasona.jpeg HTTP/1.1" 200 OK
 INFO:     127.0.0.1:53599 - "GET /api/v1/productos/suggestions?q=BETAMETASONA&limit=3&context=AC%0ABETAMETASONA%0A0%2C05%25%0ALinea%28DCI%0ACREMA%0ALABORATORIOSACFARMA+S.A.%0ALABORATORIOSAC+FARMA+S.A&source_name=betametasona.jpeg HTTP/1.1" 200 OK
+   INFO:     127.0.0.1:54472 - "GET / HTTP/1.1" 200 OK
+ INFO:     127.0.0.1:54475 - "GET / HTTP/1.1" 200 OK
+2026-05-13T17:33:14-0500 INFO app.services.pipeline trace_id=ui-1778711594182 inicio procesamiento producto
+2026-05-13T17:33:14-0500 INFO app.services.pipeline trace_id=ui-1778711594182 imagen decodificada
+2026-05-13T17:33:14-0500 INFO app.services.pipeline trace_id=ui-1778711594182 calidad imagen laplacian=27.34 edge_density=0.0187 contrast=62.25 detail_score=93.96 blur_percentage=41.3
+2026-05-13T17:33:19-0500 INFO app.services.pipeline trace_id=ui-1778711594182 deteccion yolo completada bbox=(0, 391, 1193, 1600) confidence=0.004047837108373642 fallback=False
+[2026/05/13 17:33:22] ppocr DEBUG: Namespace(help='==SUPPRESS==', use_gpu=False, use_xpu=False, use_npu=False, use_mlu=False, use_gcu=False, ir_optim=True, use_tensorrt=False, min_subgraph_size=15, precision='fp32', gpu_mem=500, gpu_id=0, image_dir=None, page_num=0, det_algorithm='DB', det_model_dir='C:\\Users\\marcelo/.paddleocr/whl\\det\\en\\en_PP-OCRv3_det_infer', det_limit_side_len=960, det_limit_type='max', det_box_type='quad', det_db_thresh=0.3, det_db_box_thresh=0.6, det_db_unclip_ratio=1.5, max_batch_size=10, use_dilation=False, det_db_score_mode='fast', det_east_score_thresh=0.8, det_east_cover_thresh=0.1, det_east_nms_thresh=0.2, det_sast_score_thresh=0.5, det_sast_nms_thresh=0.2, det_pse_thresh=0, det_pse_box_thresh=0.85, det_pse_min_area=16, det_pse_scale=1, scales=[8, 16, 32], alpha=1.0, beta=1.0, fourier_degree=5, rec_algorithm='SVTR_LCNet', rec_model_dir='C:\\Users\\marcelo/.paddleocr/whl\\rec\\latin\\latin_PP-OCRv3_rec_infer', rec_image_inverse=True, rec_image_shape='3, 48, 320', rec_batch_num=6, max_text_length=25, rec_char_dict_path='C:\\Users\\marcelo\\AppData\\Roaming\\Python\\Python311\\site-packages\\paddleocr\\ppocr\\utils\\dict\\latin_dict.txt', use_space_char=True, vis_font_path='./doc/fonts/simfang.ttf', drop_score=0.5, e2e_algorithm='PGNet', e2e_model_dir=None, e2e_limit_side_len=768, e2e_limit_type='max', e2e_pgnet_score_thresh=0.5, e2e_char_dict_path='./ppocr/utils/ic15_dict.txt', e2e_pgnet_valid_set='totaltext', e2e_pgnet_mode='fast', use_angle_cls=False, cls_model_dir='C:\\Users\\marcelo/.paddleocr/whl\\cls\\ch_ppocr_mobile_v2.0_cls_infer', cls_image_shape='3, 48, 192', label_list=['0', '180'], cls_batch_num=6, cls_thresh=0.9, enable_mkldnn=False, cpu_threads=10, use_pdserving=False, warmup=False, sr_model_dir=None, sr_image_shape='3, 32, 128', sr_batch_num=1, draw_img_save_dir='./inference_results', save_crop_res=False, crop_res_save_dir='./output', use_mp=False, total_process_num=1, process_id=0, benchmark=False, save_log_path='./log_output/', show_log=True, use_onnx=False, onnx_providers=False, onnx_sess_options=False, return_word_box=False, output='./output', table_max_len=488, table_algorithm='TableAttn', table_model_dir=None, merge_no_span_structure=True, table_char_dict_path=None, formula_algorithm='LaTeXOCR', formula_model_dir=None, formula_char_dict_path=None, formula_batch_num=1, layout_model_dir=None, layout_dict_path=None, layout_score_threshold=0.5, layout_nms_threshold=0.5, kie_algorithm='LayoutXLM', ser_model_dir=None, re_model_dir=None, use_visual_backbone=True, ser_dict_path='../train_data/XFUND/class_list_xfun.txt', ocr_order_method=None, mode='structure', image_orientation=False, layout=True, table=True, formula=False, ocr=True, recovery=False, recovery_to_markdown=False, use_pdf2docx_api=False, invert=False, binarize=False, alphacolor=(255, 255, 255), lang='es', det=True, rec=True, type='ocr', savefile=False, ocr_version='PP-OCRv4', structure_version='PP-StructureV2', use_textline_orientation=True)
+[2026/05/13 17:33:23] ppocr WARNING: Since the angle classifier is not initialized, it will not be used during the forward process
+[2026/05/13 17:33:23] ppocr DEBUG: dt_boxes num : 6, elapsed : 0.8148138523101807
+[2026/05/13 17:33:24] ppocr DEBUG: rec_res num  : 6, elapsed : 1.0333411693572998
+INFO:     127.0.0.1:54476 - "POST /api/v1/products/recognize HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54476 - "GET /api/v1/productos/suggestions?q=Betametasona+Crema+AC+Farma&limit=3&context=AC%0ABETAMETASONA%0A0%2C05%25%0ALinea%28DCI%0ACREMA%0ALABORATORIOSACFARMA+S.A.&source_name=betametasona.jpeg HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54476 - "GET /api/v1/productos/suggestions?q=Betametasona+Crema+AC+Farma+0.05+%25&limit=3&context=AC%0ABETAMETASONA%0A0%2C05%25%0ALinea%28DCI%0ACREMA%0ALABORATORIOSACFARMA+S.A.&source_name=betametasona.jpeg HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54493 - "GET /admin HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54493 - "GET /api/v1/admin/reconocimientos/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54493 - "GET /api/v1/admin/reconocimientos?limit=200 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54492 - "GET /api/v1/admin/reconocimientos/7/image HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54493 - "GET /api/v1/admin/reconocimientos/8/image HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54494 - "GET /api/v1/admin/reconocimientos/6/image HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54496 - "GET /api/v1/admin/reconocimientos/4/image HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54497 - "GET /api/v1/admin/reconocimientos/3/image HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54495 - "GET /api/v1/admin/reconocimientos/5/image HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54492 - "GET /api/v1/admin/reconocimientos/1/image HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54493 - "GET /api/v1/admin/reconocimientos/2/image HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54590 - "GET /admin HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54590 - "GET /api/v1/admin/reconocimientos/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54590 - "GET /api/v1/admin/reconocimientos?limit=200 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54590 - "GET /api/v1/admin/reconocimientos/14/image HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54589 - "GET /api/v1/admin/reconocimientos/13/image HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54594 - "GET /api/v1/admin/reconocimientos/9/image HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54592 - "GET /api/v1/admin/reconocimientos/11/image HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54593 - "GET /api/v1/admin/reconocimientos/10/image HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54591 - "GET /api/v1/admin/reconocimientos/12/image HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54590 - "GET /api/v1/admin/reconocimientos/8/image HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54592 - "GET /api/v1/admin/reconocimientos/7/image HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54590 - "GET /api/v1/admin/reconocimientos/5/image HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54589 - "GET /api/v1/admin/reconocimientos/4/image HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54591 - "GET /api/v1/admin/reconocimientos/3/image HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54594 - "GET /api/v1/admin/reconocimientos/6/image HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54593 - "GET /api/v1/admin/reconocimientos/2/image HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54592 - "GET /api/v1/admin/reconocimientos/1/image HTTP/1.1" 200 OK
+ INFO:     127.0.0.1:54935 - "GET /admin HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54935 - "GET /api/v1/admin/reconocimientos/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54935 - "GET /api/v1/admin/reconocimientos?limit=200 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54935 - "GET /api/v1/admin/reconocimientos/15/image HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54936 - "GET /api/v1/admin/reconocimientos/14/image HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54938 - "GET /api/v1/admin/reconocimientos/12/image HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54939 - "GET /api/v1/admin/reconocimientos/11/image HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54937 - "GET /api/v1/admin/reconocimientos/13/image HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54940 - "GET /api/v1/admin/reconocimientos/10/image HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54935 - "GET /api/v1/admin/reconocimientos/7/image HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54935 - "GET /api/v1/admin/reconocimientos/9/image HTTP/1.1" 200 OK
+ INFO:     127.0.0.1:54941 - "GET /api/v1/admin/reconocimientos/8/image HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54943 - "GET /api/v1/admin/reconocimientos/6/image HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54942 - "GET /api/v1/admin/reconocimientos/5/image HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54945 - "GET /api/v1/admin/reconocimientos/3/image HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54946 - "GET /api/v1/admin/reconocimientos/2/image HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54944 - "GET /api/v1/admin/reconocimientos/4/image HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54954 - "GET /admin HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54954 - "GET /api/v1/admin/reconocimientos/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54954 - "GET /api/v1/admin/reconocimientos?limit=200 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54954 - "GET /api/v1/admin/reconocimientos/15/image HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54956 - "GET /api/v1/admin/reconocimientos/12/image HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54959 - "GET /api/v1/admin/reconocimientos/10/image HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54955 - "GET /api/v1/admin/reconocimientos/14/image HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54958 - "GET /api/v1/admin/reconocimientos/11/image HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54957 - "GET /api/v1/admin/reconocimientos/13/image HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54955 - "GET /api/v1/admin/reconocimientos/6/image HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54954 - "GET /api/v1/admin/reconocimientos/8/image HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54956 - "GET /api/v1/admin/reconocimientos/7/image HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54958 - "GET /api/v1/admin/reconocimientos/9/image HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54959 - "GET /api/v1/admin/reconocimientos/5/image HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54954 - "GET /api/v1/admin/reconocimientos/4/image HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54957 - "GET /api/v1/admin/reconocimientos/3/image HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54956 - "GET /api/v1/admin/reconocimientos/2/image HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54959 - "GET /api/v1/admin/reconocimientos/1/image HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54962 - "GET /admin HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54962 - "GET /static/styles.css?v=4 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54961 - "GET /static/admin.js?v=4 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54962 - "GET /api/v1/admin/reconocimientos/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54961 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:54962 - "GET /admin HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54962 - "GET /static/styles.css?v=4 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54964 - "GET /static/admin.js?v=4 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54964 - "GET /api/v1/admin/reconocimientos/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54962 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:54964 - "GET /api/v1/admin/reconocimientos?limit=200 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54962 - "GET /api/v1/admin/reconocimientos/14/image HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54964 - "GET /api/v1/admin/reconocimientos/15/image HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54965 - "GET /api/v1/admin/reconocimientos/13/image HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54968 - "GET /api/v1/admin/reconocimientos/10/image HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54967 - "GET /api/v1/admin/reconocimientos/11/image HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54966 - "GET /api/v1/admin/reconocimientos/12/image HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54962 - "GET /admin HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54967 - "GET /api/v1/admin/reconocimientos/9/image HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54965 - "GET /api/v1/admin/reconocimientos/7/image HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54964 - "GET /api/v1/admin/reconocimientos/8/image HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54968 - "GET /api/v1/admin/reconocimientos/6/image HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54966 - "GET /api/v1/admin/reconocimientos/4/image HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54962 - "GET /api/v1/admin/reconocimientos/5/image HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54964 - "GET /api/v1/admin/reconocimientos/3/image HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54965 - "GET /api/v1/admin/reconocimientos/2/image HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54967 - "GET /api/v1/admin/reconocimientos/1/image HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54965 - "GET /static/styles.css?v=4 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54964 - "GET /static/admin.js?v=4 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54965 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:54964 - "GET /api/v1/admin/reconocimientos/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54964 - "GET /api/v1/admin/reconocimientos?limit=200 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54965 - "GET /api/v1/admin/reconocimientos/14/image HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54964 - "GET /api/v1/admin/reconocimientos/15/image HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54968 - "GET /api/v1/admin/reconocimientos/12/image HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54962 - "GET /api/v1/admin/reconocimientos/10/image HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54967 - "GET /api/v1/admin/reconocimientos/13/image HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54966 - "GET /api/v1/admin/reconocimientos/11/image HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54965 - "GET /api/v1/admin/reconocimientos/8/image HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54964 - "GET /api/v1/admin/reconocimientos/9/image HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54968 - "GET /api/v1/admin/reconocimientos/7/image HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54967 - "GET /api/v1/admin/reconocimientos/5/image HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54962 - "GET /api/v1/admin/reconocimientos/6/image HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54966 - "GET /api/v1/admin/reconocimientos/4/image HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54965 - "GET /api/v1/admin/reconocimientos/3/image HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54968 - "GET /api/v1/admin/reconocimientos/1/image HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54964 - "GET /api/v1/admin/reconocimientos/2/image HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55234 - "DELETE /api/v1/admin/reconocimientos/14 HTTP/1.1" 204 No Content
+INFO:     127.0.0.1:55234 - "GET /api/v1/admin/reconocimientos/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55234 - "GET /api/v1/admin/reconocimientos/15/image HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55236 - "GET /api/v1/admin/reconocimientos/12/image HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55237 - "GET /api/v1/admin/reconocimientos/11/image HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55238 - "GET /api/v1/admin/reconocimientos/10/image HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55239 - "GET /api/v1/admin/reconocimientos/9/image HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55235 - "GET /api/v1/admin/reconocimientos/13/image HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55234 - "GET /api/v1/admin/reconocimientos/7/image HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55234 - "GET /api/v1/admin/reconocimientos/8/image HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55239 - "GET /api/v1/admin/reconocimientos/6/image HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55235 - "GET /api/v1/admin/reconocimientos/5/image HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55234 - "GET /api/v1/admin/reconocimientos/3/image HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55237 - "GET /api/v1/admin/reconocimientos/4/image HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55236 - "GET /api/v1/admin/reconocimientos/1/image HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55238 - "GET /api/v1/admin/reconocimientos/2/image HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55240 - "PUT /api/v1/admin/reconocimientos/5/review HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55240 - "GET /api/v1/admin/reconocimientos/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55249 - "DELETE /api/v1/admin/reconocimientos/2 HTTP/1.1" 204 No Content
+INFO:     127.0.0.1:55249 - "GET /api/v1/admin/reconocimientos/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55250 - "DELETE /api/v1/admin/reconocimientos/3 HTTP/1.1" 204 No Content
+INFO:     127.0.0.1:55250 - "GET /api/v1/admin/reconocimientos/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56019 - "GET /admin HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56019 - "GET /static/styles.css?v=4 HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:56020 - "GET /static/admin.js?v=4 HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:56020 - "GET /api/v1/admin/reconocimientos/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56020 - "GET /api/v1/admin/reconocimientos?limit=200 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56020 - "GET /api/v1/admin/reconocimientos/15/image HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56019 - "GET /api/v1/admin/reconocimientos/13/image HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56023 - "GET /api/v1/admin/reconocimientos/11/image HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56020 - "GET /api/v1/admin/reconocimientos/7/image HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56022 - "GET /api/v1/admin/reconocimientos/10/image HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56024 - "GET /api/v1/admin/reconocimientos/12/image HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56021 - "GET /api/v1/admin/reconocimientos/9/image HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56020 - "GET /api/v1/admin/reconocimientos/1/image HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56023 - "GET /api/v1/admin/reconocimientos/8/image HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56019 - "GET /api/v1/admin/reconocimientos/4/image HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56020 - "GET /api/v1/admin/reconocimientos/6/image HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56023 - "GET /api/v1/admin/reconocimientos/5/image HTTP/1.1" 200 OK

@@ -1,0 +1,153 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1320" height="980" viewBox="0 0 1320 980" role="img" aria-labelledby="title desc">
+  <title id="title">Flujo del panel de administrador VisionAI</title>
+  <desc id="desc">Diagrama del flujo de revisión de reconocimientos, filtros, detalle, acciones de auditoría, estados y métricas del panel administrador.</desc>
+  <defs>
+    <style>
+      .bg { fill: #f6f8fb; }
+      .panel { fill: #ffffff; stroke: #cbd5e1; stroke-width: 2; }
+      .stage { fill: #f8fafc; stroke: #94a3b8; stroke-width: 2; }
+      .state { fill: #eef6ff; stroke: #2f6fed; stroke-width: 2; }
+      .state-ok { fill: #ecfdf5; stroke: #059669; stroke-width: 2; }
+      .state-warn { fill: #fff7ed; stroke: #f97316; stroke-width: 2; }
+      .state-bad { fill: #fef2f2; stroke: #dc2626; stroke-width: 2; }
+      .state-muted { fill: #f1f5f9; stroke: #64748b; stroke-width: 2; }
+      .api { fill: #f0fdfa; stroke: #0f766e; stroke-width: 2; }
+      .db { fill: #fefce8; stroke: #ca8a04; stroke-width: 2; }
+      .title { font: 700 30px Arial, sans-serif; fill: #0f172a; }
+      .subtitle { font: 400 16px Arial, sans-serif; fill: #475569; }
+      .h { font: 700 18px Arial, sans-serif; fill: #0f172a; }
+      .txt { font: 400 14px Arial, sans-serif; fill: #334155; }
+      .small { font: 400 12px Arial, sans-serif; fill: #475569; }
+      .code { font: 700 12px Consolas, monospace; fill: #0f172a; }
+      .pill { font: 700 12px Arial, sans-serif; fill: #0f172a; }
+      .arrow { stroke: #334155; stroke-width: 2.4; fill: none; marker-end: url(#arrow); }
+      .arrow-soft { stroke: #64748b; stroke-width: 2; fill: none; marker-end: url(#arrow-soft); stroke-dasharray: 7 5; }
+      .lane-label { font: 700 13px Arial, sans-serif; fill: #0f766e; letter-spacing: .5px; }
+    </style>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+      <path d="M2,2 L10,6 L2,10 Z" fill="#334155" />
+    </marker>
+    <marker id="arrow-soft" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+      <path d="M2,2 L10,6 L2,10 Z" fill="#64748b" />
+    </marker>
+  </defs>
+
+  <rect class="bg" x="0" y="0" width="1320" height="980" />
+  <text class="title" x="50" y="58">Flujo del panel de administrador</text>
+  <text class="subtitle" x="50" y="86">Desde una imagen reconocida por IA hasta la revisión humana, actualización de estados y uso para entrenamiento.</text>
+
+  <rect class="stage" x="50" y="125" width="270" height="765" rx="10" />
+  <text class="lane-label" x="75" y="155">1. CAPTURA Y PERSISTENCIA</text>
+
+  <rect class="panel" x="75" y="180" width="220" height="95" rx="8" />
+  <text class="h" x="95" y="212">Registro de producto</text>
+  <text class="txt" x="95" y="238">Usuario sube imagen, toma</text>
+  <text class="txt" x="95" y="258">foto o usa cámara web.</text>
+
+  <rect class="api" x="75" y="320" width="220" height="115" rx="8" />
+  <text class="h" x="95" y="352">Pipeline IA</text>
+  <text class="txt" x="95" y="378">YOLO detecta región.</text>
+  <text class="txt" x="95" y="398">PaddleOCR extrae texto.</text>
+  <text class="txt" x="95" y="418">Normalizer sugiere producto.</text>
+
+  <rect class="db" x="75" y="480" width="220" height="110" rx="8" />
+  <text class="h" x="95" y="512">Evento guardado</text>
+  <text class="code" x="95" y="538">recognition_events</text>
+  <text class="txt" x="95" y="562">Imagen, bbox, OCR, warnings,</text>
+  <text class="txt" x="95" y="582">predicción y campos finales.</text>
+
+  <rect class="state" x="92" y="635" width="185" height="74" rx="20" />
+  <text class="pill" x="125" y="668">pending_review</text>
+  <text class="small" x="124" y="690">Estado inicial</text>
+
+  <path class="arrow" d="M185 275 L185 314" />
+  <path class="arrow" d="M185 435 L185 474" />
+  <path class="arrow" d="M185 590 L185 629" />
+
+  <rect class="stage" x="360" y="125" width="390" height="765" rx="10" />
+  <text class="lane-label" x="385" y="155">2. BANDEJA ADMIN</text>
+
+  <rect class="api" x="390" y="180" width="300" height="90" rx="8" />
+  <text class="h" x="414" y="212">Carga inicial</text>
+  <text class="code" x="414" y="238">GET /admin/reconocimientos/stats</text>
+  <text class="code" x="414" y="258">GET /admin/reconocimientos?limit=200</text>
+
+  <rect class="panel" x="390" y="315" width="300" height="130" rx="8" />
+  <text class="h" x="414" y="347">Métricas superiores</text>
+  <text class="txt" x="414" y="373">Pendientes, validados, corregidos,</text>
+  <text class="txt" x="414" y="393">rechazados, candidatos y precisión.</text>
+  <text class="small" x="414" y="420">Precisión = (validados + corregidos) / revisados</text>
+
+  <rect class="panel" x="390" y="495" width="300" height="135" rx="8" />
+  <text class="h" x="414" y="527">Filtros y búsqueda</text>
+  <text class="txt" x="414" y="553">Estado, categoría, confianza YOLO</text>
+  <text class="txt" x="414" y="573">mínima y texto por ID/producto/marca.</text>
+  <text class="code" x="414" y="602">status, category, min_confidence, q</text>
+
+  <rect class="panel" x="390" y="680" width="300" height="130" rx="8" />
+  <text class="h" x="414" y="712">Listado de reconocimientos</text>
+  <text class="txt" x="414" y="738">Tabla con miniatura, producto,</text>
+  <text class="txt" x="414" y="758">confianza YOLO/OCR y estado.</text>
+  <text class="small" x="414" y="786">Click en fila o botón “Revisar”.</text>
+
+  <path class="arrow" d="M540 270 L540 309" />
+  <path class="arrow" d="M540 445 L540 489" />
+  <path class="arrow" d="M540 630 L540 674" />
+  <path class="arrow" d="M278 672 C325 672, 338 224, 384 224" />
+
+  <rect class="stage" x="790" y="125" width="480" height="765" rx="10" />
+  <text class="lane-label" x="815" y="155">3. DETALLE, AUDITORÍA Y ESTADOS</text>
+
+  <rect class="panel" x="830" y="180" width="365" height="150" rx="8" />
+  <text class="h" x="855" y="212">Detalle del reconocimiento</text>
+  <text class="txt" x="855" y="240">Muestra escena original, recorte YOLO,</text>
+  <text class="txt" x="855" y="260">clase, confianza OCR, texto OCR y</text>
+  <text class="txt" x="855" y="280">producto sugerido por IA.</text>
+  <text class="small" x="855" y="306">Los campos finales arrancan con la predicción.</text>
+
+  <rect class="panel" x="830" y="370" width="365" height="155" rx="8" />
+  <text class="h" x="855" y="402">Formulario de revisión</text>
+  <text class="txt" x="855" y="430">Nombre, marca, tipo, presentación,</text>
+  <text class="txt" x="855" y="450">contenido, unidad, categoría y barcode.</text>
+  <text class="txt" x="855" y="470">Motivo: OCR falló, YOLO recortó mal,</text>
+  <text class="txt" x="855" y="490">marca/contenido/categoría incorrecta, etc.</text>
+
+  <rect class="state-ok" x="805" y="585" width="155" height="70" rx="20" />
+  <text class="pill" x="853" y="616">validated</text>
+  <text class="small" x="842" y="638">Validar sin cambios</text>
+
+  <rect class="state" x="975" y="585" width="155" height="70" rx="20" />
+  <text class="pill" x="1024" y="616">corrected</text>
+  <text class="small" x="1001" y="638">Guardar corrección</text>
+
+  <rect class="state-bad" x="1145" y="585" width="105" height="70" rx="20" />
+  <text class="pill" x="1174" y="616">rejected</text>
+  <text class="small" x="1174" y="638">Rechazar</text>
+
+  <rect class="state-muted" x="805" y="700" width="145" height="70" rx="20" />
+  <text class="pill" x="852" y="731">ignored</text>
+  <text class="small" x="842" y="753">Ignorar caso</text>
+
+  <rect class="state-warn" x="965" y="700" width="145" height="70" rx="20" />
+  <text class="pill" x="1011" y="731">duplicate</text>
+  <text class="small" x="999" y="753">Soportado por API</text>
+
+  <rect class="state-warn" x="1125" y="700" width="125" height="70" rx="20" />
+  <text class="pill" x="1154" y="731">training</text>
+  <text class="small" x="1147" y="753">Checkbox activo</text>
+
+  <rect class="api" x="855" y="815" width="320" height="48" rx="8" />
+  <text class="code" x="885" y="844">PUT /admin/reconocimientos/{id}/review</text>
+
+  <path class="arrow" d="M690 745 C752 745, 760 255, 824 255" />
+  <path class="arrow" d="M1012 330 L1012 364" />
+  <path class="arrow" d="M1012 525 L1012 556 C1012 566, 965 570, 908 582" />
+  <path class="arrow" d="M1012 525 L1012 577" />
+  <path class="arrow" d="M1012 525 C1095 542, 1168 550, 1195 579" />
+  <path class="arrow" d="M1012 525 C942 560, 890 643, 878 694" />
+  <path class="arrow-soft" d="M1038 770 L1038 810" />
+  <path class="arrow-soft" d="M1188 770 L1135 810" />
+
+  <rect class="panel" x="50" y="910" width="1220" height="45" rx="8" />
+  <text class="txt" x="75" y="938">Nota: el frontend expone botones para validated, corrected, rejected e ignored. El backend también acepta duplicate, training_candidate y used_for_training; el checkbox use_for_training alimenta la métrica “Candidatos”.</text>
+</svg>

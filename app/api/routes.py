@@ -185,6 +185,20 @@ def get_recognition(
     return _recognition_to_response(repository.get(event_id))
 
 
+@router.delete(
+    "/admin/reconocimientos/{event_id}",
+    status_code=204,
+    tags=["admin"],
+    summary="Elimina un reconocimiento capturado del panel de administraciÃ³n.",
+)
+def delete_recognition(
+    event_id: int,
+    repository: RecognitionRepository = Depends(get_recognition_repository),
+) -> Response:
+    repository.delete(event_id)
+    return Response(status_code=204)
+
+
 @router.get(
     "/admin/reconocimientos/{event_id}/image",
     tags=["admin"],

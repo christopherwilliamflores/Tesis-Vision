@@ -240,6 +240,13 @@ class RecognitionRepository:
             raise RecognitionEventNotFoundError(f"No existe imagen para reconocimiento {event_id}.")
         return bytes(row["image_blob"]), row["image_content_type"]
 
+    def delete(self, event_id: int) -> None:
+        with self._connect() as conn:
+            cursor = conn.execute("DELETE FROM recognition_events WHERE id = ?", (event_id,))
+            conn.commit()
+        if cursor.rowcount == 0:
+            raise RecognitionEventNotFoundError(f"No existe reconocimiento con id {event_id}.")
+
     def review(self, event_id: int, payload: dict[str, Any]) -> RecognitionEventRecord:
         status = payload.get("status")
         if status not in VALID_REVIEW_STATUSES:

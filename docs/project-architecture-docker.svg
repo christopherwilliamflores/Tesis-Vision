@@ -1,0 +1,136 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="1040" viewBox="0 0 1500 1040" role="img" aria-labelledby="title desc">
+  <title id="title">Arquitectura del proyecto Tesis Vision</title>
+  <desc id="desc">Arquitectura de la aplicación FastAPI con frontend web, servicios de visión, repositorios SQLite, modelos YOLO y despliegue Docker para producción.</desc>
+  <defs>
+    <style>
+      .bg { fill: #f5f7fb; }
+      .title { font: 800 34px Arial, sans-serif; fill: #0f172a; }
+      .subtitle { font: 400 17px Arial, sans-serif; fill: #475569; }
+      .section { fill: #fff; stroke: #cbd5e1; stroke-width: 2; }
+      .card { fill: #f8fafc; stroke: #94a3b8; stroke-width: 2; }
+      .web { fill: #ecfeff; stroke: #0891b2; }
+      .api { fill: #eef6ff; stroke: #2563eb; }
+      .service { fill: #f0fdf4; stroke: #16a34a; }
+      .domain { fill: #fff7ed; stroke: #ea580c; }
+      .db { fill: #fefce8; stroke: #ca8a04; }
+      .docker { fill: #eff6ff; stroke: #0b5cad; }
+      .runtime { fill: #faf5ff; stroke: #9333ea; }
+      .h { font: 800 18px Arial, sans-serif; fill: #0f172a; }
+      .txt { font: 400 14px Arial, sans-serif; fill: #334155; }
+      .small { font: 400 12px Arial, sans-serif; fill: #475569; }
+      .code { font: 700 12px Consolas, monospace; fill: #0f172a; }
+      .label { font: 800 13px Arial, sans-serif; fill: #0f172a; letter-spacing: .7px; }
+      .arrow { stroke: #334155; stroke-width: 2.6; fill: none; marker-end: url(#arrow); }
+      .arrow-soft { stroke: #64748b; stroke-width: 2.2; fill: none; marker-end: url(#arrowSoft); stroke-dasharray: 8 5; }
+    </style>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+      <path d="M2,2 L10,6 L2,10 Z" fill="#334155"/>
+    </marker>
+    <marker id="arrowSoft" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+      <path d="M2,2 L10,6 L2,10 Z" fill="#64748b"/>
+    </marker>
+  </defs>
+
+  <rect class="bg" x="0" y="0" width="1500" height="1040"/>
+  <text class="title" x="60" y="60">Arquitectura del proyecto Tesis Vision</text>
+  <text class="subtitle" x="60" y="92">Aplicación FastAPI con frontend web, pipeline de visión, persistencia SQLite y despliegue Docker para producción.</text>
+
+  <rect class="section" x="50" y="130" width="1400" height="600" rx="16"/>
+  <text class="label" x="80" y="162">ARQUITECTURA LÓGICA DE LA APLICACIÓN</text>
+
+  <rect class="card web" x="85" y="205" width="260" height="180" rx="12"/>
+  <text class="h" x="110" y="238">Frontend web</text>
+  <text class="code" x="110" y="266">app/web/*.html</text>
+  <text class="code" x="110" y="286">app/web/static/*.js</text>
+  <text class="txt" x="110" y="316">Pantallas de registro,</text>
+  <text class="txt" x="110" y="337">productos y administración.</text>
+  <text class="small" x="110" y="365">Se sirve desde FastAPI como archivos estáticos.</text>
+
+  <rect class="card api" x="410" y="205" width="270" height="180" rx="12"/>
+  <text class="h" x="435" y="238">API FastAPI</text>
+  <text class="code" x="435" y="266">app/main.py</text>
+  <text class="code" x="435" y="286">app/api/routes.py</text>
+  <text class="txt" x="435" y="316">Expone endpoints REST,</text>
+  <text class="txt" x="435" y="337">sirve el frontend y maneja</text>
+  <text class="txt" x="435" y="358">errores esperados.</text>
+
+  <rect class="card service" x="750" y="205" width="300" height="180" rx="12"/>
+  <text class="h" x="775" y="238">Servicios de visión</text>
+  <text class="code" x="775" y="266">app/services/pipeline.py</text>
+  <text class="txt" x="775" y="296">Orquesta decodificación, YOLO,</text>
+  <text class="txt" x="775" y="317">preprocesamiento, PaddleOCR</text>
+  <text class="txt" x="775" y="338">y normalización del texto.</text>
+  <text class="small" x="775" y="365">Carga modelos de forma diferida.</text>
+
+  <rect class="card domain" x="1115" y="205" width="290" height="180" rx="12"/>
+  <text class="h" x="1140" y="238">Dominio y contratos</text>
+  <text class="code" x="1140" y="266">app/domain/catalog.py</text>
+  <text class="code" x="1140" y="286">app/schemas/product.py</text>
+  <text class="txt" x="1140" y="316">Catálogo de marcas, unidades,</text>
+  <text class="txt" x="1140" y="337">categorías y modelos Pydantic</text>
+  <text class="txt" x="1140" y="358">para entrada/salida.</text>
+
+  <path class="arrow" d="M345 295 H400"/>
+  <path class="arrow" d="M680 295 H740"/>
+  <path class="arrow" d="M1050 295 H1105"/>
+
+  <rect class="card db" x="240" y="470" width="300" height="170" rx="12"/>
+  <text class="h" x="265" y="503">Repositorios y SQLite</text>
+  <text class="code" x="265" y="531">app/repositories/*.py</text>
+  <text class="code" x="265" y="551">app/db/connection.py</text>
+  <text class="txt" x="265" y="581">Acceso a productos y eventos</text>
+  <text class="txt" x="265" y="602">de reconocimiento.</text>
+  <text class="code" x="265" y="625">runtime/products.db</text>
+
+  <rect class="card runtime" x="605" y="470" width="300" height="170" rx="12"/>
+  <text class="h" x="630" y="503">Archivos de runtime</text>
+  <text class="code" x="630" y="531">runtime/</text>
+  <text class="txt" x="630" y="561">Base SQLite, logs actuales</text>
+  <text class="txt" x="630" y="582">y recortes de depuración si</text>
+  <text class="txt" x="630" y="603">se habilita persistencia.</text>
+
+  <rect class="card service" x="970" y="470" width="300" height="170" rx="12"/>
+  <text class="h" x="995" y="503">Modelos de IA</text>
+  <text class="code" x="995" y="531">models/</text>
+  <text class="code" x="995" y="551">YOLO_MODEL_PATH</text>
+  <text class="txt" x="995" y="581">Pesos YOLO entrenados o</text>
+  <text class="txt" x="995" y="602">descargados. PaddleOCR usa</text>
+  <text class="txt" x="995" y="623">sus modelos en caché local.</text>
+
+  <path class="arrow-soft" d="M545 385 V455 H390 V464"/>
+  <path class="arrow-soft" d="M900 385 V455 H1120 V464"/>
+  <path class="arrow-soft" d="M755 385 V464"/>
+
+  <rect class="section" x="50" y="770" width="1400" height="215" rx="16"/>
+  <text class="label" x="80" y="802">DESPLIEGUE CON DOCKER PARA PRODUCCIÓN</text>
+
+  <rect class="card docker" x="85" y="835" width="300" height="110" rx="12"/>
+  <text class="h" x="110" y="868">Imagen Docker</text>
+  <text class="code" x="110" y="896">Dockerfile</text>
+  <text class="txt" x="110" y="922">Base Python 3.10 slim + dependencias</text>
+  <text class="txt" x="110" y="942">OpenCV/Paddle/YOLO.</text>
+
+  <rect class="card docker" x="445" y="835" width="300" height="110" rx="12"/>
+  <text class="h" x="470" y="868">Contenedor API</text>
+  <text class="code" x="470" y="896">uvicorn app.main:app</text>
+  <text class="txt" x="470" y="922">Expone el puerto 8000 y ejecuta</text>
+  <text class="txt" x="470" y="942">la aplicación FastAPI.</text>
+
+  <rect class="card docker" x="805" y="835" width="300" height="110" rx="12"/>
+  <text class="h" x="830" y="868">docker-compose</text>
+  <text class="code" x="830" y="896">docker-compose.yml</text>
+  <text class="txt" x="830" y="922">Carga .env, configura YOLO/OCR</text>
+  <text class="txt" x="830" y="942">y mapea volúmenes.</text>
+
+  <rect class="card runtime" x="1165" y="835" width="240" height="110" rx="12"/>
+  <text class="h" x="1190" y="868">Volúmenes</text>
+  <text class="code" x="1190" y="896">./runtime:/app/runtime</text>
+  <text class="code" x="1190" y="916">./models:/app/models</text>
+  <text class="txt" x="1190" y="942">Persisten datos y modelos.</text>
+
+  <path class="arrow" d="M385 890 H435"/>
+  <path class="arrow" d="M745 890 H795"/>
+  <path class="arrow" d="M1105 890 H1155"/>
+
+  <text class="small" x="80" y="1018">Comando de despliegue: docker compose up --build. En producción, los datos sobreviven porque SQLite vive en ./runtime y los pesos YOLO viven en ./models, ambos montados como volúmenes.</text>
+</svg>
